@@ -10,7 +10,7 @@ Sistema web de Psicología Clínica, que permite agendar citas para consultas. E
 La Emoción Vital es una capacidad fundamental que nos permite experimentar y expresar emociones de manera auténtica y profunda.
 
 
-## Autores
+## Authors
 
 - [@LuisanaBMG](https://github.com/LuisanaBMG)
 - [@Al2jan7ro](https://github.com/Al2jan7ro)
@@ -18,8 +18,9 @@ La Emoción Vital es una capacidad fundamental que nos permite experimentar y ex
 - [@lcondep3](https://github.com/lcondep3)
 - [@AlejandraH17](https://github.com/AlejandraH17)
 - [@Ariannymg](https://github.com/Ariannymg)
+
   
-## Lenguaje de Programación
+## Programming Languages
 
 Los archivos de está página web se escriben en lenguajes de programación como PHP, HTML, CSS y JavaScript, y se almacenan en un servidor web.
 
