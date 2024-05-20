@@ -57,9 +57,9 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, Framework Toastr, FullCal
 
 | Color             | Codigo de color                                                               |
 | ----------------- | ------------------------------------------------------------------ |
-| Color 1 | ![#F3EEEA](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-1.png) #F3EEEA |
-| Color 2 | ![#EBE3D5](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-2.png) #EBE3D5 |
-| Color 3 | ![#3A3F35](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-3.png) #3A3F35 |
-| Color 4 | ![#776B5D](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-4.png) #776B5D |
+| Color 1 | ![#F3EEEA] (https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-1.png) #F3EEEA |
+| Color 2 | ![#EBE3D5] (https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-2.png) #EBE3D5 |
+| Color 3 | ![#3A3F35] (https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-3.png) #3A3F35 |
+| Color 4 | ![#776B5D] (https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-4.png) #776B5D |
 
 
