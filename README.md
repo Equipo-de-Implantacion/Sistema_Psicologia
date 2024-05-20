@@ -19,7 +19,7 @@ La Emoción Vital es una capacidad fundamental que nos permite experimentar y ex
 - [@AlejandraH17](https://github.com/AlejandraH17)
 - [@Ariannymg](https://github.com/Ariannymg)
   
-## Lenguajes de Programación
+## Lenguaje de Programación
 
 Los archivos de está página web se escriben en lenguajes de programación como PHP, HTML, CSS y JavaScript, y se almacenan en un servidor web.
 
