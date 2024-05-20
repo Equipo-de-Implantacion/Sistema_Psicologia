@@ -1,0 +1,92 @@
+/*ESTILO PARA OCULTAR SECCIONES Y CAMBIAR ENTRE PASOS*/
+.Seccion {
+    display: none;
+}
+
+.Seccion.activa {
+    display: block;
+}
+
+.pasos-activo {
+    border: 2px solid #007bff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/*ESTILO PARA OCULTAR DATOS SEGÚN EL TIPO DE CITA*/
+.Datos_Menor {
+    display: none;
+}
+
+/*.Datos_Pareja {
+    display: none;
+}*/
+
+.btn_Confirmar{
+    display: none;
+}
+
+
+/* Estilos base para dispositivos grandes */
+.Pasos_cita ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .Pasos_cita li {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 3px solid #3A3F35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0 25px;
+    transition: background-color 0.3s;
+  }
+  
+  .Pasos_cita li .linea {
+    position: absolute;
+    height: 3px;
+    width: 30px; /* Ajustar el ancho inicial de la línea */
+    background: #BFBFBF; /* Color por defecto de la línea */
+    top: 50%;
+    left: calc(100% + 5px);
+    transition: background-color 0.3s, width 0.4s;
+  }
+  
+  /* Media query para tablets */
+  @media (max-width: 768px) {
+    .Pasos_cita li {
+      width: 40px; /* Reducir el tamaño de los pasos */
+      height: 40px;
+      line-height: 40px;
+      margin: 0 15px; /* Ajustar el margen entre los pasos */
+    }
+  
+    .Pasos_cita li .linea {
+      width: 20px; /* Ajustar el ancho de la línea */
+    }
+  }
+  
+  /* Media query para teléfonos móviles */
+  @media (max-width: 480px) {
+    .Pasos_cita li {
+      width: 30px; /* Reducir aún más el tamaño de los pasos */
+      height: 30px;
+      line-height: 30px;
+      margin: 0 15px; /* Ajustar el margen entre los pasos */
+    }
+  
+    .Pasos_cita li .linea {
+      width: 15px; /* Ajustar el ancho de la línea */
+    }
+  }
+  
+
+  
