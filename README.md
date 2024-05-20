@@ -31,7 +31,8 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, FullCalendar y SQL Server
 - CSS: Versión: CCS3. Documentación https://developer.mozilla.org/es/docs/Web/CSS. 
 - Versión de Bootstrap: 5.3.2. Documentación: https://getbootstrap.com/docs/5.3/getting-started/introduction/. 
 - Version de FullCalendar: 5.11.5. Documentación: https://fullcalendar.io/docs/v5.
-- SQL Server: Se utiliza XAMPP en PhpMyadmin y la versión es 5.2.1. Documentacion: http://localhost/phpmyadmin/doc/html/index.html.
+- SQL Server: XAMPP en PhpMyadmin, versión: 5.2.1.
+  Documentacion: http://localhost/phpmyadmin/doc/html/index.html.
 
 ## Funcionalidades
 > Lic. Psicología.
