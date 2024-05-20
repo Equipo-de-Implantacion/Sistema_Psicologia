@@ -20,7 +20,7 @@ Sistema web de Psicología Clínica, que permite agendar citas para consultas. E
 - [@Ariannymg](https://github.com/Ariannymg)
 
   
-## Lenguajes de Programación
+## Lenguaje de Programación
 
 Los archivos de está página web se escriben en lenguajes de programación como PHP y JavaScript,
 - PHP: Versión 8.1.12. Documentación de la versión: https://www.php.net/docs.php. 
