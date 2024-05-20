@@ -52,3 +52,14 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, Framework Toastr, FullCal
  - Recuperar contraseña.
  - Agendar citas, ver el estado de la misma.
  - Modificar datos de su cita.
+
+   ## Referencia de color 
+
+| Color             | Codigo de color                                                               |
+| ----------------- | ------------------------------------------------------------------ |
+| Color 1 | ![#F3EEEA](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/color-1.jpeg) #F3EEEA |
+| Color 2 | ![#EBE3D5](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/color-2.jpeg) #EBE3D5 |
+| Color 3 | ![#3A3F35](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/color-3.jpeg) #3A3F35 |
+| Color 4 | ![#776B5D](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/color-4.jpeg) #776B5D |
+
+
