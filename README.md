@@ -35,7 +35,7 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, FullCalendar y SQL Server
   Documentacion: http://localhost/phpmyadmin/doc/html/index.html.
 
 ## Funcionalidades
-> Lic. Psicología.
+> Lic. Psicología
 - Registrar usuarios, ya sea Paciente o Especialista.
 - Agendar y modificar citas.
 - Confirmar y cancelar citas solicitadas.
@@ -45,7 +45,7 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, FullCalendar y SQL Server
 - Agregar y modificar precios de consultas.
 - Crear y modificar historial clínico.
 
-> Pacientes.
+> Pacientes
  - Registrarse en la página.
  - Modificar datos de usuario.
  - Recuperar contraseña.
