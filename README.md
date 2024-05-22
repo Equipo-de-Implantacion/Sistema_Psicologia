@@ -74,7 +74,7 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, Framework Toastr, FullCal
 > Módulo para empleado
 - Agendar citas
 - Citas agendadas
-- Histiral clínico
+- Historal clínico
 - Registro de usuario
 - Configuración
 
