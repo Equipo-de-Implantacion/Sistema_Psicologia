@@ -62,4 +62,25 @@ Además, se hace uso de HTML, CSS, Framework Boostrab, Framework Toastr, FullCal
 | Color 3 | ![#3A3F35](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-3-1.png) #3A3F35 |
 | Color 4 | ![#776B5D](https://campusiutirlaempresarial.com/lacalifornia/wp-content/uploads/2024/05/Color-4-1.png) #776B5D |
 
+## Módulos 
+
+> Módulo para pacientes
+- Agendar citas
+- Citas agendadas
+- Modificar citas
+- Eliminar citas
+- Configuración
+
+> Módulo para empleado
+- Agendar citas
+- Citas agendadas
+- Histiral clínico
+- Registro de usuario
+- Configuración
+
+> Módulo en general
+- Inicio de sesión
+- Registro de cuenta
+- Recuperar contraseña
+- Registro de datos al iniciar sesión por primera vez 
 
