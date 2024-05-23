@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2024 a las 23:06:23
+-- Tiempo de generación: 04-04-2024 a las 19:31:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -62,13 +62,16 @@ CREATE TABLE `calendario` (
 DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `Id_Cita` int(10) NOT NULL,
-  `Tipo_Cita` varchar(20) NOT NULL,
+  `Id_TipoCita` int(20) NOT NULL,
   `Descripcion` varchar(50) NOT NULL,
   `Id_Dia` int(11) NOT NULL,
-  `Id_Horario` int(11) NOT NULL,
+  `Horario_Inicio` datetime NOT NULL,
+  `Horario_Fin` datetime NOT NULL,
   `Id_Paciente` int(11) NOT NULL,
   `Id_Empleado` int(11) NOT NULL,
-  `Id_Calendario` int(11) NOT NULL
+  `Id_Calendario` int(11) NOT NULL,
+  `Status_Cita` enum('Espera','Agendada','Finalizada','Suspendido','Reagendada','') NOT NULL,
+  `Status` enum('Aprobado','Cancelado','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -628,9 +631,380 @@ CREATE TABLE `detalle_head_factura` (
 DROP TABLE IF EXISTS `diassemana`;
 CREATE TABLE `diassemana` (
   `Id_Dia` int(11) NOT NULL,
-  `Dia` varchar(10) NOT NULL,
-  `Laborable` tinyint(1) NOT NULL
+  `Dia` date NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `diassemana`
+--
+
+INSERT INTO `diassemana` (`Id_Dia`, `Dia`, `status`) VALUES
+(1, '2024-01-01', 1),
+(2, '2024-01-02', 1),
+(3, '2024-01-03', 1),
+(4, '2024-01-04', 1),
+(5, '2024-01-05', 1),
+(6, '2024-01-06', 1),
+(7, '2024-01-07', 1),
+(8, '2024-01-08', 1),
+(9, '2024-01-09', 1),
+(10, '2024-01-10', 1),
+(11, '2024-01-11', 1),
+(12, '2024-01-12', 1),
+(13, '2024-01-13', 1),
+(14, '2024-01-14', 1),
+(15, '2024-01-15', 1),
+(16, '2024-01-16', 1),
+(17, '2024-01-17', 1),
+(18, '2024-01-18', 1),
+(19, '2024-01-19', 1),
+(20, '2024-01-20', 1),
+(21, '2024-01-21', 1),
+(22, '2024-01-22', 1),
+(23, '2024-01-23', 1),
+(24, '2024-01-24', 1),
+(25, '2024-01-25', 1),
+(26, '2024-01-26', 1),
+(27, '2024-01-27', 1),
+(28, '2024-01-28', 1),
+(29, '2024-01-29', 1),
+(30, '2024-01-30', 1),
+(31, '2024-01-31', 1),
+(32, '2024-02-01', 1),
+(33, '2024-02-02', 1),
+(34, '2024-02-03', 1),
+(35, '2024-02-04', 1),
+(36, '2024-02-05', 1),
+(37, '2024-02-06', 1),
+(38, '2024-02-07', 1),
+(39, '2024-02-08', 1),
+(40, '2024-02-09', 1),
+(41, '2024-02-10', 1),
+(42, '2024-02-11', 1),
+(43, '2024-02-12', 1),
+(44, '2024-02-13', 1),
+(45, '2024-02-14', 1),
+(46, '2024-02-15', 1),
+(47, '2024-02-16', 1),
+(48, '2024-02-17', 1),
+(49, '2024-02-18', 1),
+(50, '2024-02-19', 1),
+(51, '2024-02-20', 1),
+(52, '2024-02-21', 1),
+(53, '2024-02-22', 1),
+(54, '2024-02-23', 1),
+(55, '2024-02-24', 1),
+(56, '2024-02-25', 1),
+(57, '2024-02-26', 1),
+(58, '2024-02-27', 1),
+(59, '2024-02-28', 1),
+(60, '2024-02-29', 1),
+(61, '2024-03-01', 1),
+(62, '2024-03-02', 1),
+(63, '2024-03-03', 1),
+(64, '2024-03-04', 1),
+(65, '2024-03-05', 1),
+(66, '2024-03-06', 1),
+(67, '2024-03-07', 1),
+(68, '2024-03-08', 1),
+(69, '2024-03-09', 1),
+(70, '2024-03-10', 1),
+(71, '2024-03-11', 1),
+(72, '2024-03-12', 1),
+(73, '2024-03-13', 1),
+(74, '2024-03-14', 1),
+(75, '2024-03-15', 1),
+(76, '2024-03-16', 1),
+(77, '2024-03-17', 1),
+(78, '2024-03-18', 1),
+(79, '2024-03-19', 1),
+(80, '2024-03-20', 1),
+(81, '2024-03-21', 1),
+(82, '2024-03-22', 1),
+(83, '2024-03-23', 1),
+(84, '2024-03-24', 1),
+(85, '2024-03-25', 1),
+(86, '2024-03-26', 1),
+(87, '2024-03-27', 1),
+(88, '2024-03-28', 1),
+(89, '2024-03-29', 1),
+(90, '2024-03-30', 1),
+(91, '2024-03-31', 1),
+(92, '2024-04-01', 1),
+(93, '2024-04-02', 1),
+(94, '2024-04-03', 1),
+(95, '2024-04-04', 1),
+(96, '2024-04-05', 1),
+(97, '2024-04-06', 1),
+(98, '2024-04-07', 1),
+(99, '2024-04-08', 1),
+(100, '2024-04-09', 1),
+(101, '2024-04-10', 1),
+(102, '2024-04-11', 1),
+(103, '2024-04-12', 1),
+(104, '2024-04-13', 1),
+(105, '2024-04-14', 1),
+(106, '2024-04-15', 1),
+(107, '2024-04-16', 1),
+(108, '2024-04-17', 1),
+(109, '2024-04-18', 1),
+(110, '2024-04-19', 1),
+(111, '2024-04-20', 1),
+(112, '2024-04-21', 1),
+(113, '2024-04-22', 1),
+(114, '2024-04-23', 1),
+(115, '2024-04-24', 1),
+(116, '2024-04-25', 1),
+(117, '2024-04-26', 1),
+(118, '2024-04-27', 1),
+(119, '2024-04-28', 1),
+(120, '2024-04-29', 1),
+(121, '2024-04-30', 1),
+(122, '2024-05-01', 1),
+(123, '2024-05-02', 1),
+(124, '2024-05-03', 1),
+(125, '2024-05-04', 1),
+(126, '2024-05-05', 1),
+(127, '2024-05-06', 1),
+(128, '2024-05-07', 1),
+(129, '2024-05-08', 1),
+(130, '2024-05-09', 1),
+(131, '2024-05-10', 1),
+(132, '2024-05-11', 1),
+(133, '2024-05-12', 1),
+(134, '2024-05-13', 1),
+(135, '2024-05-14', 1),
+(136, '2024-05-15', 1),
+(137, '2024-05-16', 1),
+(138, '2024-05-17', 1),
+(139, '2024-05-18', 1),
+(140, '2024-05-19', 1),
+(141, '2024-05-20', 1),
+(142, '2024-05-21', 1),
+(143, '2024-05-22', 1),
+(144, '2024-05-23', 1),
+(145, '2024-05-24', 1),
+(146, '2024-05-25', 1),
+(147, '2024-05-26', 1),
+(148, '2024-05-27', 1),
+(149, '2024-05-28', 1),
+(150, '2024-05-29', 1),
+(151, '2024-05-30', 1),
+(152, '2024-05-31', 1),
+(153, '2024-06-01', 1),
+(154, '2024-06-02', 1),
+(155, '2024-06-03', 1),
+(156, '2024-06-04', 1),
+(157, '2024-06-05', 1),
+(158, '2024-06-06', 1),
+(159, '2024-06-07', 1),
+(160, '2024-06-08', 1),
+(161, '2024-06-09', 1),
+(162, '2024-06-10', 1),
+(163, '2024-06-11', 1),
+(164, '2024-06-12', 1),
+(165, '2024-06-13', 1),
+(166, '2024-06-14', 1),
+(167, '2024-06-15', 1),
+(168, '2024-06-16', 1),
+(169, '2024-06-17', 1),
+(170, '2024-06-18', 1),
+(171, '2024-06-19', 1),
+(172, '2024-06-20', 1),
+(173, '2024-06-21', 1),
+(174, '2024-06-22', 1),
+(175, '2024-06-23', 1),
+(176, '2024-06-24', 1),
+(177, '2024-06-25', 1),
+(178, '2024-06-26', 1),
+(179, '2024-06-27', 1),
+(180, '2024-06-28', 1),
+(181, '2024-06-29', 1),
+(182, '2024-06-30', 1),
+(183, '2024-07-01', 1),
+(184, '2024-07-02', 1),
+(185, '2024-07-03', 1),
+(186, '2024-07-04', 1),
+(187, '2024-07-05', 1),
+(188, '2024-07-06', 1),
+(189, '2024-07-07', 1),
+(190, '2024-07-08', 1),
+(191, '2024-07-09', 1),
+(192, '2024-07-10', 1),
+(193, '2024-07-11', 1),
+(194, '2024-07-12', 1),
+(195, '2024-07-13', 1),
+(196, '2024-07-14', 1),
+(197, '2024-07-15', 1),
+(198, '2024-07-16', 1),
+(199, '2024-07-17', 1),
+(200, '2024-07-18', 1),
+(201, '2024-07-19', 1),
+(202, '2024-07-20', 1),
+(203, '2024-07-21', 1),
+(204, '2024-07-22', 1),
+(205, '2024-07-23', 1),
+(206, '2024-07-24', 1),
+(207, '2024-07-25', 1),
+(208, '2024-07-26', 1),
+(209, '2024-07-27', 1),
+(210, '2024-07-28', 1),
+(211, '2024-07-29', 1),
+(212, '2024-07-30', 1),
+(213, '2024-07-31', 1),
+(214, '2024-08-01', 1),
+(215, '2024-08-02', 1),
+(216, '2024-08-03', 1),
+(217, '2024-08-04', 1),
+(218, '2024-08-05', 1),
+(219, '2024-08-06', 1),
+(220, '2024-08-07', 1),
+(221, '2024-08-08', 1),
+(222, '2024-08-09', 1),
+(223, '2024-08-10', 1),
+(224, '2024-08-11', 1),
+(225, '2024-08-12', 1),
+(226, '2024-08-13', 1),
+(227, '2024-08-14', 1),
+(228, '2024-08-15', 1),
+(229, '2024-08-16', 1),
+(230, '2024-08-17', 1),
+(231, '2024-08-18', 1),
+(232, '2024-08-19', 1),
+(233, '2024-08-20', 1),
+(234, '2024-08-21', 1),
+(235, '2024-08-22', 1),
+(236, '2024-08-23', 1),
+(237, '2024-08-24', 1),
+(238, '2024-08-25', 1),
+(239, '2024-08-26', 1),
+(240, '2024-08-27', 1),
+(241, '2024-08-28', 1),
+(242, '2024-08-29', 1),
+(243, '2024-08-30', 1),
+(244, '2024-08-31', 1),
+(245, '2024-09-01', 1),
+(246, '2024-09-02', 1),
+(247, '2024-09-03', 1),
+(248, '2024-09-04', 1),
+(249, '2024-09-05', 1),
+(250, '2024-09-06', 1),
+(251, '2024-09-07', 1),
+(252, '2024-09-08', 1),
+(253, '2024-09-09', 1),
+(254, '2024-09-10', 1),
+(255, '2024-09-11', 1),
+(256, '2024-09-12', 1),
+(257, '2024-09-13', 1),
+(258, '2024-09-14', 1),
+(259, '2024-09-15', 1),
+(260, '2024-09-16', 1),
+(261, '2024-09-17', 1),
+(262, '2024-09-18', 1),
+(263, '2024-09-19', 1),
+(264, '2024-09-20', 1),
+(265, '2024-09-21', 1),
+(266, '2024-09-22', 1),
+(267, '2024-09-23', 1),
+(268, '2024-09-24', 1),
+(269, '2024-09-25', 1),
+(270, '2024-09-26', 1),
+(271, '2024-09-27', 1),
+(272, '2024-09-28', 1),
+(273, '2024-09-29', 1),
+(274, '2024-09-30', 1),
+(275, '2024-10-01', 1),
+(276, '2024-10-02', 1),
+(277, '2024-10-03', 1),
+(278, '2024-10-04', 1),
+(279, '2024-10-05', 1),
+(280, '2024-10-06', 1),
+(281, '2024-10-07', 1),
+(282, '2024-10-08', 1),
+(283, '2024-10-09', 1),
+(284, '2024-10-10', 1),
+(285, '2024-10-11', 1),
+(286, '2024-10-12', 1),
+(287, '2024-10-13', 1),
+(288, '2024-10-14', 1),
+(289, '2024-10-15', 1),
+(290, '2024-10-16', 1),
+(291, '2024-10-17', 1),
+(292, '2024-10-18', 1),
+(293, '2024-10-19', 1),
+(294, '2024-10-20', 1),
+(295, '2024-10-21', 1),
+(296, '2024-10-22', 1),
+(297, '2024-10-23', 1),
+(298, '2024-10-24', 1),
+(299, '2024-10-25', 1),
+(300, '2024-10-26', 1),
+(301, '2024-10-27', 1),
+(302, '2024-10-28', 1),
+(303, '2024-10-29', 1),
+(304, '2024-10-30', 1),
+(305, '2024-10-31', 1),
+(306, '2024-11-01', 1),
+(307, '2024-11-02', 1),
+(308, '2024-11-03', 1),
+(309, '2024-11-04', 1),
+(310, '2024-11-05', 1),
+(311, '2024-11-06', 1),
+(312, '2024-11-07', 1),
+(313, '2024-11-08', 1),
+(314, '2024-11-09', 1),
+(315, '2024-11-10', 1),
+(316, '2024-11-11', 1),
+(317, '2024-11-12', 1),
+(318, '2024-11-13', 1),
+(319, '2024-11-14', 1),
+(320, '2024-11-15', 1),
+(321, '2024-11-16', 1),
+(322, '2024-11-17', 1),
+(323, '2024-11-18', 1),
+(324, '2024-11-19', 1),
+(325, '2024-11-20', 1),
+(326, '2024-11-21', 1),
+(327, '2024-11-22', 1),
+(328, '2024-11-23', 1),
+(329, '2024-11-24', 1),
+(330, '2024-11-25', 1),
+(331, '2024-11-26', 1),
+(332, '2024-11-27', 1),
+(333, '2024-11-28', 1),
+(334, '2024-11-29', 1),
+(335, '2024-11-30', 1),
+(336, '2024-12-01', 1),
+(337, '2024-12-02', 1),
+(338, '2024-12-03', 1),
+(339, '2024-12-04', 1),
+(340, '2024-12-05', 1),
+(341, '2024-12-06', 1),
+(342, '2024-12-07', 1),
+(343, '2024-12-08', 1),
+(344, '2024-12-09', 1),
+(345, '2024-12-10', 1),
+(346, '2024-12-11', 1),
+(347, '2024-12-12', 1),
+(348, '2024-12-13', 1),
+(349, '2024-12-14', 1),
+(350, '2024-12-15', 1),
+(351, '2024-12-16', 1),
+(352, '2024-12-17', 1),
+(353, '2024-12-18', 1),
+(354, '2024-12-19', 1),
+(355, '2024-12-20', 1),
+(356, '2024-12-21', 1),
+(357, '2024-12-22', 1),
+(358, '2024-12-23', 1),
+(359, '2024-12-24', 1),
+(360, '2024-12-25', 1),
+(361, '2024-12-26', 1),
+(362, '2024-12-27', 1),
+(363, '2024-12-28', 1),
+(364, '2024-12-29', 1),
+(365, '2024-12-30', 1);
 
 -- --------------------------------------------------------
 
@@ -672,7 +1046,7 @@ CREATE TABLE `empleado` (
   `Direccion` varchar(60) NOT NULL,
   `Profesion` varchar(30) NOT NULL,
   `Especialidad` varchar(30) NOT NULL,
-  `Id_Status` int(1) NOT NULL
+  `Status_Empleado` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -748,40 +1122,6 @@ CREATE TABLE `historialmedico` (
   `Id_Cita` int(11) NOT NULL,
   `Diagnostico` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `horario`
---
-
-DROP TABLE IF EXISTS `horario`;
-CREATE TABLE `horario` (
-  `Id_Horario` int(1) NOT NULL,
-  `Bloque_1Inicio` time NOT NULL,
-  `Bloque_1Fin` time NOT NULL,
-  `Bloque_2Inicio` time NOT NULL,
-  `Bloque_2Fin` time NOT NULL,
-  `Bloque_3Inicio` time NOT NULL,
-  `Bloque_3IFin` time NOT NULL,
-  `Bloque_4Inicio` time NOT NULL,
-  `Bloque_4Fin` time NOT NULL,
-  `Bloque_5Inicio` time NOT NULL,
-  `Bloque_5Fin` time NOT NULL,
-  `Bloque_6Inicio` time NOT NULL,
-  `Bloque_6Fin` time NOT NULL,
-  `Bloque_7Inicio` time NOT NULL,
-  `Bloque_7Fin` time NOT NULL,
-  `Bloque_8Inicio` time NOT NULL,
-  `Bloque_8Fin` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `horario`
---
-
-INSERT INTO `horario` (`Id_Horario`, `Bloque_1Inicio`, `Bloque_1Fin`, `Bloque_2Inicio`, `Bloque_2Fin`, `Bloque_3Inicio`, `Bloque_3IFin`, `Bloque_4Inicio`, `Bloque_4Fin`, `Bloque_5Inicio`, `Bloque_5Fin`, `Bloque_6Inicio`, `Bloque_6Fin`, `Bloque_7Inicio`, `Bloque_7Fin`, `Bloque_8Inicio`, `Bloque_8Fin`) VALUES
-(1, '08:00:00', '08:45:00', '08:45:00', '09:30:00', '09:30:00', '10:15:00', '10:15:00', '11:00:00', '11:00:00', '11:45:00', '02:00:00', '02:45:00', '02:45:00', '03:30:00', '03:30:00', '04:15:00');
 
 -- --------------------------------------------------------
 
@@ -1146,7 +1486,7 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 DROP TABLE IF EXISTS `paciente`;
 CREATE TABLE `paciente` (
   `Id_Paciente` int(11) NOT NULL,
-  `Tipo_Documento` varchar(3) NOT NULL,
+  `Tipo_Documento` enum('V','E','J','') NOT NULL,
   `Documento_Id` varchar(10) NOT NULL,
   `Primer_Nombre` varchar(20) NOT NULL,
   `Segundo_Nombre` varchar(20) NOT NULL,
@@ -1154,6 +1494,7 @@ CREATE TABLE `paciente` (
   `Segundo_Apellido` varchar(20) NOT NULL,
   `Id_Sexo` int(1) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
+  `Num_Hijos` int(11) NOT NULL,
   `Telefono` varchar(20) NOT NULL,
   `Correo` varchar(60) NOT NULL,
   `Id_Direccion` int(11) NOT NULL,
@@ -2342,22 +2683,45 @@ INSERT INTO `sexo` (`Id_Sexo`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `status`
+-- Estructura de tabla para la tabla `tabla_nino`
 --
 
-DROP TABLE IF EXISTS `status`;
-CREATE TABLE `status` (
-  `ID_Status` int(11) NOT NULL,
-  `Decripcion` varchar(10) NOT NULL
+DROP TABLE IF EXISTS `tabla_nino`;
+CREATE TABLE `tabla_nino` (
+  `Id_Nino` int(11) NOT NULL,
+  `Id_User` int(11) NOT NULL,
+  `Ci_Representante` varchar(12) NOT NULL,
+  `Ci_Nino` varchar(12) NOT NULL,
+  `Primer_Nombre` varchar(20) NOT NULL,
+  `Segundo_Nombre` varchar(20) NOT NULL,
+  `Primer_Apellido` varchar(20) NOT NULL,
+  `Segundo_Apellido` varchar(20) NOT NULL,
+  `Fecha_Nac` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_cita`
+--
+
+DROP TABLE IF EXISTS `tipo_cita`;
+CREATE TABLE `tipo_cita` (
+  `Id_TipoCita` int(11) NOT NULL,
+  `Tipo_Cita` varchar(20) NOT NULL,
+  `Costo` int(11) NOT NULL,
+  `status` enum('Activo','Inactivo','','') NOT NULL,
+  `Fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `status`
+-- Volcado de datos para la tabla `tipo_cita`
 --
 
-INSERT INTO `status` (`ID_Status`, `Decripcion`) VALUES
-(1, 'ACTIVO'),
-(2, 'INACTIVO');
+INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `status`, `Fecha`) VALUES
+(1, 'ale', 1000, '', '2024-04-04'),
+(2, 'luisana', 0, '', '0000-00-00'),
+(3, 'luisana', 1001, '', '2024-04-04');
 
 -- --------------------------------------------------------
 
@@ -2383,7 +2747,7 @@ CREATE TABLE `usuario` (
   `Id_User` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
   `Contrasena` int(11) NOT NULL,
-  `ID_Status` int(11) NOT NULL
+  `Status_Usuario` enum('Activo','Inactivo','Suspendido','Bloqueado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2396,26 +2760,23 @@ CREATE TABLE `usuario` (
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`Id_Agenda`),
   ADD KEY `Id_Paciente` (`Id_Paciente`),
-  ADD KEY `Id_Dia` (`Id_Dia`),
   ADD KEY `agenda_ibfk_3` (`Id_Status`);
 
 --
 -- Indices de la tabla `calendario`
 --
 ALTER TABLE `calendario`
-  ADD PRIMARY KEY (`Id_Calendario`),
-  ADD KEY `Id_Dia` (`Id_Dia`);
+  ADD PRIMARY KEY (`Id_Calendario`);
 
 --
 -- Indices de la tabla `cita`
 --
 ALTER TABLE `cita`
   ADD PRIMARY KEY (`Id_Cita`),
-  ADD KEY `Id_Horario` (`Id_Horario`),
   ADD KEY `Id_Paciente` (`Id_Paciente`),
   ADD KEY `Id_Empleado` (`Id_Empleado`),
   ADD KEY `Id_Calendario` (`Id_Calendario`),
-  ADD KEY `Id_Dia` (`Id_Dia`);
+  ADD KEY `Id_TipoCita` (`Id_TipoCita`);
 
 --
 -- Indices de la tabla `ciudades`
@@ -2456,7 +2817,6 @@ ALTER TABLE `direccion`
 --
 ALTER TABLE `empleado`
   ADD PRIMARY KEY (`Id_Empleado`),
-  ADD KEY `Id_Status` (`Id_Status`),
   ADD KEY `Id_Sexo` (`Id_Sexo`);
 
 --
@@ -2483,12 +2843,6 @@ ALTER TABLE `historialmedico`
   ADD KEY `Id_Cita` (`Id_Cita`);
 
 --
--- Indices de la tabla `horario`
---
-ALTER TABLE `horario`
-  ADD PRIMARY KEY (`Id_Horario`);
-
---
 -- Indices de la tabla `municipios`
 --
 ALTER TABLE `municipios`
@@ -2500,7 +2854,6 @@ ALTER TABLE `municipios`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`Id_Paciente`),
-  ADD KEY `Id_Status` (`Id_Status`),
   ADD KEY `Id_Sexo` (`Id_Sexo`),
   ADD KEY `Id_Direccion` (`Id_Direccion`);
 
@@ -2518,10 +2871,16 @@ ALTER TABLE `sexo`
   ADD PRIMARY KEY (`Id_Sexo`);
 
 --
--- Indices de la tabla `status`
+-- Indices de la tabla `tabla_nino`
 --
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`ID_Status`);
+ALTER TABLE `tabla_nino`
+  ADD PRIMARY KEY (`Id_Nino`);
+
+--
+-- Indices de la tabla `tipo_cita`
+--
+ALTER TABLE `tipo_cita`
+  ADD PRIMARY KEY (`Id_TipoCita`);
 
 --
 -- Indices de la tabla `tipo_usuario`
@@ -2534,7 +2893,6 @@ ALTER TABLE `tipo_usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Id_User`),
-  ADD KEY `ID_Status` (`ID_Status`),
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
@@ -2581,7 +2939,7 @@ ALTER TABLE `detalle_head_factura`
 -- AUTO_INCREMENT de la tabla `diassemana`
 --
 ALTER TABLE `diassemana`
-  MODIFY `Id_Dia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
@@ -2614,12 +2972,6 @@ ALTER TABLE `historialmedico`
   MODIFY `Id_Historial` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `horario`
---
-ALTER TABLE `horario`
-  MODIFY `Id_Horario` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
@@ -2644,10 +2996,16 @@ ALTER TABLE `sexo`
   MODIFY `Id_Sexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `status`
+-- AUTO_INCREMENT de la tabla `tabla_nino`
 --
-ALTER TABLE `status`
-  MODIFY `ID_Status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tabla_nino`
+  MODIFY `Id_Nino` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_cita`
+--
+ALTER TABLE `tipo_cita`
+  MODIFY `Id_TipoCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
@@ -2669,25 +3027,16 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `agenda_ibfk_2` FOREIGN KEY (`Id_Dia`) REFERENCES `diassemana` (`Id_Dia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `agenda_ibfk_3` FOREIGN KEY (`Id_Status`) REFERENCES `status` (`ID_Status`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `calendario`
---
-ALTER TABLE `calendario`
-  ADD CONSTRAINT `calendario_ibfk_1` FOREIGN KEY (`Id_Dia`) REFERENCES `diassemana` (`Id_Dia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`Id_Horario`) REFERENCES `horario` (`Id_Horario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id_Empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cita_ibfk_4` FOREIGN KEY (`Id_Calendario`) REFERENCES `calendario` (`Id_Calendario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cita_ibfk_5` FOREIGN KEY (`Id_Dia`) REFERENCES `diassemana` (`Id_Dia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cita_ibfk_6` FOREIGN KEY (`Id_TipoCita`) REFERENCES `tipo_cita` (`Id_TipoCita`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ciudades`
@@ -2712,7 +3061,6 @@ ALTER TABLE `direccion`
 -- Filtros para la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`Id_Status`) REFERENCES `status` (`ID_Status`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`Id_Sexo`) REFERENCES `sexo` (`Id_Sexo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -2740,7 +3088,6 @@ ALTER TABLE `municipios`
 -- Filtros para la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`Id_Status`) REFERENCES `status` (`ID_Status`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`Id_Sexo`) REFERENCES `sexo` (`Id_Sexo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`Id_Direccion`) REFERENCES `direccion` (`Id_Direccion`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -2754,7 +3101,6 @@ ALTER TABLE `parroquias`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_Status`) REFERENCES `status` (`ID_Status`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Id_Usuario`) REFERENCES `tipo_usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
