@@ -1,0 +1,286 @@
+#seccion2 { background-color: #EBE3D5; }
+#seccion3 { background-color: #F3EEEA; }
+#seccion4 { background-color: #EBE3D5; }
+#seccion5 { background-color: #F3EEEA; }
+#Footer { background-color: #333533; }
+
+
+.seccion-pequena { background-color: #FFFFFF; }
+
+ html, body {
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+
+#seccion1 {
+    background-color: #F3EEEA;
+    background-image: url('../Imagenes/fondo\ blog\ 1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#seccion2 {
+    min-height: 100vh;
+    max-height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#seccion2 div {
+    text-align: justify;
+    flex: 1 0 300px;
+}
+
+#seccion2 img {
+    width: 350px;
+    height: auto;
+}
+
+#seccion2 .text-container {
+    max-width: 70ch;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    #seccion2 div {
+        flex: 1 0 100%; 
+    }
+
+    #seccion2 .text-container {
+        max-width: 100%; 
+    }
+}
+
+/* Nuevos ajustes para centrar título y botón en pantallas pequeñas */
+@media (max-width: 576px) {
+    #seccion2 .text-container {
+        text-align: center; /* Centra todo el texto dentro del contenedor */
+    }
+
+    #seccion2 .text-container h1 {
+        text-align: center; /* Centra el título */
+    }
+
+    #seccion2 .text-container .btn {
+        display: block;
+        margin: 10px auto; /* Centra el botón */
+    }
+}
+
+
+#seccion4 {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+#seccion4 .content-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+#seccion4 .content-container h1 {
+    margin-top: 2rem; /* Añade un margen inferior al título para separarlo del contenido siguiente */
+}
+
+#seccion4 .content-container .container {
+    flex-grow: 1; /* Permite que el contenedor del contenido crezca para ocupar el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+
+
+  #seccion5 {
+    min-height: 100vh; 
+    max-height: fit-content; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Ajustes adicionales para pantallas pequeñas */
+@media (max-width: 576px) {
+    #seccion5 .container {
+        max-width: 100%; 
+        flex: 1 0 100%; 
+    }
+}
+
+
+.seccion-pequena {
+    background-color: #FFFFFF;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+    padding: 20px; 
+}
+
+.seccion-pequena p {
+    font-size: 1rem;
+    margin: 0 auto;
+    max-width: 80%; 
+}
+
+/*Otros*/
+.contenedor-principal {
+    min-height: 90vh; 
+    
+}
+
+.contenedor-imagen {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100%; 
+}
+
+.imagen-responsiva {
+ max-width: 100%; 
+ height: auto; 
+ margin-bottom: 20px; 
+ background-color: transparent; 
+}
+
+.contenedor-titulo {
+ position: relative;
+
+}
+
+.text-container, .image-container {
+    margin: 0 auto; 
+    max-width: 80%; 
+    
+}
+
+/* Asegura que el icono se coloque debajo de la imagen en resoluciones más bajas */
+@media (max-width: 768px) {
+    .icono-encima-titulo {
+        position: static;
+        margin-top: 20px; 
+        align-items: center; 
+        transform: translateX(50%);
+
+    }
+}
+
+/* Justificar el texto del párrafo */
+.lead {
+    text-align: justify;
+}
+
+/* Centrar el título <h1> en resoluciones más pequeñas */
+@media (max-width: 576px) {
+    .titulo-modalidad {
+        text-align: center;
+    }
+}
+
+body .btn {
+    background-color: #3A3F35; 
+    border: none;
+    color: #FFFFFF; 
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+}
+
+body .btn:hover {
+    background-color: #D0D0BD;
+    color: black;
+}
+
+/* Mantiene el color de fondo cuando se hace clic */
+#seccion1 .btn:active, .btn:focus {
+    background-color: #3A3F35 ;
+    box-shadow: none; 
+    
+}
+#seccion2 .btn:active, .btn:focus {
+    background-color: #3A3F35 ;
+    box-shadow: none;
+    
+}
+#seccion3 .btn:active, .btn:focus {
+    color: white;
+    background-color: #3A3F35;
+    box-shadow: none;
+}
+
+#seccion5 .btn:active, .btn:focus {
+    background-color: #3A3F35 ;
+    box-shadow: none; 
+    
+}
+/* Mantiene el color de fondo cuando se hace clic */
+
+
+.btn {
+    background-color: #3A3F35;
+    border: none;
+}
+
+.d-item{
+ height: 600px;
+ 
+}
+.d-img{
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+
+/* Asegura que el icono se coloque correctamente encima del título */
+.logo-modalidad {
+    max-width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    display: block;
+    margin-left: 10px;
+    margin-right: auto;
+    
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contenedor-titulo {
+        text-align: center; /* Centra el contenido del contenedor del título */
+    }
+
+    .logo-modalidad {
+        margin-bottom: 10px; /* Espacio adicional debajo del logo */
+        float: none; /* Quita el alineamiento flotante */
+        margin: 0 auto 10px auto; /* Centra el logo horizontalmente y añade espacio debajo */
+        display: block; 
+    }
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 10%; /* Ajusta este valor para mover el texto hacia arriba o hacia abajo */
+    transform: translate(0%, 20%);
+    text-align: center;
+}
+
+.problema{
+    width: 20vh;  /* Ajusta el ancho de la imagen */
+}
