@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2024 a las 19:31:03
+-- Tiempo de generación: 12-04-2024 a las 17:12:53
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemapsicologia`
 --
-CREATE DATABASE IF NOT EXISTS `sistemapsicologia` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `sistemapsicologia`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `sistemapsicologia`;
 -- Estructura de tabla para la tabla `agenda`
 --
 
-DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
   `Id_Agenda` int(10) NOT NULL,
   `Id_Paciente` int(10) NOT NULL,
@@ -45,7 +42,6 @@ CREATE TABLE `agenda` (
 -- Estructura de tabla para la tabla `calendario`
 --
 
-DROP TABLE IF EXISTS `calendario`;
 CREATE TABLE `calendario` (
   `Id_Calendario` int(1) NOT NULL,
   `Ano` int(5) NOT NULL,
@@ -59,7 +55,6 @@ CREATE TABLE `calendario` (
 -- Estructura de tabla para la tabla `cita`
 --
 
-DROP TABLE IF EXISTS `cita`;
 CREATE TABLE `cita` (
   `Id_Cita` int(10) NOT NULL,
   `Id_TipoCita` int(20) NOT NULL,
@@ -80,7 +75,6 @@ CREATE TABLE `cita` (
 -- Estructura de tabla para la tabla `ciudades`
 --
 
-DROP TABLE IF EXISTS `ciudades`;
 CREATE TABLE `ciudades` (
   `id_ciudad` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
@@ -598,7 +592,6 @@ INSERT INTO `ciudades` (`id_ciudad`, `id_estado`, `ciudad`, `capital`) VALUES
 -- Estructura de tabla para la tabla `detalle_factura`
 --
 
-DROP TABLE IF EXISTS `detalle_factura`;
 CREATE TABLE `detalle_factura` (
   `Id_Detalle` int(11) NOT NULL,
   `Id_Detalle_head_factura` int(11) NOT NULL,
@@ -614,7 +607,6 @@ CREATE TABLE `detalle_factura` (
 -- Estructura de tabla para la tabla `detalle_head_factura`
 --
 
-DROP TABLE IF EXISTS `detalle_head_factura`;
 CREATE TABLE `detalle_head_factura` (
   `Id_Detalle_head_factura` int(11) NOT NULL,
   `DocumentoRIFoCD` int(11) NOT NULL,
@@ -628,7 +620,6 @@ CREATE TABLE `detalle_head_factura` (
 -- Estructura de tabla para la tabla `diassemana`
 --
 
-DROP TABLE IF EXISTS `diassemana`;
 CREATE TABLE `diassemana` (
   `Id_Dia` int(11) NOT NULL,
   `Dia` date NOT NULL,
@@ -1012,7 +1003,6 @@ INSERT INTO `diassemana` (`Id_Dia`, `Dia`, `status`) VALUES
 -- Estructura de tabla para la tabla `direccion`
 --
 
-DROP TABLE IF EXISTS `direccion`;
 CREATE TABLE `direccion` (
   `Id_Direccion` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
@@ -1030,7 +1020,6 @@ CREATE TABLE `direccion` (
 -- Estructura de tabla para la tabla `empleado`
 --
 
-DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE `empleado` (
   `Id_Empleado` int(11) NOT NULL,
   `Tipo_Documento` varchar(3) NOT NULL,
@@ -1055,7 +1044,6 @@ CREATE TABLE `empleado` (
 -- Estructura de tabla para la tabla `estados`
 --
 
-DROP TABLE IF EXISTS `estados`;
 CREATE TABLE `estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(250) NOT NULL,
@@ -1099,7 +1087,6 @@ INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
 -- Estructura de tabla para la tabla `factura`
 --
 
-DROP TABLE IF EXISTS `factura`;
 CREATE TABLE `factura` (
   `Cod_Factura` int(11) NOT NULL,
   `Id_Detalle` int(11) NOT NULL,
@@ -1113,7 +1100,6 @@ CREATE TABLE `factura` (
 -- Estructura de tabla para la tabla `historialmedico`
 --
 
-DROP TABLE IF EXISTS `historialmedico`;
 CREATE TABLE `historialmedico` (
   `Id_Historial` int(11) NOT NULL,
   `Fecha` date NOT NULL,
@@ -1129,7 +1115,6 @@ CREATE TABLE `historialmedico` (
 -- Estructura de tabla para la tabla `municipios`
 --
 
-DROP TABLE IF EXISTS `municipios`;
 CREATE TABLE `municipios` (
   `id_municipio` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
@@ -1483,7 +1468,6 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 -- Estructura de tabla para la tabla `paciente`
 --
 
-DROP TABLE IF EXISTS `paciente`;
 CREATE TABLE `paciente` (
   `Id_Paciente` int(11) NOT NULL,
   `Tipo_Documento` enum('V','E','J','') NOT NULL,
@@ -1509,7 +1493,6 @@ CREATE TABLE `paciente` (
 -- Estructura de tabla para la tabla `parroquias`
 --
 
-DROP TABLE IF EXISTS `parroquias`;
 CREATE TABLE `parroquias` (
   `id_parroquia` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
@@ -2666,7 +2649,6 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 -- Estructura de tabla para la tabla `sexo`
 --
 
-DROP TABLE IF EXISTS `sexo`;
 CREATE TABLE `sexo` (
   `Id_Sexo` int(11) NOT NULL,
   `Tipo` varchar(10) NOT NULL
@@ -2686,10 +2668,9 @@ INSERT INTO `sexo` (`Id_Sexo`, `Tipo`) VALUES
 -- Estructura de tabla para la tabla `tabla_nino`
 --
 
-DROP TABLE IF EXISTS `tabla_nino`;
 CREATE TABLE `tabla_nino` (
   `Id_Nino` int(11) NOT NULL,
-  `Id_User` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `Ci_Representante` varchar(12) NOT NULL,
   `Ci_Nino` varchar(12) NOT NULL,
   `Primer_Nombre` varchar(20) NOT NULL,
@@ -2705,7 +2686,6 @@ CREATE TABLE `tabla_nino` (
 -- Estructura de tabla para la tabla `tipo_cita`
 --
 
-DROP TABLE IF EXISTS `tipo_cita`;
 CREATE TABLE `tipo_cita` (
   `Id_TipoCita` int(11) NOT NULL,
   `Tipo_Cita` varchar(20) NOT NULL,
@@ -2729,7 +2709,6 @@ INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `status`, `Fecha`)
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE `tipo_usuario` (
   `Id_Usuario` int(11) NOT NULL,
   `Administrador` int(11) NOT NULL,
@@ -2742,11 +2721,10 @@ CREATE TABLE `tipo_usuario` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `Id_User` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
-  `Contrasena` int(11) NOT NULL,
+  `Contrasena` varchar(33) NOT NULL,
   `Status_Usuario` enum('Activo','Inactivo','Suspendido','Bloqueado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
