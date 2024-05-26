@@ -1,4 +1,4 @@
-<?php
+<<?php
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -22,10 +22,10 @@ if ($Fila['Id_TipoUsuario'] == 1) {
         <div class="Menu_Lateral" id="Menu_Lateral">
             <img src="" alt="">
             <ul>
-            <li><a href="Menu_Paciente.php">Inicio</a></li>
-            <li><a href="Citas_Agendadas.php">Citas Agendadas</a></li>
-            <li><a href="Configuracion_Paciente.php">Configuración</a></li>
-            <li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
+            <li><a href="../PHP/Menu_Paciente.php">Inicio</a></li>
+            <li><a href="../PHP/Citas_Agendadas.php">Citas Agendadas</a></li>
+            <li><a href="../PHP/Configuracion_Paciente.php">Configuración</a></li>
+            <li><a href="../PHP/CerrarSesion.php">Cerrar Sesión</a></li>
             </ul>
         </div>';
 } elseif ($Fila['Id_TipoUsuario'] == 2) {
@@ -33,13 +33,13 @@ if ($Fila['Id_TipoUsuario'] == 1) {
         <div class="Menu_Lateral" id="Menu_Lateral">
             <img src="" alt="">
             <ul>
-            <li><a href="Menu_Psicologo.php">Inicio</a></li>
-            <li><a href="Agendar_Cita.php">Agendar Cita</a></li>
-            <li><a href="Citas_Psicologo.php">Citas Agendadas</a></li>
-            <li><a href="Historial_Clinico.php">Historial Clinico</a></li>
-            <li><a href="Nuevo_Registro.php">Registrar Usuario</a></li>
-            <li><a href="Configuracion_Psicologo.php">Configuración</a></li>
-            <li><a href="CerrarSesion.php">Cerrar Sesión</a></li>
+            <li><a href="../PHP/Menu_Psicologo.php">Inicio</a></li>
+            <li><a href="../PHP/Agendar_Cita.php">Agendar Cita</a></li>
+            <li><a href="../PHP/Citas_Psicologo.php">Citas Agendadas</a></li>
+            <li><a href="../PHP/Historial_Clinico.php">Historial Clinico</a></li>
+            <li><a href="../PHP/Nuevo_Registro.php">Registrar Usuario</a></li>
+            <li><a href="../PHP/Configuracion_Psicologo.php">Configuración</a></li>
+            <li><a href="../PHP/CerrarSesion.php">Cerrar Sesión</a></li>
             </ul>
         </div>';
 } else {
