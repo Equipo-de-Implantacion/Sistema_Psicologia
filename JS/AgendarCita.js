@@ -144,15 +144,37 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Validar año al agendar cita
-document.getElementById('Fecha').addEventListener('blur', function(event) {
+document.getElementById('Fecha').addEventListener('blur', function (event) {
     var fechaInput = event.target;
     var fechaSeleccionada = new Date(fechaInput.value);
     var fechaActual = new Date();
 
     if (fechaSeleccionada < fechaActual) {
         alert('La fecha seleccionada debe ser igual o posterior al día actual.');
-        fechaInput.min = fechaActual.toISOString().substring(0,10); // Formatea la fecha actual al formato yyyy-mm-dd
+        fechaInput.min = fechaActual.toISOString().substring(0, 10); // Formatea la fecha actual al formato yyyy-mm-dd
         fechaInput.value = fechaInput.min;
+    }
+});
+
+//Validar la edad del paciente
+document.getElementById('Fecha_Nacimiento').addEventListener('blur', function () {
+    const fechaNacimiento = new Date(this.value);
+    const fechaActual = new Date();
+
+    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+    const mesActual = fechaActual.getMonth();
+    const mesNacimiento = fechaNacimiento.getMonth();
+
+    //Operación para calcular la edad de la persona de acuerdo a su día y mes de nacimiento
+    if (mesNacimiento > mesActual || (mesNacimiento === mesActual && fechaNacimiento.getDate() > fechaActual.getDate())) {
+        edad--;
+    }
+
+    if (edad > 3 && edad < 90) {
+        //alert("Edad adecuada");
+    } else {
+        alert("El paciente debe tener entre 3 y 90 años de edad.");
+        this.value = '';
     }
 });
 
