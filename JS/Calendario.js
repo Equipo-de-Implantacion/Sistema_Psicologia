@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('Contenido_Calendario');
-  
+
+  //Configuración del calendario
   fetchEvents().then(function(events) {
     var calendar = new FullCalendar.Calendar(calendarEl, {
       locale: 'es',
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function fetchEvents() {
-  return fetch('../Configuracion/ObtenerCitas.php') // Asegúrate de que esta ruta sea correcta
+  return fetch('../Configuracion/ObtenerCitas.php')
    .then(response => response.json())
    .catch(error => console.error('Error:', error));
 }
