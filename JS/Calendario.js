@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('Contenido_Calendario');
 
-  //Configuración del calendario
-  fetchEvents().then(function(events) {
+  //Configuración del Calendario
+  fetchEvents().then(function (events) {
     var calendar = new FullCalendar.Calendar(calendarEl, {
       locale: 'es',
       timeZone: 'local',
@@ -13,8 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
         center: 'title',
         right: 'dayGridMonth, timeGridWeek, listWeek'
       },
+      //Modificar el título del calendario
+      views: {
+        dayGridMonth: {
+          titleFormat: {
+            month: 'long'
+          }
+        }
+      },
       events: events.map(event => ({
-      ...event,
+        ...event,
         allDay: true // Indicando que los eventos son de todo el día
       }))
     });
@@ -24,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function fetchEvents() {
   return fetch('../Configuracion/ObtenerCitas.php')
-   .then(response => response.json())
-   .catch(error => console.error('Error:', error));
+    .then(response => response.json())
+    .catch(error => console.error('Error:', error));
 }
