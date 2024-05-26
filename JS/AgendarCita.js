@@ -143,16 +143,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Fecha').setAttribute('min', fechaActual);
 });
 
+//Validar año al agendar cita
+document.getElementById('Fecha').addEventListener('blur', function(event) {
+    var fechaInput = event.target;
+    var fechaSeleccionada = new Date(fechaInput.value);
+    var fechaActual = new Date();
+
+    if (fechaSeleccionada < fechaActual) {
+        alert('La fecha seleccionada debe ser igual o posterior al día actual.');
+        fechaInput.min = fechaActual.toISOString().substring(0,10); // Formatea la fecha actual al formato yyyy-mm-dd
+        fechaInput.value = fechaInput.min;
+    }
+});
 
 document.getElementById('cancelarBtn').addEventListener('click', function () {
     if (confirm("¿Estás seguro de que quieres salir?")) {
         window.location.href = 'Agendar_Cita.php';
     }
 });
-
-
-
-
-
-
-
