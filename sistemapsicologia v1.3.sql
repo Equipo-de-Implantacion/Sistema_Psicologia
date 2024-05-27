@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2024 a las 17:12:53
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 25-04-2024 a las 19:35:29
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sistemapsicologia`
+-- Base de datos: `sistema_psicologia`
 --
 
 -- --------------------------------------------------------
@@ -589,6 +589,36 @@ INSERT INTO `ciudades` (`id_ciudad`, `id_estado`, `ciudad`, `capital`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_usuario`
+--
+
+CREATE TABLE `datos_usuario` (
+  `Id_Datos` int(11) NOT NULL,
+  `Id_Usuario` int(10) NOT NULL,
+  `Tipo_Documento` enum('V-','E-','J-') NOT NULL,
+  `Documento_Id` varchar(10) NOT NULL,
+  `Primer_Nombre` varchar(20) NOT NULL,
+  `Segundo_Nombre` varchar(20) NOT NULL,
+  `Primer_Apellido` varchar(20) NOT NULL,
+  `Segundo_Apellido` varchar(20) NOT NULL,
+  `Fecha_Nacimiento` date NOT NULL,
+  `Telefono` varchar(20) NOT NULL,
+  `Correo` varchar(60) NOT NULL,
+  `Sexo` enum('Femenino','Masculino') NOT NULL,
+  `Fecha_Registro` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `datos_usuario`
+--
+
+INSERT INTO `datos_usuario` (`Id_Datos`, `Id_Usuario`, `Tipo_Documento`, `Documento_Id`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Telefono`, `Correo`, `Sexo`, `Fecha_Registro`) VALUES
+(3, 1, 'V-', '1', '1', '1', '1', '1', '1990-11-10', '1', '1@gmail.com', 'Femenino', '2024-04-14 01:01:33'),
+(4, 3, 'V-', '5', 's', 's', 's', 's', '2000-02-03', '5', 'a@gmail.com', 'Masculino', '2024-04-14 23:36:07');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `detalle_factura`
 --
 
@@ -1007,12 +1037,17 @@ CREATE TABLE `direccion` (
   `Id_Direccion` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `id_ciudad` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
-  `calle_avenida` varchar(20) NOT NULL,
-  `carrera_avenida` varchar(20) NOT NULL,
-  `casa_edificio` varchar(20) NOT NULL
+  `id_ciudad` int(11) NOT NULL,
+  `Direccion_Vivienda` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`Id_Direccion`, `id_estado`, `id_municipio`, `id_parroquia`, `id_ciudad`, `Direccion_Vivienda`) VALUES
+(29, 1, 1, 1, 1, '000');
 
 -- --------------------------------------------------------
 
@@ -1084,6 +1119,81 @@ INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `experiencia_traumatica`
+--
+
+CREATE TABLE `experiencia_traumatica` (
+  `id_extraum` int(11) NOT NULL,
+  `fecha_extraum` datetime NOT NULL,
+  `perdida_algunfamiliar` enum('Si','No') NOT NULL,
+  `quien_era` text NOT NULL,
+  `como_fue` text NOT NULL,
+  `edad_ninoant` smallint(2) NOT NULL,
+  `presencia_suses` text NOT NULL,
+  `reacion_nino` text NOT NULL,
+  `accidente_nino` text NOT NULL,
+  `castigos_graves` text NOT NULL,
+  `partedequien` text NOT NULL,
+  `edad_nino` smallint(6) NOT NULL,
+  `causante_problema` text NOT NULL,
+  `problemas_fisicos` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factores_familiares`
+--
+
+CREATE TABLE `factores_familiares` (
+  `id_facfamilia` int(11) NOT NULL,
+  `fecha_facfamilia` datetime NOT NULL,
+  `nombre_representante` text NOT NULL,
+  `salud_fisica` text NOT NULL,
+  `nivel_educativo` text NOT NULL,
+  `trabajo_actual` text NOT NULL,
+  `horario_trabajo` text NOT NULL,
+  `habitos_representante` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factores_hereditarios`
+--
+
+CREATE TABLE `factores_hereditarios` (
+  `id_factores_herreditarios` int(8) NOT NULL,
+  `fh_iafc` text NOT NULL,
+  `fh_tratamiento_medico` text NOT NULL,
+  `fh_alcolismo_etc` text NOT NULL,
+  `fh_abuso_de_drogas` text NOT NULL,
+  `fh_debilidad_mental` text NOT NULL,
+  `fh_sintomas` text NOT NULL,
+  `fh_ets` text NOT NULL,
+  `fh_suicidio` text NOT NULL,
+  `fh_anormalidades` text NOT NULL,
+  `fh_trastornos_habla` text NOT NULL,
+  `fh_trastornos_vista` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factores_mconsulta`
+--
+
+CREATE TABLE `factores_mconsulta` (
+  `id_factoresmc` int(11) NOT NULL,
+  `fecha_facroresmc` datetime NOT NULL,
+  `fac_consulta` longtext NOT NULL,
+  `desarrollo_prenatal` longtext NOT NULL,
+  `desarrollo_pi` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `factura`
 --
 
@@ -1092,6 +1202,22 @@ CREATE TABLE `factura` (
   `Id_Detalle` int(11) NOT NULL,
   `Id_Paciente` int(11) NOT NULL,
   `Fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `habitos_e_intereses`
+--
+
+CREATE TABLE `habitos_e_intereses` (
+  `id_habito` int(11) NOT NULL,
+  `fecha_hei` datetime NOT NULL,
+  `comida_hei` text NOT NULL,
+  `sueno_hei` text NOT NULL,
+  `eliminaciones_hei` text NOT NULL,
+  `maniasytips_hei` text NOT NULL,
+  `historiasexual_hei` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1107,6 +1233,18 @@ CREATE TABLE `historialmedico` (
   `Id_Empleado` int(11) NOT NULL,
   `Id_Cita` int(11) NOT NULL,
   `Diagnostico` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impresion_psicologica`
+--
+
+CREATE TABLE `impresion_psicologica` (
+  `id_ip` int(11) NOT NULL,
+  `descripcion_ip` longtext NOT NULL,
+  `fecha_ip` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1470,21 +1608,68 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 
 CREATE TABLE `paciente` (
   `Id_Paciente` int(11) NOT NULL,
-  `Tipo_Documento` enum('V','E','J','') NOT NULL,
+  `Id_Cita` int(11) NOT NULL,
+  `Tipo_Documento` enum('V-','E-','J-') NOT NULL,
   `Documento_Id` varchar(10) NOT NULL,
   `Primer_Nombre` varchar(20) NOT NULL,
   `Segundo_Nombre` varchar(20) NOT NULL,
   `Primer_Apellido` varchar(20) NOT NULL,
   `Segundo_Apellido` varchar(20) NOT NULL,
-  `Id_Sexo` int(1) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
-  `Num_Hijos` int(11) NOT NULL,
   `Telefono` varchar(20) NOT NULL,
   `Correo` varchar(60) NOT NULL,
-  `Id_Direccion` int(11) NOT NULL,
+  `Sexo` enum('Femenino','Masculino') NOT NULL,
   `Profesion` varchar(30) NOT NULL,
+  `Num_Hijos` int(11) NOT NULL,
+  `Id_Direccion` int(11) NOT NULL,
   `Fecha_Registro` datetime NOT NULL,
-  `Id_Status` int(1) NOT NULL
+  `Status` enum('Activo','Inactivo') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`Id_Paciente`, `Id_Cita`, `Tipo_Documento`, `Documento_Id`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Telefono`, `Correo`, `Sexo`, `Profesion`, `Num_Hijos`, `Id_Direccion`, `Fecha_Registro`, `Status`) VALUES
+(19, 1, 'V-', '1', '1', '1', '1', '1', '0000-00-00', '1', '1', 'Femenino', '1', 1, 29, '2024-04-21 22:42:22', 'Activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paciente_menoredad`
+--
+
+CREATE TABLE `paciente_menoredad` (
+  `Id_Paciente` int(11) NOT NULL,
+  `Id_Cita` int(11) NOT NULL,
+  `Parentezco` varchar(10) NOT NULL,
+  `Tipo_Documento` enum('V-','E-','J-') NOT NULL,
+  `Documento_Id` varchar(10) NOT NULL,
+  `Tipo_Documento_menor` enum('V-','E-','J-') NOT NULL,
+  `Documento_menor` varchar(10) NOT NULL,
+  `Primer_Nombre` varchar(20) NOT NULL,
+  `Segundo_Nombre` varchar(20) NOT NULL,
+  `Primer_Apellido` varchar(20) NOT NULL,
+  `Segundo_Apellido` varchar(20) NOT NULL,
+  `Fecha_Nacimiento` date NOT NULL,
+  `Telefono` varchar(20) NOT NULL,
+  `Correo` varchar(60) NOT NULL,
+  `Sexo` enum('Femenino','Masculino') NOT NULL,
+  `Id_Direccion` int(11) NOT NULL,
+  `Fecha_Registro` datetime NOT NULL,
+  `Id_Status` enum('Activo','Inactivo') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parejas`
+--
+
+CREATE TABLE `parejas` (
+  `Id_Parejas` int(11) NOT NULL,
+  `Id_Paciente1` int(11) NOT NULL,
+  `Id_Paciente2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -2646,6 +2831,84 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `plan_psicoterapeutico`
+--
+
+CREATE TABLE `plan_psicoterapeutico` (
+  `id_plan` int(11) NOT NULL,
+  `fecha_plan` datetime NOT NULL,
+  `plan` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rasgos_caracter`
+--
+
+CREATE TABLE `rasgos_caracter` (
+  `rc_id` int(5) NOT NULL,
+  `fecha_rc` datetime NOT NULL,
+  `rc_timido` tinyint(1) NOT NULL,
+  `rc_agresivo` tinyint(1) NOT NULL,
+  `rc_tranquilo` tinyint(1) NOT NULL,
+  `rc_irritable` tinyint(1) NOT NULL,
+  `rc_alegre` tinyint(1) NOT NULL,
+  `rc_triste` tinyint(1) NOT NULL,
+  `rc_cooperador` tinyint(1) NOT NULL,
+  `rc_negativista` tinyint(1) NOT NULL,
+  `rc_sereno` tinyint(1) NOT NULL,
+  `rc_impulsivo` tinyint(1) NOT NULL,
+  `rc_confiado_en_si` tinyint(1) NOT NULL,
+  `fc_frio` tinyint(1) NOT NULL,
+  `rc_sociable` tinyint(1) NOT NULL,
+  `rc_retardado` tinyint(1) NOT NULL,
+  `rc_equilibrado` tinyint(1) NOT NULL,
+  `rc_nervioso` tinyint(1) NOT NULL,
+  `rc_carinoso` tinyint(1) NOT NULL,
+  `rc_inseguro` tinyint(1) NOT NULL,
+  `rc_juega` tinyint(1) NOT NULL,
+  `rc_no_juega` tinyint(1) NOT NULL,
+  `rc_controlado` tinyint(1) NOT NULL,
+  `rc_emotivo` tinyint(1) NOT NULL,
+  `rc_seguro` tinyint(1) NOT NULL,
+  `rc_amable` tinyint(1) NOT NULL,
+  `rc_desconsiderado` tinyint(1) NOT NULL,
+  `rc_laborioso` tinyint(1) NOT NULL,
+  `rc_perezoso` tinyint(1) NOT NULL,
+  `rc_desconfiado` tinyint(1) NOT NULL,
+  `rc_dominate` tinyint(1) NOT NULL,
+  `rc_sumizo` tinyint(1) NOT NULL,
+  `rc_disciplinado` tinyint(1) NOT NULL,
+  `rc_indisciplinado` tinyint(1) NOT NULL,
+  `rc_rebelde` tinyint(1) NOT NULL,
+  `rc_obediente` tinyint(1) NOT NULL,
+  `rc_ordenado` tinyint(1) NOT NULL,
+  `rc_desordenado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rasgos_caracter`
+--
+
+INSERT INTO `rasgos_caracter` (`rc_id`, `fecha_rc`, `rc_timido`, `rc_agresivo`, `rc_tranquilo`, `rc_irritable`, `rc_alegre`, `rc_triste`, `rc_cooperador`, `rc_negativista`, `rc_sereno`, `rc_impulsivo`, `rc_confiado_en_si`, `fc_frio`, `rc_sociable`, `rc_retardado`, `rc_equilibrado`, `rc_nervioso`, `rc_carinoso`, `rc_inseguro`, `rc_juega`, `rc_no_juega`, `rc_controlado`, `rc_emotivo`, `rc_seguro`, `rc_amable`, `rc_desconsiderado`, `rc_laborioso`, `rc_perezoso`, `rc_desconfiado`, `rc_dominate`, `rc_sumizo`, `rc_disciplinado`, `rc_indisciplinado`, `rc_rebelde`, `rc_obediente`, `rc_ordenado`, `rc_desordenado`) VALUES
+(1, '2024-04-25 17:56:50', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recomendaciones`
+--
+
+CREATE TABLE `recomendaciones` (
+  `id_recomendaciones` int(11) NOT NULL,
+  `fecha_re` datetime NOT NULL,
+  `recomendaciones` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `sexo`
 --
 
@@ -2665,24 +2928,6 @@ INSERT INTO `sexo` (`Id_Sexo`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tabla_nino`
---
-
-CREATE TABLE `tabla_nino` (
-  `Id_Nino` int(11) NOT NULL,
-  `Id_Paciente` int(11) NOT NULL,
-  `Ci_Representante` varchar(12) NOT NULL,
-  `Ci_Nino` varchar(12) NOT NULL,
-  `Primer_Nombre` varchar(20) NOT NULL,
-  `Segundo_Nombre` varchar(20) NOT NULL,
-  `Primer_Apellido` varchar(20) NOT NULL,
-  `Segundo_Apellido` varchar(20) NOT NULL,
-  `Fecha_Nac` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tipo_cita`
 --
 
@@ -2691,17 +2936,18 @@ CREATE TABLE `tipo_cita` (
   `Tipo_Cita` varchar(20) NOT NULL,
   `Costo` int(11) NOT NULL,
   `status` enum('Activo','Inactivo','','') NOT NULL,
-  `Fecha` date NOT NULL
+  `Fecha_Registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_cita`
 --
 
-INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `status`, `Fecha`) VALUES
-(1, 'ale', 1000, '', '2024-04-04'),
-(2, 'luisana', 0, '', '0000-00-00'),
-(3, 'luisana', 1001, '', '2024-04-04');
+INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `status`, `Fecha_Registro`) VALUES
+(1, 'Individual', 10, 'Activo', '2024-04-15 21:49:40'),
+(2, 'Pareja', 10, 'Activo', '2024-04-15 21:49:40'),
+(3, 'Infante', 10, 'Activo', '2024-04-15 21:50:13'),
+(4, 'Adolescente', 10, 'Activo', '2024-04-15 21:50:13');
 
 -- --------------------------------------------------------
 
@@ -2711,9 +2957,16 @@ INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `status`, `Fecha`)
 
 CREATE TABLE `tipo_usuario` (
   `Id_Usuario` int(11) NOT NULL,
-  `Administrador` int(11) NOT NULL,
-  `Paciente` int(11) NOT NULL
+  `Tipo_Usuario` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`Id_Usuario`, `Tipo_Usuario`) VALUES
+(1, 'Paciente'),
+(2, 'Psicologo');
 
 -- --------------------------------------------------------
 
@@ -2722,11 +2975,22 @@ CREATE TABLE `tipo_usuario` (
 --
 
 CREATE TABLE `usuario` (
-  `Id_User` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
+  `Id_TipoUsuario` int(11) NOT NULL,
+  `Usuario` varchar(20) NOT NULL,
   `Contrasena` varchar(33) NOT NULL,
-  `Status_Usuario` enum('Activo','Inactivo','Suspendido','Bloqueado') NOT NULL
+  `Status_Usuario` enum('Activo','Inactivo','Suspendido','Bloqueado') NOT NULL,
+  `Fecha_Registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`Id_Usuario`, `Id_TipoUsuario`, `Usuario`, `Contrasena`, `Status_Usuario`, `Fecha_Registro`) VALUES
+(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Activo', '2024-04-14 00:22:21'),
+(2, 1, '123', '202cb962ac59075b964b07152d234b70', 'Activo', '2024-04-14 00:22:57'),
+(3, 1, 'prueba', 'c893bad68927b457dbed39460e6afd62', 'Activo', '2024-04-14 23:27:51');
 
 --
 -- Índices para tablas volcadas
@@ -2764,6 +3028,13 @@ ALTER TABLE `ciudades`
   ADD KEY `id_estado` (`id_estado`);
 
 --
+-- Indices de la tabla `datos_usuario`
+--
+ALTER TABLE `datos_usuario`
+  ADD PRIMARY KEY (`Id_Datos`),
+  ADD KEY `Id_Usuario` (`Id_Usuario`);
+
+--
 -- Indices de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
@@ -2788,7 +3059,10 @@ ALTER TABLE `diassemana`
 --
 ALTER TABLE `direccion`
   ADD PRIMARY KEY (`Id_Direccion`),
-  ADD KEY `id_estado` (`id_estado`);
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `direccion_ibfk_2` (`id_municipio`),
+  ADD KEY `direccion_ibfk_3` (`id_ciudad`),
+  ADD KEY `direccion_ibfk_4` (`id_parroquia`);
 
 --
 -- Indices de la tabla `empleado`
@@ -2804,12 +3078,42 @@ ALTER TABLE `estados`
   ADD PRIMARY KEY (`id_estado`);
 
 --
+-- Indices de la tabla `experiencia_traumatica`
+--
+ALTER TABLE `experiencia_traumatica`
+  ADD PRIMARY KEY (`id_extraum`);
+
+--
+-- Indices de la tabla `factores_familiares`
+--
+ALTER TABLE `factores_familiares`
+  ADD PRIMARY KEY (`id_facfamilia`);
+
+--
+-- Indices de la tabla `factores_hereditarios`
+--
+ALTER TABLE `factores_hereditarios`
+  ADD PRIMARY KEY (`id_factores_herreditarios`);
+
+--
+-- Indices de la tabla `factores_mconsulta`
+--
+ALTER TABLE `factores_mconsulta`
+  ADD PRIMARY KEY (`id_factoresmc`);
+
+--
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
   ADD PRIMARY KEY (`Cod_Factura`),
   ADD KEY `Id_Detalle` (`Id_Detalle`),
   ADD KEY `Id_Paciente` (`Id_Paciente`);
+
+--
+-- Indices de la tabla `habitos_e_intereses`
+--
+ALTER TABLE `habitos_e_intereses`
+  ADD PRIMARY KEY (`id_habito`);
 
 --
 -- Indices de la tabla `historialmedico`
@@ -2819,6 +3123,12 @@ ALTER TABLE `historialmedico`
   ADD KEY `Id_Paciente` (`Id_Paciente`),
   ADD KEY `Id_Empleado` (`Id_Empleado`),
   ADD KEY `Id_Cita` (`Id_Cita`);
+
+--
+-- Indices de la tabla `impresion_psicologica`
+--
+ALTER TABLE `impresion_psicologica`
+  ADD PRIMARY KEY (`id_ip`);
 
 --
 -- Indices de la tabla `municipios`
@@ -2832,8 +3142,24 @@ ALTER TABLE `municipios`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`Id_Paciente`),
-  ADD KEY `Id_Sexo` (`Id_Sexo`),
-  ADD KEY `Id_Direccion` (`Id_Direccion`);
+  ADD KEY `Id_Direccion` (`Id_Direccion`),
+  ADD KEY `Id_Cita` (`Id_Cita`);
+
+--
+-- Indices de la tabla `paciente_menoredad`
+--
+ALTER TABLE `paciente_menoredad`
+  ADD PRIMARY KEY (`Id_Paciente`),
+  ADD KEY `Id_Direccion` (`Id_Direccion`),
+  ADD KEY `Id_Cita` (`Id_Cita`);
+
+--
+-- Indices de la tabla `parejas`
+--
+ALTER TABLE `parejas`
+  ADD PRIMARY KEY (`Id_Parejas`),
+  ADD KEY `Id_Paciente1` (`Id_Paciente1`),
+  ADD KEY `Id_Paciente2` (`Id_Paciente2`);
 
 --
 -- Indices de la tabla `parroquias`
@@ -2843,16 +3169,28 @@ ALTER TABLE `parroquias`
   ADD KEY `id_municipio` (`id_municipio`);
 
 --
+-- Indices de la tabla `plan_psicoterapeutico`
+--
+ALTER TABLE `plan_psicoterapeutico`
+  ADD PRIMARY KEY (`id_plan`);
+
+--
+-- Indices de la tabla `rasgos_caracter`
+--
+ALTER TABLE `rasgos_caracter`
+  ADD PRIMARY KEY (`rc_id`);
+
+--
+-- Indices de la tabla `recomendaciones`
+--
+ALTER TABLE `recomendaciones`
+  ADD PRIMARY KEY (`id_recomendaciones`);
+
+--
 -- Indices de la tabla `sexo`
 --
 ALTER TABLE `sexo`
   ADD PRIMARY KEY (`Id_Sexo`);
-
---
--- Indices de la tabla `tabla_nino`
---
-ALTER TABLE `tabla_nino`
-  ADD PRIMARY KEY (`Id_Nino`);
 
 --
 -- Indices de la tabla `tipo_cita`
@@ -2870,8 +3208,8 @@ ALTER TABLE `tipo_usuario`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`Id_User`),
-  ADD KEY `Id_Usuario` (`Id_Usuario`);
+  ADD PRIMARY KEY (`Id_Usuario`),
+  ADD KEY `Id_Usuario` (`Id_TipoUsuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -2902,6 +3240,12 @@ ALTER TABLE `ciudades`
   MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=523;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_usuario`
+--
+ALTER TABLE `datos_usuario`
+  MODIFY `Id_Datos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
@@ -2923,7 +3267,7 @@ ALTER TABLE `diassemana`
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `Id_Direccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
@@ -2936,6 +3280,30 @@ ALTER TABLE `empleado`
 --
 ALTER TABLE `estados`
   MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT de la tabla `experiencia_traumatica`
+--
+ALTER TABLE `experiencia_traumatica`
+  MODIFY `id_extraum` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `factores_familiares`
+--
+ALTER TABLE `factores_familiares`
+  MODIFY `id_facfamilia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `factores_hereditarios`
+--
+ALTER TABLE `factores_hereditarios`
+  MODIFY `id_factores_herreditarios` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `factores_mconsulta`
+--
+ALTER TABLE `factores_mconsulta`
+  MODIFY `id_factoresmc` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
@@ -2959,7 +3327,13 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `parejas`
+--
+ALTER TABLE `parejas`
+  MODIFY `Id_Parejas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `parroquias`
@@ -2968,34 +3342,46 @@ ALTER TABLE `parroquias`
   MODIFY `id_parroquia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1139;
 
 --
+-- AUTO_INCREMENT de la tabla `plan_psicoterapeutico`
+--
+ALTER TABLE `plan_psicoterapeutico`
+  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rasgos_caracter`
+--
+ALTER TABLE `rasgos_caracter`
+  MODIFY `rc_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2345679;
+
+--
+-- AUTO_INCREMENT de la tabla `recomendaciones`
+--
+ALTER TABLE `recomendaciones`
+  MODIFY `id_recomendaciones` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `sexo`
 --
 ALTER TABLE `sexo`
   MODIFY `Id_Sexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `tabla_nino`
---
-ALTER TABLE `tabla_nino`
-  MODIFY `Id_Nino` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `tipo_cita`
 --
 ALTER TABLE `tipo_cita`
-  MODIFY `Id_TipoCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_TipoCita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_User` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -3023,6 +3409,12 @@ ALTER TABLE `ciudades`
   ADD CONSTRAINT `ciudades_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `datos_usuario`
+--
+ALTER TABLE `datos_usuario`
+  ADD CONSTRAINT `datos_usuario_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`Id_Usuario`);
+
+--
 -- Filtros para la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
@@ -3033,7 +3425,10 @@ ALTER TABLE `detalle_factura`
 -- Filtros para la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `direccion_ibfk_3` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudades` (`id_ciudad`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `direccion_ibfk_4` FOREIGN KEY (`id_parroquia`) REFERENCES `parroquias` (`id_parroquia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empleado`
@@ -3066,8 +3461,22 @@ ALTER TABLE `municipios`
 -- Filtros para la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`Id_Sexo`) REFERENCES `sexo` (`Id_Sexo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`Id_Direccion`) REFERENCES `direccion` (`Id_Direccion`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`Id_Direccion`) REFERENCES `direccion` (`Id_Direccion`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `paciente_ibfk_4` FOREIGN KEY (`Id_Cita`) REFERENCES `tipo_cita` (`Id_TipoCita`);
+
+--
+-- Filtros para la tabla `paciente_menoredad`
+--
+ALTER TABLE `paciente_menoredad`
+  ADD CONSTRAINT `paciente_menoredad_ibfk_1` FOREIGN KEY (`Id_Direccion`) REFERENCES `direccion` (`Id_Direccion`),
+  ADD CONSTRAINT `paciente_menoredad_ibfk_2` FOREIGN KEY (`Id_Cita`) REFERENCES `tipo_cita` (`Id_TipoCita`);
+
+--
+-- Filtros para la tabla `parejas`
+--
+ALTER TABLE `parejas`
+  ADD CONSTRAINT `parejas_ibfk_1` FOREIGN KEY (`Id_Paciente1`) REFERENCES `paciente` (`Id_Paciente`),
+  ADD CONSTRAINT `parejas_ibfk_2` FOREIGN KEY (`Id_Paciente2`) REFERENCES `paciente` (`Id_Paciente`);
 
 --
 -- Filtros para la tabla `parroquias`
@@ -3079,7 +3488,7 @@ ALTER TABLE `parroquias`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Id_Usuario`) REFERENCES `tipo_usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Id_TipoUsuario`) REFERENCES `tipo_usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
