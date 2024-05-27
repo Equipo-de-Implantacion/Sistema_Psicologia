@@ -1,4 +1,4 @@
-<<?php
+<?php
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -56,12 +56,14 @@ if (isset($_GET['idPaciente']) && isset($_GET['idCita']) && isset($_GET['idCalen
 
 // Determinar el tipo de consulta según la cita
 if ($tipoCita == 'Individual' || $tipoCita == 'Pareja') {
-    $ConsultaPac = "SELECT * FROM paciente WHERE Id_Paciente = ?";
+    $ConsultaPac = "SELECT Id_Paciente, Id_Usuario, Id_Cita, Tipo_Documento, Documento_Id, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Fecha_Nacimiento, Telefono, Correo, Sexo, Profesion, Num_Hijos, Id_Direccion	
+    FROM paciente WHERE Id_Paciente = ?";
     $DeclaracionPac = $Conexion->prepare($ConsultaPac);
     $DeclaracionPac->bind_param("i", $idPaciente);
     $DeclaracionPac->execute();
     $ResultadoPac = $DeclaracionPac->get_result();
     $Paciente = $ResultadoPac->fetch_assoc();
+
 
     $idDireccion = $Paciente['Id_Direccion'];
 
@@ -89,7 +91,8 @@ if ($tipoCita == 'Individual' || $tipoCita == 'Pareja') {
     $ResultadoDir = $DeclaracionDir->get_result();
     $Direccion = $ResultadoDir->fetch_assoc();
 } else if ($tipoCita == 'Infante' || $tipoCita == 'Adolescente') {
-    $ConsultaPac = "SELECT * FROM paciente_menoredad WHERE Id_Paciente = ?";
+    $ConsultaPac = "SELECT Id_Paciente,Id_Usuario, Id_Cita, Parentezco, Tipo_Documento, Documento_Id, Tipo_Documento_menor, Documento_menor, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Fecha_Nacimiento, Telefono, Correo, Sexo, Id_Direccion	
+    FROM paciente_menoredad WHERE Id_Paciente = ?";
     $DeclaracionPac = $Conexion->prepare($ConsultaPac);
     $DeclaracionPac->bind_param("i", $idPaciente);
     $DeclaracionPac->execute();
@@ -188,7 +191,7 @@ if ($tipoCita == 'Individual' || $tipoCita == 'Pareja') {
                         </select>
 
                         <label for="Documento_Menor">Documento de Identidad del Menor</label>
-                        <input type="text" name="Documento_Menor" placeholder="Documento de Identidad" value="<?php echo $Paciente['Documento_Menor']; ?>" readonly onmousedown="return false;">
+                        <input type="text" name="Documento_Menor" placeholder="Documento de Identidad" value="<?php echo $Paciente['Documento_menor']; ?>" readonly onmousedown="return false;">
 
                         <label for="Parentezco">Parentezco</label>
                         <input type="text" name="Parentezco" id="Parentezco" value="<?php echo $Paciente['Parentezco']; ?>">
