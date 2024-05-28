@@ -27,7 +27,6 @@
 }
 
 
-/* Estilos base para dispositivos grandes */
 .Pasos_cita ul {
     list-style: none;
     display: flex;
@@ -53,39 +52,17 @@
   .Pasos_cita li .linea {
     position: absolute;
     height: 3px;
-    width: 30px; /* Ajustar el ancho inicial de la línea */
-    background: #BFBFBF; /* Color por defecto de la línea */
+    width: 30px; 
+    background: #BFBFBF;
     top: 50%;
     left: calc(100% + 5px);
     transition: background-color 0.3s, width 0.4s;
   }
   
-  /* Media query para tablets */
-  @media (max-width: 768px) {
-    .Pasos_cita li {
-      width: 40px; /* Reducir el tamaño de los pasos */
-      height: 40px;
-      line-height: 40px;
-      margin: 0 15px; /* Ajustar el margen entre los pasos */
-    }
+
   
-    .Pasos_cita li .linea {
-      width: 20px; /* Ajustar el ancho de la línea */
-    }
-  }
+
   
-  /* Media query para teléfonos móviles */
-  @media (max-width: 480px) {
-    .Pasos_cita li {
-      width: 30px; /* Reducir aún más el tamaño de los pasos */
-      height: 30px;
-      line-height: 30px;
-      margin: 0 15px; /* Ajustar el margen entre los pasos */
-    }
-  
-    .Pasos_cita li .linea {
-      width: 15px; /* Ajustar el ancho de la línea */
-    }
   }
   
 
