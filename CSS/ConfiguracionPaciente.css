@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+
+
+body {
+  background-image: url('../Imagenes/FONDOMENUPACIENTE.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+
+
+  color:#FFFFFF;
+}
+
+.Contenido_Principal{
+  min-height: 93vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(65, 68, 64, 0.4); /* Color de fondo translúcido */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding:50px;
+  border-radius: 15px;
+
+}
+
+.Nombre_Usuario{
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+.form-control {
+  width: 50vh;
+
+  border-radius: 10px; 
+  margin-bottom: 10px; 
+}
+.form-control:focus {
+  outline: none; 
+}
+
+
+
+
+.btn {
+  
+  background-color: #D0D0BD;
+  margin-top: 10px; 
+  color: black;
+  border: none;
+  box-shadow:inset;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+
+}
+.mi-boton:active {
+  background-color: #D0D0BD !important;
+  color: black !important;
+}
+
+.btn:hover {
+  background-color: rgba(208, 208, 189, 0.4);/* color de seleccion #3A3F35 con 20% de transparencia */
+}
+
+.mi-logo{
+  width: 30%;
+  height: auto;
+}
+
+.titulos{
+  width: 400px;
+}
+
+
+@media (max-width: 1130px) {
+
+  .btn{
+    margin-top: 10px;
+  }
+  .Contenido_Principal {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  .mi-logo{
+   width: 150px;
+  }
+
+  .form-control {
+    width: 90%;
+  }
+}

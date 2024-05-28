@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 
 body {
-    background-image: url('../Imagenes/FONDOMENUPACIENTE.jpg');
+    background-image: url('../Imagenes/fondo\ 3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
   
   
-    color:#FFFFFF;
+    color:#000000;
   }
 
 .Contenedor_Citas{
@@ -18,7 +18,7 @@ body {
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-color: rgba(95, 105, 92, 0.322); /* Color de fondo translúcido */
+    background-color: rgba(197, 209, 194, 0.7); /* Color de fondo translúcido */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding:22px;
     border-radius: 15px;
@@ -51,27 +51,26 @@ body {
   }
   .btn {
   
-    background-color: #D0D0BD;
+    background-color: #3A3F35;
     margin-top: 10px; 
-    color: black;
+    color: rgb(255, 255, 255);
     border: none;
     box-shadow:inset;
     font-size: 0.75rem;
     letter-spacing: 0.05rem; /* Añade espacio entre las letras */
   
   }
+  
   .mi-boton:active {
-    background-color: #D0D0BD !important;
-    color: black !important;
+    background-color: #3A3F35 !important;
+    color: rgb(255, 255, 255) !important;
   }
   
   .btn:hover {
-    background-color: rgba(208, 208, 189, 0.4);/* color de seleccion #3A3F35 con 20% de transparencia */
+    background-color: rgba(107, 107, 97, 0.7);/* color de seleccion #3A3F35 con 20% de transparencia */
+    color: rgb(0, 0, 0);
   }
   
   .mi-logo{
     width: 120px;
-    display: grid;
-    place-items: center;
-   
   }

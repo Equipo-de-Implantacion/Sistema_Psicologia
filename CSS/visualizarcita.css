@@ -10,48 +10,32 @@ body {
     color:#000000;
   }
   
-  .Seleccione_Paciente{
+
+.Datos_Modificar{
     min-height: 93vh;
     width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(197, 209, 194, 0.7); /* Color de fondo translúcido */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding:50px;
+    padding: 50px;
     border-radius: 15px;
-  
   }
-  
-  .mi-logo{
-    width: 25%;
-    height: auto;
-    margin-right: 50px;
+
+  .titulos {
+    margin-top: -80px;
+    font-size: 18px;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center; /* Add this */
+    
   }
-  
-  .titulos{
-    width: 350px;
-  }
-  
-  
-  .form-control {
-    width: 55vh;
-  
-    border-radius: 10px; 
-    margin-bottom: 10px; 
-  }
-  .form-control:focus {
-    outline: none; 
-  }
-  
-  
-  
+
+
   .btn {
-   
+    
     background-color: #3A3F35;
-    margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-top: 10px; 
+    margin-bottom: 20px;
     color: rgb(255, 255, 255);
     border: none;
     box-shadow:inset;
@@ -69,14 +53,18 @@ body {
     background-color: rgba(107, 107, 97, 0.7);/* color de seleccion #3A3F35 con 20% de transparencia */
     color: rgb(0, 0, 0);
   }
-  
+  .mi-logo{
+    width: 15%;
+    height: auto;
+  }
+
   @media (max-width: 1130px) {
     body {
       font-size: 14px;
       
     }
   
-    .Seleccione_Paciente{
+    .Datos_Modificar{
       padding: 40px;
       flex-direction: column;
       align-items: center;
@@ -101,7 +89,6 @@ body {
     .mi-logo{
       width: 55%;
       height: auto;
-      margin-left:50px;
     }
     .btn {
       font-size: 0.65rem;

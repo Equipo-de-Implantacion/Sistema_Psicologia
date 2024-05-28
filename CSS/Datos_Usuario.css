@@ -10,40 +10,39 @@ body {
     margin: 0;
 }
 
-.logo {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    width: 30px;
-}
 
 .logo-encima {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 200px; /* Ajusta el tamaño de tu logo */
+    width: 150px; /* Ajusta el tamaño de tu logo */
     margin-top: 0px;
-    margin-bottom: -20px; /* Espacio entre el logo y el formulario */
-  }
-.contenedor-principal {
-    text-align: left; 
-    max-width: 400px;
-    width: 100%; 
-    padding: 0 20px; /* Añade un poco de padding a los lados */
 }
 
-h1{
+@media (max-width: 	1130px) {
+    .logo-encima{
+      margin-top: 170px;
+        
+    }
+  }
+.contenedor-principal {
+    text-align: left;
+    max-width: 800px; /* Aumenta el ancho máximo */
+    width: 100%;
+    padding: 20px; /* Añade padding a los lados */
+}
+
+h1 {
     text-align: center;
 }
 h2 {
     color: #343a40;
 }
 
-.subtitulo{
-    font-size: 14px;
+.subtitulo {
+    font-size: 16px; /* Aumenta el tamaño de fuente */
     text-align: center;
 }
-
 
 @media (max-width: 768px) {
     .contenedor-principal {
@@ -64,8 +63,21 @@ h2 {
     color: white; /* Cambia el color del texto del botón a blanco para asegurar la legibilidad */
     border: none;
     margin-bottom: 10px;
+    align-items: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio encima de los botones */
+}
+
+.boton:active {
+    background-color: #3A3F35 !important;
 }
 
 .boton:hover {
-    background-color: rgba(58, 63, 53, 0.8); /* Cambia el color de fondo del botón al pasar el mouse por encima a #3A3F35 con una transparencia del 20% */
-}
+    background-color: #D0D0BD; /* Cambia el color de fondo del botón al pasar el mouse por encima a #3A3F35 con una transparencia del 20% */
+    color: black;}

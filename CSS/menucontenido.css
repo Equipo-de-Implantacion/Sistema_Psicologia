@@ -1,0 +1,106 @@
+/*menu contenido:*/
+
+
+
+body {
+    background-image: url('../Imagenes/FONDOMENUPACIENTE.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color:#FFFFFF;
+}
+
+
+body .btn {
+    background-color: #D0D0BD; 
+    border: none;
+    color: #000000;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+
+}
+
+body .btn:hover {
+    background-color: #3A3F35;
+}
+
+/* Mantiene el color de fondo cuando se hace clic */
+.mi-boton:active {
+    background-color: #3A3F35 !important;
+  }
+.principal {
+    min-height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido {
+    text-align: center;
+}
+
+
+.mi-logo{
+    width: 30%;
+}
+.mi-logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.mi-boton {
+    margin-top: 0px;
+}
+
+
+
+.card:hover .filledbar {
+    width: 120px;
+    transition: 0.4s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+}
+
+.card {
+    top: 20px;
+    margin-bottom: 10px;
+    height: 160px;
+    background-color: rgba(208, 208, 189, 0.4);
+    color: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 1rem 0 4rem #000;
+    transition: 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    position: static;
+    left: 20px;
+    top: 25px;
+    text-align: center;
+    margin-top: 15px;
+
+    margin-bottom: 10px;
+
+}
+
+.card-text {
+    text-align: center;
+}
+
+/* Ajustar tamaño de las imágenes en las tarjetas */
+.imagen {
+    width: 80px;  /* Ajusta el tamaño según sea necesario */
+   
+}

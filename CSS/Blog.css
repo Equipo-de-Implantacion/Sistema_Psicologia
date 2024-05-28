@@ -43,6 +43,8 @@
 #seccion2 img {
     width: 350px;
     height: auto;
+    border-radius: 25px;
+    margin-bottom: 50px;
 }
 
 #seccion2 .text-container {

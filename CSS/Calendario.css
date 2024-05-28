@@ -1,11 +1,69 @@
+/* Estilos generales */
+
 .fc-toolbar {
     text-transform: capitalize;
+    font-size: 0.8rem; /* Ajusta el tamaño de fuente aquí */
 }
 
 .fc-day-name {
     text-transform: capitalize;
+    font-size: 0.4rem; /* Ajusta el tamaño de fuente aquí */
 }
 
+.fc-button {
+    font-size: 0.5rem; /* Ajusta el tamaño de fuente de los botones */
+    padding: 0.2rem 0.2rem; /* Ajusta el padding para reducir el tamaño de los botones */
+}
 
+.fc-button-group {
+    display: flex;
+    justify-content: space-around; /* Espacio uniforme entre botones */
+}
 
-  
+/* Ajusta el ancho del calendario */
+#Contenido_Calendario {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    width: 1100px;
+    height: 400px; /* Ajusta el ancho del calendario */
+    margin: 0 auto; /* Centra el calendario horizontalmente */
+    margin-bottom: 40px;
+    
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 1130px) {
+    
+
+    .fc-toolbar {
+        font-size: 0.6rem !important; /* Ajusta el tamaño de fuente para pantallas pequeñas */
+    }
+
+    .fc-day-name {
+        font-size: 0.5rem; /* Ajusta el tamaño de fuente para pantallas pequeñas */
+    }
+
+    .fc-button {
+        font-size: 0.68rem !important; /* Ajusta el tamaño de fuente de los botones para pantallas pequeñas */
+        padding: 0.1rem 0.3rem !important; /* Reduce aún más el padding para botones */
+
+    }
+
+    .fc-button-group {
+        display: flex;
+        flex-wrap: wrap; /* Permite que los botones se ajusten a varias líneas si es necesario */
+        
+    }
+
+    /* Ajusta el ancho del calendario para pantallas pequeñas */
+    #Contenido_Calendario {
+        max-width: 100%; /* Ajusta el ancho del calendario */
+        margin: 0 auto; /* Centra el calendario horizontalmente */
+        margin-bottom: 40px;
+        padding: 0px;
+        border-radius: 0px;
+        
+
+    }
+}

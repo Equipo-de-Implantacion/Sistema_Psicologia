@@ -155,7 +155,7 @@ a {
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
     --white-color: hsl(0, 0%, 0%);
-  --verde-color: rgba(235, 241, 241, 0.7);  
+    --verde-color: rgba(235, 241, 241, 0.7);  
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
     --body-font:  "Barlow Condensed", sans-serif;

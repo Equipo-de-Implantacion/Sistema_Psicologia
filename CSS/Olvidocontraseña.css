@@ -1,0 +1,355 @@
+
+body {
+  background-image: url('../Imagenes/FONDOOLVIDOCONTRASEÑA.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+  display: grid;
+  place-items: center;
+
+
+  color:#000000;
+}
+
+.Contenido_Principal{
+  min-height: 83vh;
+  width: 55%;
+  margin-top: 91px;
+  background-position: center;
+  background-size: cover;
+
+  display: grid;
+  place-items: center;
+  background-image: url('../Imagenes/SEGUNDOFONDOCONTRASEÑA.png');
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding:30px;
+  border-radius: 15px;
+
+}
+
+
+form{
+  margin-top: 0px;
+}
+
+.btn {
+  
+  background-color: #3A3F35;
+  margin-top: 10px; 
+  color: rgb(255, 255, 255);
+  border: none;
+  box-shadow:inset;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+
+}
+.mi-boton:active {
+  background-color: #3A3F35 !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn:hover {
+  background-color: rgba(107, 107, 97, 0.7);/* color de seleccion #3A3F35 con 20% de transparencia */
+  color: rgb(255, 255, 255);
+}
+
+.mi-logo{
+  width: 120px;
+  margin-top: 20px;
+ }
+
+
+ @media (max-width: 1130px) {
+
+  .btn{
+    margin-top: 10px;
+  }
+  .Contenido_Principal {
+    min-height: 80vh;
+    width: 90%;
+    margin-top: 140px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+
+}
+
+/*=============== HEADER PARA INICIAR SESIÓN===============*/
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(0, 0%, 0%);
+  --verde-color: rgba(235, 241, 241);  
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font:  "Barlow Condensed", sans-serif;
+  --letter-spacing: 0.02em; /* Espacio entre las letras */
+
+  --h1-font-size: 2rem; /* Tamaño de las letras aumentado */
+  --normal-font-size: 1rem; /* Tamaño de las letras aumentado */
+
+  /*========== Font weight ==========*/
+  --font-regular: bold;
+  --font-medium: bold;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  letter-spacing: var(--letter-spacing); /* Aplicar el espacio entre las letras */
+
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--verde-color);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__logo {
+  /* Añade display: flex; y align-items: center; */
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  /* Aquí puedes agregar los estilos para tu logo */
+  
+  width: 23vh;
+}
+
+
+.nav__close, 
+.nav__toggle {
+  display: flex;
+  color: var(--white-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 30px;
+
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1150px) {
+  .nav__menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background-color: var(--verde-color);
+    width: 100%;
+    height: 110%;
+    padding: 6rem 3.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: left .4s;
+  }
+  .logo {
+    /* Aquí puedes agregar los estilos para tu logo */
+    
+    width: 23vh;
+  }
+  .nav {
+    height: calc(var(--header-height) + 5rem);
+  }
+
+  
+  .nav__item {
+    transform: translateX(-150px);
+    visibility: hidden;
+    transition: transform .4s ease-out, visibility .4s;
+  }
+
+  .nav__item:nth-child(1) {
+    transition-delay: .1s;
+  }
+  .nav__item:nth-child(2) {
+    transition-delay: .2s;
+  }
+  .nav__item:nth-child(3) {
+    transition-delay: .3s;
+  }
+  .nav__item:nth-child(4) {
+    transition-delay: .4s;
+  }
+  .nav__item:nth-child(5) {
+    transition-delay: .5s;
+  }
+}
+
+.nav__list, 
+.nav__social {
+  display: flex;
+}
+
+.nav__list {
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link {
+  position: relative;
+  color: var(--white-color);
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-medium);
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .4s;
+}
+
+.nav__link i {
+  font-size: 2rem;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s, visibility .4s;
+}
+
+.nav__link span {
+  position: relative;
+  transition: margin .4s;
+}
+
+.nav__link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: var(--white-color);
+  transition: width .4s ease-out;
+}
+
+/* Animation link on hover */
+.nav__link:hover span {
+  margin-left: 2.5rem;
+}
+
+.nav__link:hover i {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__link:hover span::after {
+  width: 100%;
+}
+
+/* Sibling fade animation */
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
+  opacity: .4;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+
+
+/* Show menu */
+.show-menu {
+  left: 0;
+}
+
+/* Animation link when displaying menu */
+.show-menu .nav__item {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+  }
+
+  .nav__toggle, 
+  .nav__close {
+    display: none;
+  }
+
+  .nav__link {
+    font-size: var(--normal-font-size);
+    margin-top: 15px;
+  }
+
+  .nav__link i {
+    font-size: 1.5rem;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3.5rem;
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    column-gap: 3.5rem;
+  
+  }
+}
