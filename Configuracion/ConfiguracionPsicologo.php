@@ -52,10 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!empty($ContrasenaNueva) && $ContrasenaNueva == $RepiteContrasena) {
 
-            $hashed_password = md5($ContrasenaNueva, PASSWORD_DEFAULT);
+            $Cambiar_Contrasena = md5($ContrasenaNueva, PASSWORD_DEFAULT);
             $ActualizarContrasena = "UPDATE usuario SET Contrasena = ? WHERE Id_Usuario = ?";
             $sentenciaActualizar = $Conexion->prepare($ActualizarContrasena);
-            $sentenciaActualizar->bind_param("si", $hashed_password, $Id_Usuario);
+            $sentenciaActualizar->bind_param("si", $Cambiar_Contrasena, $Id_Usuario);
             $sentenciaActualizar->execute();
 
             header("Location: ../PHP/Configuracion_Psicologo.php?error=Contraseña_actualizada");
