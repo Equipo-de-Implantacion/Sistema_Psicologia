@@ -116,10 +116,11 @@ if (isset($_POST['accion_aceptar'])) {
                 $DeclaracionActualizarCita = $Conexion->prepare($ConsultaActualizarCita);
                 $DeclaracionActualizarCita->bind_param("i", $idCita);
                 $DeclaracionActualizarCita->execute();
+
+                header("Location:../Correo/EnviarCorreo.php?idPaciente=$idPaciente&idCita=$idCita&idCalendario=$idCalendario&tipoCita=$tipoCita");
+                exit();
             }
         }
-
-        header("Location: ../PHP/Menu_Psicologo.php?success=Cita_Aceptada");
     } else {
         header("Location:../PHP/Menu_Psicologo.php?error=Seleccione_Cita");
         exit();
