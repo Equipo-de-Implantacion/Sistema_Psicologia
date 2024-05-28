@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
      .then(data => {
             console.log(data); 
             if (data.mensaje === 'Fecha no laborable') {
-                alert("Fecha no laborable"); 
+                toastr.error('Fecha no laborable');
+
                 this.value = '';
             } else if (data.mensaje === 'Fecha recibida') {
                 //alert("La fecha recibida");
@@ -24,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
      .catch(error => {
             console.error('Error:', error);
-            alert("Hubo un error al enviar la fecha.");
+            toastr.error('Hubo un error al enviar la fecha');
+
         });
     });
 

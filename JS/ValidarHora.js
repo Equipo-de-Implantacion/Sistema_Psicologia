@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 console.log("Respuesta del servidor:", data);
                 if (data.estado === 'ocupada') {
-                    alert("La hora seleccionada está ocupada.");
+                    toastr.error('La hora seleccionada está ocupada');
+
                     this.value = '';
                 } else if (data.estado === 'disponible') {
                     // alert("La hora seleccionada está disponible.");
@@ -30,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Hubo un error al enviar la fecha.");
+                toastr.error('Hubo un error al enviar la fecha');
+
             });
     }
 

@@ -1,42 +1,43 @@
-let seccionactual = 0;
-const seccion = document.querySelectorAll('.Seccion');
-const pasos = document.querySelectorAll('#Pasos li');
+// ACTUALIZAR PASOS DE FORMULARIO
+var seccionactual = 0;
+var seccion = document.querySelectorAll('.Seccion');
+var pasos = document.querySelectorAll('#Pasos li');
 
 function ActualizarIndicadorPasos() {
     pasos.forEach(function (paso, index) {
         paso.classList.remove('pasos-activo', 'pasos-completado');
-        paso.style.backgroundColor = '';
-        paso.style.borderColor = '#3A3F35';
+        paso.style.backgroundColor = ''; // Restablecer el color de fondo
+        paso.style.borderColor = '#ffffff'; // Restablecer el color del borde
         if (paso.querySelector('.linea')) {
-            paso.querySelector('.linea').style.width = '0';
-            paso.querySelector('.linea').style.backgroundColor = '#BFBFBF';
+            paso.querySelector('.linea').style.width = '0'; // Resetear la línea
+            paso.querySelector('.linea').style.backgroundColor = '#BFBFBF'; // Restablecer el color de la línea
         }
     });
 
-
+    // Aplicar los estilos a los pasos completados y al paso actual
     for (let i = 0; i < seccion.length; i++) {
         if (i < seccionactual) {
             pasos[i].classList.add('pasos-completado');
-            pasos[i].style.backgroundColor = '#D0D0BD';
-            pasos[i].style.borderColor = 'transparent';
+            pasos[i].style.backgroundColor = '#D0D0BD'; // Color de fondo para los pasos completados
+            pasos[i].style.borderColor = 'transparent'; // Remover el borde para los pasos completados
             if (pasos[i].querySelector('.linea')) {
-                pasos[i].querySelector('.linea').style.width = '100%';
-                pasos[i].querySelector('.linea').style.backgroundColor = '#D0D0BD';
+                pasos[i].querySelector('.linea').style.width = '100%'; // Llenar la línea
+                pasos[i].querySelector('.linea').style.backgroundColor = '#D0D0BD'; // Color de la línea completada
             }
         } else if (i === seccionactual) {
             pasos[i].classList.add('pasos-activo');
             if (pasos[i].querySelector('.linea')) {
-                pasos[i].querySelector('.linea').style.backgroundColor = '#D0D0BD';
+                pasos[i].querySelector('.linea').style.backgroundColor = '#D0D0BD'; // Color de la línea para el paso actual
             }
         }
     }
 }
 
-
 function SiguientePaso() {
     var camposRequeridos = seccion[seccionactual].querySelectorAll('[required]');
     var todosLlenos = true;
-    var camposOpcionales = ['Segundo_Nombre', 'Segundo_Apellido', 'Tipo_Cedula_Menor', 'Documento_Menor', 'Profesion', 'Num_Hijos'];
+    var camposOpcionales = ['Segundo_Nombre', 'Segundo_Apellido', 'Tipo_Cedula_Menor', 'Documento_Menor'];
+    var servicioSeleccionado = document.getElementById('Servicio').value;
 
     camposRequeridos.forEach(function (campo) {
         // Verificar si el campo es opcional
@@ -49,6 +50,13 @@ function SiguientePaso() {
             campo.style.borderColor = '';
         }
     });
+
+    if (servicioSeleccionado === "") {
+        todosLlenos = false;
+        document.getElementById('selectorButton').style.borderColor = 'red';
+    } else {
+        document.getElementById('selectorButton').style.borderColor = '';
+    }
 
     if (todosLlenos) {
         if (seccionactual < seccion.length - 1) {
@@ -66,7 +74,7 @@ function SiguientePaso() {
             }
         }
     } else {
-        alert('Por favor, complete todos los campos requeridos.');
+        toastr.error('Por favor, complete todos los campos requeridos.');
     }
 }
 
@@ -80,25 +88,33 @@ function AnteriorPaso() {
         if (seccion[seccionactual].id !== 'Confirmar_Cita') {
             document.getElementById('btn_Confirmar').style.display = 'none';
             document.getElementById('btn_Siguiente').style.display = 'block';
+
         }
     }
 }
 
 ActualizarIndicadorPasos();
 
-//MOSTRAR FORMULARIO SEGÚN EL TIPO DE CITA
-document.getElementById('Servicio').addEventListener('change', function () {
-    var tipoCita = this.value;
-    var Dato_Mayor = document.getElementById('Datos_Mayor');
-    var Dato_Menor = document.getElementById('Datos_Menor');
+// MOSTRAR FORMULARIO SEGÚN EL TIPO DE CITA
+document.querySelectorAll('.dropdown-content a').forEach(function (element) {
+    element.addEventListener('click', function (event) {
+        event.preventDefault();
+        var servicioSeleccionado = this.getAttribute('data-value');
+        var servicioTexto = this.textContent;
+        document.getElementById('selectorButton').textContent = servicioTexto;
+        document.getElementById('Servicio').value = servicioSeleccionado;
 
-    if (tipoCita === "3" || tipoCita === "4") {
-        Dato_Mayor.style.display = 'none';
-        Dato_Menor.style.display = 'block';
-    } else {
-        Dato_Mayor.style.display = 'block';
-        Dato_Menor.style.display = 'none';
-    }
+        var Dato_Mayor = document.getElementById('Datos_Mayor');
+        var Dato_Menor = document.getElementById('Datos_Menor');
+
+        if (servicioSeleccionado === "3" || servicioSeleccionado === "4") {
+            Dato_Mayor.style.display = 'none';
+            Dato_Menor.style.display = 'block';
+        } else {
+            Dato_Mayor.style.display = 'block';
+            Dato_Menor.style.display = 'none';
+        }
+    });
 });
 
 function mostrarDocumento() {
@@ -125,12 +141,14 @@ document.getElementById('Hora').addEventListener('change', function () {
     var horaNoDeseadaFinObj = new Date(`1970-01-01T${horaNoDeseadaFin}:00`);
 
     if (horaSeleccionadaObj < horaMinimaObj || horaSeleccionadaObj > horaMaximaObj) {
-        alert('Por favor, selecciona una hora entre las 8:00 AM y las 5:00 PM.');
+        toastr.error('Por favor, selecciona una hora entre las 8:00 AM y las 5:00 PM.');
+
         this.value = '';
     } else if (horaSeleccionadaObj >= horaNoDeseadaInicioObj && horaSeleccionadaObj <= horaNoDeseadaFinObj) {
-        alert('Lo sentimos, las citas no están disponibles entre las 12:00 PM y las 2:00 PM. Por favor, selecciona otra hora.');
+        toastr.error('Lo sentimos, las citas no están disponibles entre las 12:00 PM y las 2:00 PM. Por favor, selecciona otra hora.');        
         this.value = '';
     }
+    
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -150,7 +168,8 @@ document.getElementById('Fecha').addEventListener('blur', function (event) {
     var fechaActual = new Date();
 
     if (fechaSeleccionada < fechaActual) {
-        alert('La fecha seleccionada debe ser igual o posterior al día actual.');
+        toastr.error('La fecha seleccionada debe ser igual o posterior al día actual.');
+
         fechaInput.min = fechaActual.toISOString().substring(0, 10); // Formatea la fecha actual al formato yyyy-mm-dd
         fechaInput.value = fechaInput.min;
     }
@@ -173,13 +192,16 @@ document.getElementById('Fecha_Nacimiento').addEventListener('blur', function ()
     if (edad > 3 && edad < 90) {
         //alert("Edad adecuada");
     } else {
-        alert("El paciente debe tener entre 3 y 90 años de edad.");
+        toastr.error('El paciente debe tener entre 3 y 90 años de edad.');
+
         this.value = '';
     }
 });
 
-document.getElementById('cancelarBtn').addEventListener('click', function () {
-    if (confirm("¿Estás seguro de que quieres salir?")) {
-        window.location.href = 'Agendar_Cita.php';
+document.getElementById('cancelarBtn').addEventListener('click', function() {
+    if (confirm("¿Estás seguro que deseas cancelar?")){
+        window.location.href='Agendar_cita.php';
     }
 });
+
+
