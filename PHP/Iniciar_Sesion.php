@@ -41,16 +41,16 @@
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">
-              <i class="ri-arrow-right-up-line"></i>
-              <span>SOBRE MI</span>
+            <a href="sabermas.php" class="nav__link">
+              <i class="ri-account-pin-circle-fill"></i>
+              <span>SABER MÁS</span>
             </a>
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">
-              <i class="ri-arrow-right-up-line"></i>
-              <span>CONTACTO</span>
+            <a href="https://www.instagram.com/emocion_vital/?utm_source=ig_web_button_share_sheet" class="nav__link">
+              <i class="ri-instagram-fill"></i>
+              <span>INSTAGRAM</span>
             </a>
           </li>
 
@@ -119,14 +119,36 @@
 
     <!-- Toastr JS -->
 
-<script src="../JS/navbar.js"></script>
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         if (params.has('success')) {
             const success = params.get('success');
-            if (success === 'registro_exitoso') {
-                toastr.success('¡Registro exitoso! Ahora puede iniciar sesión.', 'Éxito', {
+            let message = '';
+            switch (success) {
+                case 'registro_exitoso':
+                    message = '¡Registro exitoso! Ahora puede iniciar sesión.';
+                    break;
+                case 'Contraseñas_Actualizada':
+                    message = '¡Contraseña actualizada!.';
+                    break;
+                case 'Cuenta_eliminada':
+                    message = '¡Cuenta eliminada correctamente!.';
+                    break;
+            }
+            if (message) {
+                toastr.success(message, 'Éxito', {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: 'toast-top-right',
+                    timeOut: '5000'
+                });
+            }
+        }
+        if (params.has('error')) {
+            const error = params.get('error');
+            if (error === 'Error_eliminar_cuenta') {
+                toastr.error('Error al eliminar la cuenta.', 'Error', {
                     closeButton: true,
                     progressBar: true,
                     positionClass: 'toast-top-right',
@@ -136,6 +158,7 @@
         }
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);

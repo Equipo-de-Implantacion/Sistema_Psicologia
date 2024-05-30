@@ -39,19 +39,18 @@
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">
-              <i class="ri-arrow-right-up-line"></i>
-              <span>SOBRE MI</span>
+            <a href="sabermas.php" class="nav__link">
+              <i class="ri-account-pin-circle-fill"></i>
+              <span>SABER MÁS</span>
             </a>
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">
-              <i class="ri-arrow-right-up-line"></i>
-              <span>CONTACTO</span>
+            <a href="https://www.instagram.com/emocion_vital/?utm_source=ig_web_button_share_sheet" class="nav__link">
+              <i class="ri-instagram-fill"></i>
+              <span>INSTAGRAM</span>
             </a>
           </li>
-
 
 
           <!-- Close button -->
