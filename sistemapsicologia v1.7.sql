@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2024 a las 00:41:21
+-- Tiempo de generación: 22-05-2024 a las 00:55:08
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sistemapsicologiav1.5`
+-- Base de datos: `sistemapsicologiav1_6`
 --
 
 -- --------------------------------------------------------
@@ -568,6 +568,27 @@ INSERT INTO `ciudades` (`id_ciudad`, `id_estado`, `ciudad`, `capital`) VALUES
 (520, 25, 'Isla La Blanquilla', 0),
 (521, 25, 'Isla de Patos', 0),
 (522, 25, 'Islas Los Hermanos', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosidhistorialclinico`
+--
+
+CREATE TABLE `datosidhistorialclinico` (
+  `id_datosidhistorialclinico` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
+  `Id_Paciente_menoredad` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `cedula` int(10) NOT NULL,
+  `fecha_nac` datetime NOT NULL,
+  `escolaridad` varchar(100) NOT NULL,
+  `promedio` float NOT NULL,
+  `escuela` varchar(100) NOT NULL,
+  `lugarenfamilia` varchar(50) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `telefono` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1133,12 +1154,18 @@ CREATE TABLE `factores_familiares` (
   `id_facfamilia` int(11) NOT NULL,
   `Id_Paciente` int(11) NOT NULL,
   `fecha_facfamilia` datetime NOT NULL,
-  `nombre_representante` text NOT NULL,
-  `salud_fisica` text NOT NULL,
-  `nivel_educativo` text NOT NULL,
-  `trabajo_actual` text NOT NULL,
-  `horario_trabajo` text NOT NULL,
-  `habitos_representante` text NOT NULL
+  `nombre_papa` varchar(40) NOT NULL,
+  `nombre_mama` varchar(40) NOT NULL,
+  `salud_fisica_papa` text NOT NULL,
+  `salud_fisica_mama` text NOT NULL,
+  `nivel_educativo_papa` text NOT NULL,
+  `nivel_educativo_mama` text NOT NULL,
+  `trabajo_actual_papa` text NOT NULL,
+  `trabajo_actual_mama` text NOT NULL,
+  `horario_trabajo_papa` text NOT NULL,
+  `horario_trabajo_mama` text NOT NULL,
+  `habitos_papa` text NOT NULL,
+  `habitos_mama` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1148,7 +1175,7 @@ CREATE TABLE `factores_familiares` (
 --
 
 CREATE TABLE `factores_hereditarios` (
-  `id_factores_herreditarios` int(8) NOT NULL,
+  `id_factores_hereditarios` int(8) NOT NULL,
   `Id_Paciente` int(11) NOT NULL,
   `fh_iafc` text NOT NULL,
   `fh_tratamiento_medico` text NOT NULL,
@@ -1171,8 +1198,12 @@ CREATE TABLE `factores_hereditarios` (
 
 CREATE TABLE `factores_mconsulta` (
   `id_factoresmc` int(11) NOT NULL,
+  `referidopor` varchar(60) NOT NULL,
+  `diagnosticoorganico` longtext NOT NULL,
+  `actitudpadresproblem` varchar(120) NOT NULL,
+  `estadoemocionalnino` varchar(120) NOT NULL,
   `Id_Paciente` int(11) NOT NULL,
-  `fecha_facroresmc` datetime NOT NULL,
+  `fecha_factrormotivcon` datetime NOT NULL,
   `fac_consulta` longtext NOT NULL,
   `desarrollo_prenatal` longtext NOT NULL,
   `desarrollo_pi` longtext NOT NULL
@@ -1220,7 +1251,17 @@ CREATE TABLE `historialmedico` (
   `Id_Paciente` int(11) NOT NULL,
   `Id_Empleado` int(11) NOT NULL,
   `Id_Cita` int(11) NOT NULL,
-  `Diagnostico` varchar(255) NOT NULL
+  `Diagnostico` varchar(255) NOT NULL,
+  `id_datosidhistorialclinico` int(11) NOT NULL,
+  `id_factoresmc` int(11) NOT NULL,
+  `id_facfamilia` int(11) NOT NULL,
+  `id_extraum` int(11) NOT NULL,
+  `id_habito` int(11) NOT NULL,
+  `rc_id` int(11) NOT NULL,
+  `id_factores_hereditarios` int(11) NOT NULL,
+  `id_ip` int(11) NOT NULL,
+  `id_recomendaciones` int(11) NOT NULL,
+  `id_plan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -3010,6 +3051,14 @@ ALTER TABLE `ciudades`
   ADD KEY `id_estado` (`id_estado`);
 
 --
+-- Indices de la tabla `datosidhistorialclinico`
+--
+ALTER TABLE `datosidhistorialclinico`
+  ADD PRIMARY KEY (`id_datosidhistorialclinico`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`),
+  ADD KEY `Id_Paciente_menoredad` (`Id_Paciente_menoredad`);
+
+--
 -- Indices de la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
@@ -3076,7 +3125,7 @@ ALTER TABLE `factores_familiares`
 -- Indices de la tabla `factores_hereditarios`
 --
 ALTER TABLE `factores_hereditarios`
-  ADD PRIMARY KEY (`id_factores_herreditarios`),
+  ADD PRIMARY KEY (`id_factores_hereditarios`),
   ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
@@ -3108,7 +3157,17 @@ ALTER TABLE `historialmedico`
   ADD PRIMARY KEY (`Id_Historial`),
   ADD KEY `Id_Paciente` (`Id_Paciente`),
   ADD KEY `Id_Empleado` (`Id_Empleado`),
-  ADD KEY `Id_Cita` (`Id_Cita`);
+  ADD KEY `Id_Cita` (`Id_Cita`),
+  ADD KEY `id_datosidhistorialclinico` (`id_datosidhistorialclinico`),
+  ADD KEY `id_facfamilia` (`id_facfamilia`),
+  ADD KEY `id_factoresmc` (`id_factoresmc`),
+  ADD KEY `id_extraum` (`id_extraum`),
+  ADD KEY `id_habito` (`id_habito`),
+  ADD KEY `rc_id` (`rc_id`),
+  ADD KEY `id_factores_hereditarios` (`id_factores_hereditarios`),
+  ADD KEY `id_ip` (`id_ip`),
+  ADD KEY `id_recomendaciones` (`id_recomendaciones`),
+  ADD KEY `id_plan` (`id_plan`);
 
 --
 -- Indices de la tabla `impresion_psicologica`
@@ -3224,6 +3283,12 @@ ALTER TABLE `ciudades`
   MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=523;
 
 --
+-- AUTO_INCREMENT de la tabla `datosidhistorialclinico`
+--
+ALTER TABLE `datosidhistorialclinico`
+  MODIFY `id_datosidhistorialclinico` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
@@ -3281,7 +3346,7 @@ ALTER TABLE `factores_familiares`
 -- AUTO_INCREMENT de la tabla `factores_hereditarios`
 --
 ALTER TABLE `factores_hereditarios`
-  MODIFY `id_factores_herreditarios` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factores_hereditarios` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factores_mconsulta`
@@ -3384,6 +3449,13 @@ ALTER TABLE `ciudades`
   ADD CONSTRAINT `ciudades_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `datosidhistorialclinico`
+--
+ALTER TABLE `datosidhistorialclinico`
+  ADD CONSTRAINT `datosidhistorialclinico_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `datosidhistorialclinico_ibfk_2` FOREIGN KEY (`Id_Paciente_menoredad`) REFERENCES `paciente_menoredad` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
@@ -3452,8 +3524,18 @@ ALTER TABLE `habitos_e_intereses`
 --
 ALTER TABLE `historialmedico`
   ADD CONSTRAINT `historialmedico_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_10` FOREIGN KEY (`id_factores_hereditarios`) REFERENCES `factores_hereditarios` (`id_factores_hereditarios`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_11` FOREIGN KEY (`id_ip`) REFERENCES `impresion_psicologica` (`id_ip`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_12` FOREIGN KEY (`id_recomendaciones`) REFERENCES `recomendaciones` (`id_recomendaciones`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_13` FOREIGN KEY (`id_plan`) REFERENCES `plan_psicoterapeutico` (`id_plan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `historialmedico_ibfk_2` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id_Empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `historialmedico_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `cita` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `historialmedico_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `cita` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_4` FOREIGN KEY (`id_datosidhistorialclinico`) REFERENCES `datosidhistorialclinico` (`id_datosidhistorialclinico`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_5` FOREIGN KEY (`id_facfamilia`) REFERENCES `factores_familiares` (`id_facfamilia`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_6` FOREIGN KEY (`id_factoresmc`) REFERENCES `factores_mconsulta` (`id_factoresmc`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_7` FOREIGN KEY (`id_extraum`) REFERENCES `experiencia_traumatica` (`id_extraum`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_8` FOREIGN KEY (`id_habito`) REFERENCES `habitos_e_intereses` (`id_habito`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historialmedico_ibfk_9` FOREIGN KEY (`rc_id`) REFERENCES `rasgos_caracter` (`rc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `impresion_psicologica`
