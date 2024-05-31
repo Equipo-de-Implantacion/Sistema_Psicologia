@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 22:18:10
+-- Tiempo de generación: 07-05-2024 a las 00:41:21
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,28 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemapsicologiav1.5`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `agenda`
---
-
-CREATE TABLE `agenda` (
-  `Id_Agenda` int(10) NOT NULL,
-  `Id_Paciente` int(10) NOT NULL,
-  `Id_Dia` int(1) NOT NULL,
-  `Inicio` datetime(6) NOT NULL,
-  `Fin` datetime(6) NOT NULL,
-  `Id_Status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `agenda`
---
-
-INSERT INTO `agenda` (`Id_Agenda`, `Id_Paciente`, `Id_Dia`, `Inicio`, `Fin`, `Id_Status`) VALUES
-(1, 19, 12, '2024-04-02 10:20:42.000000', '2024-04-02 10:20:42.000000', 1);
 
 -- --------------------------------------------------------
 
@@ -1642,7 +1620,8 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`Id_Paciente`, `Id_Cita`, `Tipo_Documento`, `Documento_Id`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Telefono`, `Correo`, `Sexo`, `Profesion`, `Num_Hijos`, `Id_Direccion`, `Fecha_Registro`, `Status`) VALUES
-(19, 1, 'V-', '1', '1', '1', '1', '1', '0000-00-00', '1', '1', 'Femenino', '1', 1, 29, '2024-04-21 22:42:22', 'Activo');
+(19, 1, 'V-', '1', '1', '1', '1', '1', '0000-00-00', '1', '1', 'Femenino', '1', 1, 29, '2024-04-21 22:42:22', 'Activo'),
+(21, 1, 'V-', '28165909', 'Lisandro', 'Jose', 'Garcia', 'Colmenares', '2000-10-02', '04127733411', 'lisandro0210@gmail.com', 'Masculino', 'Ingeniero', 0, 0, '2024-05-06 22:45:20', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -2905,7 +2884,7 @@ CREATE TABLE `rasgos_caracter` (
 --
 
 INSERT INTO `rasgos_caracter` (`rc_id`, `Id_Paciente`, `fecha_rc`, `rc_timido`, `rc_agresivo`, `rc_tranquilo`, `rc_irritable`, `rc_alegre`, `rc_triste`, `rc_cooperador`, `rc_negativista`, `rc_sereno`, `rc_impulsivo`, `rc_confiado_en_si`, `fc_frio`, `rc_sociable`, `rc_retardado`, `rc_equilibrado`, `rc_nervioso`, `rc_carinoso`, `rc_inseguro`, `rc_juega`, `rc_no_juega`, `rc_controlado`, `rc_emotivo`, `rc_seguro`, `rc_amable`, `rc_desconsiderado`, `rc_laborioso`, `rc_perezoso`, `rc_desconfiado`, `rc_dominate`, `rc_sumizo`, `rc_disciplinado`, `rc_indisciplinado`, `rc_rebelde`, `rc_obediente`, `rc_ordenado`, `rc_desordenado`) VALUES
-(1, 0, '2024-04-25 17:56:50', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(2345686, 21, '2024-05-01 18:24:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3011,12 +2990,6 @@ INSERT INTO `usuario` (`Id_Usuario`, `Id_TipoUsuario`, `Usuario`, `Contrasena`, 
 --
 
 --
--- Indices de la tabla `agenda`
---
-ALTER TABLE `agenda`
-  ADD PRIMARY KEY (`Id_Agenda`);
-
---
 -- Indices de la tabla `calendario`
 --
 ALTER TABLE `calendario`
@@ -3026,7 +2999,8 @@ ALTER TABLE `calendario`
 -- Indices de la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD PRIMARY KEY (`Id_Cita`);
+  ADD PRIMARY KEY (`Id_Cita`),
+  ADD KEY `Id_TipoCita` (`Id_TipoCita`);
 
 --
 -- Indices de la tabla `ciudades`
@@ -3039,13 +3013,15 @@ ALTER TABLE `ciudades`
 -- Indices de la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
-  ADD PRIMARY KEY (`Id_Datos`);
+  ADD PRIMARY KEY (`Id_Datos`),
+  ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
 -- Indices de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  ADD PRIMARY KEY (`Id_Detalle`);
+  ADD PRIMARY KEY (`Id_Detalle`),
+  ADD KEY `Id_Detalle_head_factura` (`Id_Detalle_head_factura`);
 
 --
 -- Indices de la tabla `detalle_head_factura`
@@ -3086,25 +3062,29 @@ ALTER TABLE `estados`
 -- Indices de la tabla `experiencia_traumatica`
 --
 ALTER TABLE `experiencia_traumatica`
-  ADD PRIMARY KEY (`id_extraum`);
+  ADD PRIMARY KEY (`id_extraum`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `factores_familiares`
 --
 ALTER TABLE `factores_familiares`
-  ADD PRIMARY KEY (`id_facfamilia`);
+  ADD PRIMARY KEY (`id_facfamilia`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `factores_hereditarios`
 --
 ALTER TABLE `factores_hereditarios`
-  ADD PRIMARY KEY (`id_factores_herreditarios`);
+  ADD PRIMARY KEY (`id_factores_herreditarios`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `factores_mconsulta`
 --
 ALTER TABLE `factores_mconsulta`
-  ADD PRIMARY KEY (`id_factoresmc`);
+  ADD PRIMARY KEY (`id_factoresmc`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `factura`
@@ -3118,7 +3098,8 @@ ALTER TABLE `factura`
 -- Indices de la tabla `habitos_e_intereses`
 --
 ALTER TABLE `habitos_e_intereses`
-  ADD PRIMARY KEY (`id_habito`);
+  ADD PRIMARY KEY (`id_habito`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `historialmedico`
@@ -3133,7 +3114,8 @@ ALTER TABLE `historialmedico`
 -- Indices de la tabla `impresion_psicologica`
 --
 ALTER TABLE `impresion_psicologica`
-  ADD PRIMARY KEY (`id_ip`);
+  ADD PRIMARY KEY (`id_ip`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `municipios`
@@ -3177,19 +3159,22 @@ ALTER TABLE `parroquias`
 -- Indices de la tabla `plan_psicoterapeutico`
 --
 ALTER TABLE `plan_psicoterapeutico`
-  ADD PRIMARY KEY (`id_plan`);
+  ADD PRIMARY KEY (`id_plan`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `rasgos_caracter`
 --
 ALTER TABLE `rasgos_caracter`
-  ADD PRIMARY KEY (`rc_id`);
+  ADD PRIMARY KEY (`rc_id`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `recomendaciones`
 --
 ALTER TABLE `recomendaciones`
-  ADD PRIMARY KEY (`id_recomendaciones`);
+  ADD PRIMARY KEY (`id_recomendaciones`),
+  ADD KEY `Id_Paciente` (`Id_Paciente`);
 
 --
 -- Indices de la tabla `sexo`
@@ -3219,12 +3204,6 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `agenda`
---
-ALTER TABLE `agenda`
-  MODIFY `Id_Agenda` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `calendario`
@@ -3332,7 +3311,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `parejas`
@@ -3356,7 +3335,7 @@ ALTER TABLE `plan_psicoterapeutico`
 -- AUTO_INCREMENT de la tabla `rasgos_caracter`
 --
 ALTER TABLE `rasgos_caracter`
-  MODIFY `rc_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2345679;
+  MODIFY `rc_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2345687;
 
 --
 -- AUTO_INCREMENT de la tabla `recomendaciones`
@@ -3393,10 +3372,28 @@ ALTER TABLE `usuario`
 --
 
 --
+-- Filtros para la tabla `cita`
+--
+ALTER TABLE `cita`
+  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`Id_TipoCita`) REFERENCES `tipo_cita` (`Id_TipoCita`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
   ADD CONSTRAINT `ciudades_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `datos_usuario`
+--
+ALTER TABLE `datos_usuario`
+  ADD CONSTRAINT `datos_usuario_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `detalle_factura`
+--
+ALTER TABLE `detalle_factura`
+  ADD CONSTRAINT `detalle_factura_ibfk_1` FOREIGN KEY (`Id_Detalle_head_factura`) REFERENCES `detalle_head_factura` (`Id_Detalle_head_factura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `direccion`
@@ -3414,11 +3411,41 @@ ALTER TABLE `empleado`
   ADD CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`Id_Sexo`) REFERENCES `sexo` (`Id_Sexo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `experiencia_traumatica`
+--
+ALTER TABLE `experiencia_traumatica`
+  ADD CONSTRAINT `experiencia_traumatica_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `factores_familiares`
+--
+ALTER TABLE `factores_familiares`
+  ADD CONSTRAINT `factores_familiares_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `factores_hereditarios`
+--
+ALTER TABLE `factores_hereditarios`
+  ADD CONSTRAINT `factores_hereditarios_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `factores_mconsulta`
+--
+ALTER TABLE `factores_mconsulta`
+  ADD CONSTRAINT `factores_mconsulta_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
   ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`Id_Detalle`) REFERENCES `detalle_factura` (`Id_Detalle`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `habitos_e_intereses`
+--
+ALTER TABLE `habitos_e_intereses`
+  ADD CONSTRAINT `habitos_e_intereses_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `historialmedico`
@@ -3427,6 +3454,12 @@ ALTER TABLE `historialmedico`
   ADD CONSTRAINT `historialmedico_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `historialmedico_ibfk_2` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id_Empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `historialmedico_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `cita` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `impresion_psicologica`
+--
+ALTER TABLE `impresion_psicologica`
+  ADD CONSTRAINT `impresion_psicologica_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `municipios`
@@ -3459,6 +3492,24 @@ ALTER TABLE `parejas`
 --
 ALTER TABLE `parroquias`
   ADD CONSTRAINT `parroquias_ibfk_1` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `plan_psicoterapeutico`
+--
+ALTER TABLE `plan_psicoterapeutico`
+  ADD CONSTRAINT `plan_psicoterapeutico_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `rasgos_caracter`
+--
+ALTER TABLE `rasgos_caracter`
+  ADD CONSTRAINT `rasgos_caracter_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `recomendaciones`
+--
+ALTER TABLE `recomendaciones`
+  ADD CONSTRAINT `recomendaciones_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
