@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2024 a las 19:35:29
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 29-04-2024 a las 16:33:19
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sistema_psicologia`
+-- Base de datos: `sistema_psicologiav1.3`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +35,13 @@ CREATE TABLE `agenda` (
   `Fin` datetime(6) NOT NULL,
   `Id_Status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `agenda`
+--
+
+INSERT INTO `agenda` (`Id_Agenda`, `Id_Paciente`, `Id_Dia`, `Inicio`, `Fin`, `Id_Status`) VALUES
+(1, 19, 12, '2024-04-02 10:20:42.000000', '2024-04-02 10:20:42.000000', 1);
 
 -- --------------------------------------------------------
 
@@ -3000,9 +3007,7 @@ INSERT INTO `usuario` (`Id_Usuario`, `Id_TipoUsuario`, `Usuario`, `Contrasena`, 
 -- Indices de la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  ADD PRIMARY KEY (`Id_Agenda`),
-  ADD KEY `Id_Paciente` (`Id_Paciente`),
-  ADD KEY `agenda_ibfk_3` (`Id_Status`);
+  ADD PRIMARY KEY (`Id_Agenda`);
 
 --
 -- Indices de la tabla `calendario`
@@ -3014,11 +3019,7 @@ ALTER TABLE `calendario`
 -- Indices de la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD PRIMARY KEY (`Id_Cita`),
-  ADD KEY `Id_Paciente` (`Id_Paciente`),
-  ADD KEY `Id_Empleado` (`Id_Empleado`),
-  ADD KEY `Id_Calendario` (`Id_Calendario`),
-  ADD KEY `Id_TipoCita` (`Id_TipoCita`);
+  ADD PRIMARY KEY (`Id_Cita`);
 
 --
 -- Indices de la tabla `ciudades`
@@ -3031,16 +3032,13 @@ ALTER TABLE `ciudades`
 -- Indices de la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
-  ADD PRIMARY KEY (`Id_Datos`),
-  ADD KEY `Id_Usuario` (`Id_Usuario`);
+  ADD PRIMARY KEY (`Id_Datos`);
 
 --
 -- Indices de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  ADD PRIMARY KEY (`Id_Detalle`),
-  ADD KEY `Id_Cita` (`Id_Cita`),
-  ADD KEY `Id_Detalle_head_factura` (`Id_Detalle_head_factura`);
+  ADD PRIMARY KEY (`Id_Detalle`);
 
 --
 -- Indices de la tabla `detalle_head_factura`
@@ -3388,38 +3386,10 @@ ALTER TABLE `usuario`
 --
 
 --
--- Filtros para la tabla `agenda`
---
-ALTER TABLE `agenda`
-  ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `cita`
---
-ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id_Empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cita_ibfk_4` FOREIGN KEY (`Id_Calendario`) REFERENCES `calendario` (`Id_Calendario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cita_ibfk_6` FOREIGN KEY (`Id_TipoCita`) REFERENCES `tipo_cita` (`Id_TipoCita`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
   ADD CONSTRAINT `ciudades_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `datos_usuario`
---
-ALTER TABLE `datos_usuario`
-  ADD CONSTRAINT `datos_usuario_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`Id_Usuario`);
-
---
--- Filtros para la tabla `detalle_factura`
---
-ALTER TABLE `detalle_factura`
-  ADD CONSTRAINT `detalle_factura_ibfk_1` FOREIGN KEY (`Id_Cita`) REFERENCES `cita` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalle_factura_ibfk_2` FOREIGN KEY (`Id_Detalle_head_factura`) REFERENCES `detalle_head_factura` (`Id_Detalle_head_factura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `direccion`
@@ -3461,7 +3431,6 @@ ALTER TABLE `municipios`
 -- Filtros para la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`Id_Direccion`) REFERENCES `direccion` (`Id_Direccion`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `paciente_ibfk_4` FOREIGN KEY (`Id_Cita`) REFERENCES `tipo_cita` (`Id_TipoCita`);
 
 --
