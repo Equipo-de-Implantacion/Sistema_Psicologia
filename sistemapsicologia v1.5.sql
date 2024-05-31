@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 16:33:19
+-- Tiempo de generación: 29-04-2024 a las 22:18:10
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sistema_psicologiav1.3`
+-- Base de datos: `sistemapsicologiav1.5`
 --
 
 -- --------------------------------------------------------
@@ -51,8 +51,6 @@ INSERT INTO `agenda` (`Id_Agenda`, `Id_Paciente`, `Id_Dia`, `Inicio`, `Fin`, `Id
 
 CREATE TABLE `calendario` (
   `Id_Calendario` int(1) NOT NULL,
-  `Ano` int(5) NOT NULL,
-  `Mes` varchar(10) NOT NULL,
   `Id_Dia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1131,6 +1129,7 @@ INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
 
 CREATE TABLE `experiencia_traumatica` (
   `id_extraum` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_extraum` datetime NOT NULL,
   `perdida_algunfamiliar` enum('Si','No') NOT NULL,
   `quien_era` text NOT NULL,
@@ -1141,7 +1140,7 @@ CREATE TABLE `experiencia_traumatica` (
   `accidente_nino` text NOT NULL,
   `castigos_graves` text NOT NULL,
   `partedequien` text NOT NULL,
-  `edad_nino` smallint(6) NOT NULL,
+  `edad_nino` date NOT NULL,
   `causante_problema` text NOT NULL,
   `problemas_fisicos` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1154,6 +1153,7 @@ CREATE TABLE `experiencia_traumatica` (
 
 CREATE TABLE `factores_familiares` (
   `id_facfamilia` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_facfamilia` datetime NOT NULL,
   `nombre_representante` text NOT NULL,
   `salud_fisica` text NOT NULL,
@@ -1171,6 +1171,7 @@ CREATE TABLE `factores_familiares` (
 
 CREATE TABLE `factores_hereditarios` (
   `id_factores_herreditarios` int(8) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fh_iafc` text NOT NULL,
   `fh_tratamiento_medico` text NOT NULL,
   `fh_alcolismo_etc` text NOT NULL,
@@ -1192,6 +1193,7 @@ CREATE TABLE `factores_hereditarios` (
 
 CREATE TABLE `factores_mconsulta` (
   `id_factoresmc` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_facroresmc` datetime NOT NULL,
   `fac_consulta` longtext NOT NULL,
   `desarrollo_prenatal` longtext NOT NULL,
@@ -1219,6 +1221,7 @@ CREATE TABLE `factura` (
 
 CREATE TABLE `habitos_e_intereses` (
   `id_habito` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_hei` datetime NOT NULL,
   `comida_hei` text NOT NULL,
   `sueno_hei` text NOT NULL,
@@ -1250,6 +1253,7 @@ CREATE TABLE `historialmedico` (
 
 CREATE TABLE `impresion_psicologica` (
   `id_ip` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `descripcion_ip` longtext NOT NULL,
   `fecha_ip` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -2843,6 +2847,7 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 
 CREATE TABLE `plan_psicoterapeutico` (
   `id_plan` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_plan` datetime NOT NULL,
   `plan` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -2855,6 +2860,7 @@ CREATE TABLE `plan_psicoterapeutico` (
 
 CREATE TABLE `rasgos_caracter` (
   `rc_id` int(5) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_rc` datetime NOT NULL,
   `rc_timido` tinyint(1) NOT NULL,
   `rc_agresivo` tinyint(1) NOT NULL,
@@ -2898,8 +2904,8 @@ CREATE TABLE `rasgos_caracter` (
 -- Volcado de datos para la tabla `rasgos_caracter`
 --
 
-INSERT INTO `rasgos_caracter` (`rc_id`, `fecha_rc`, `rc_timido`, `rc_agresivo`, `rc_tranquilo`, `rc_irritable`, `rc_alegre`, `rc_triste`, `rc_cooperador`, `rc_negativista`, `rc_sereno`, `rc_impulsivo`, `rc_confiado_en_si`, `fc_frio`, `rc_sociable`, `rc_retardado`, `rc_equilibrado`, `rc_nervioso`, `rc_carinoso`, `rc_inseguro`, `rc_juega`, `rc_no_juega`, `rc_controlado`, `rc_emotivo`, `rc_seguro`, `rc_amable`, `rc_desconsiderado`, `rc_laborioso`, `rc_perezoso`, `rc_desconfiado`, `rc_dominate`, `rc_sumizo`, `rc_disciplinado`, `rc_indisciplinado`, `rc_rebelde`, `rc_obediente`, `rc_ordenado`, `rc_desordenado`) VALUES
-(1, '2024-04-25 17:56:50', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `rasgos_caracter` (`rc_id`, `Id_Paciente`, `fecha_rc`, `rc_timido`, `rc_agresivo`, `rc_tranquilo`, `rc_irritable`, `rc_alegre`, `rc_triste`, `rc_cooperador`, `rc_negativista`, `rc_sereno`, `rc_impulsivo`, `rc_confiado_en_si`, `fc_frio`, `rc_sociable`, `rc_retardado`, `rc_equilibrado`, `rc_nervioso`, `rc_carinoso`, `rc_inseguro`, `rc_juega`, `rc_no_juega`, `rc_controlado`, `rc_emotivo`, `rc_seguro`, `rc_amable`, `rc_desconsiderado`, `rc_laborioso`, `rc_perezoso`, `rc_desconfiado`, `rc_dominate`, `rc_sumizo`, `rc_disciplinado`, `rc_indisciplinado`, `rc_rebelde`, `rc_obediente`, `rc_ordenado`, `rc_desordenado`) VALUES
+(1, 0, '2024-04-25 17:56:50', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2909,6 +2915,7 @@ INSERT INTO `rasgos_caracter` (`rc_id`, `fecha_rc`, `rc_timido`, `rc_agresivo`, 
 
 CREATE TABLE `recomendaciones` (
   `id_recomendaciones` int(11) NOT NULL,
+  `Id_Paciente` int(11) NOT NULL,
   `fecha_re` datetime NOT NULL,
   `recomendaciones` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
