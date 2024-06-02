@@ -29,7 +29,7 @@
         <ul class="nav__list">
 
           <li class="nav__item">
-            <a href="../index.html" class="nav__link">
+            <a href="../Index.php" class="nav__link">
               <i class="ri-arrow-right-up-line"></i>
               <span>BLOG</span>
             </a>
@@ -89,7 +89,7 @@
                     <input type="email" id="Correo" name="Correo" class="form-control mb-3" placeholder="Correo" required>
 
                     <h2 class="display-6 fw-bold lh-1 fs-6">CAMBIAR CONTRASEÑA</h2>
-                    <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva" class="form-control mb-3" placeholder="Contraseña Nueva" required>
+                    <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva" class="form-control mb-3" placeholder="Contraseña Nueva" required onblur="validarContrasena(this)">
 
                     <input type="password" id="Repite_Contrasena" name="Repite_Contrasena" class="form-control mb-3" placeholder="Repite Contraseña" required>
                
@@ -186,6 +186,7 @@
     <script src="../JS/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-</body>
+    <script src="../JS/ValidarContrasena.js"></script>
+  </body>
 
 </html>
