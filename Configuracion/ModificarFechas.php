@@ -21,7 +21,7 @@ foreach ($fechasRecibidas as $fecha) {
         $consultaActualizar = $Conexion->prepare("UPDATE diassemana SET Status = 0 WHERE Dia =?");
         $consultaActualizar->bind_param("s", $fechaFormateada);
         if ($consultaActualizar->execute()) {
-            header("Location: ../PHP/Configuracion_psicologo.php?sucess=Dia_No_Laborable_Actualizado");
+            header("Location: ../PHP/Configuracion_psicologo.php?success=Dia_No_Laborable_Actualizado");
             exit();
         } else {
             header("Location: ../PHP/Configuracion_Psicologo.php?error=Error_Actualizar_Dia_No_Laborable");
