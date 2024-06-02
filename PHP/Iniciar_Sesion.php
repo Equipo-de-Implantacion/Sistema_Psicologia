@@ -34,7 +34,7 @@
         <ul class="nav__list">
 
           <li class="nav__item">
-            <a href="../index.html" class="nav__link">
+            <a href="../Index.php" class="nav__link">
               <i class="ri-arrow-right-up-line"></i>
               <span>BLOG</span>
             </a>
