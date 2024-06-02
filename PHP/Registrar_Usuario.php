@@ -32,7 +32,7 @@
         <ul class="nav__list">
 
           <li class="nav__item">
-            <a href="../Index.php" class="nav__link">
+            <a href="../index.php" class="nav__link">
               <i class="ri-arrow-right-up-line"></i>
               <span>BLOG</span>
             </a>
@@ -95,7 +95,7 @@
     <label for="usuario"><strong>Usuario</strong></label>
     <input type="text" id="usuario" name="Usuario" class="form-control">
     <label for="contrasena"><strong>Contraseña</strong></label>
-    <input type="password" id="contrasena" name="Contrasena" class="form-control">
+    <input type="password" id="contrasena" name="Contrasena" class="form-control" onblur="validarContrasena(this)">
     <label for="rcontrasena"><strong>Repetir Contraseña</strong></label>
     <input type="password" id="rcontrasena" name="RContrasena" class="form-control">
     <button class="btn btn-primary  mi-boton w-100 py-2" type="submit">REGISTRARSE</button>
@@ -154,5 +154,7 @@
         }
     });
 </script>
+
+<script src="../JS/ValidarContrasena.js"></script>
 </body>
 </html>
