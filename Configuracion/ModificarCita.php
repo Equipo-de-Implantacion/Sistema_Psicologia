@@ -43,12 +43,6 @@ if (isset($_POST['Estado'], $_POST['Municipio'], $_POST['Parroquia'], $_POST['Ci
     $Sexo = validar($_POST['Sexo']);
     $Status = "Activo";
 
-    // Verificación de campos vacíos
-    if (empty($idEstado) || empty($idMunicipio) || empty($idParroquia) || empty($idCiudad) || empty($Direccion_Vivienda) || empty($Servicio) || empty($Fecha) || empty($Hora) || empty($Primer_Nombre) || empty($Primer_Apellido) || empty($Fecha_Nacimiento) || empty($Telefono) || empty($Correo) || empty($Sexo)) {
-        header("Location: VisualizarCita.php?error=Datos_Vacíos");
-        exit();
-    }
-
     // Actualizar dirección
     if ($idEstado && $idMunicipio && $idParroquia && $idCiudad && $Direccion_Vivienda) {
         $ConsultaDir = "UPDATE direccion SET id_estado = ?, id_municipio = ?, id_parroquia = ?, id_ciudad = ?, Direccion_Vivienda = ? WHERE Id_Direccion = ?";
@@ -121,8 +115,8 @@ if (isset($_POST['Estado'], $_POST['Municipio'], $_POST['Parroquia'], $_POST['Ci
         exit();
     }
     if ($Id_TipoUsuario == 1) {
-        header("Location: ../PHP/Citas_Agendadas.php?sucess=Cita_Actualizada_Exitosamente");
+        header("Location: ../PHP/Citas_Agendadas.php?success=Cita_Actualizada_Exitosamente");
     } else if ($Id_TipoUsuario == 2) {
-        header("Location: ../PHP/Citas_Psicologo.php?sucess=Cita_Actualizada_Exitosamente");
+        header("Location: ../PHP/Citas_Psicologo.php?success=Cita_Actualizada_Exitosamente");
     }
 }
