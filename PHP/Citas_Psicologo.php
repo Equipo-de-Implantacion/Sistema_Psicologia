@@ -141,7 +141,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
                     </tr>
                     <tr>
                         <?php
-                        require '../Configuracion/CitasAgendadas.php';
+                        require '../Configuracion/CitasPsicologo.php';
                         if (mysqli_num_rows($Resultado1) > 0) {
                             // Mostrar los datos de cada fila
                             while ($Fila = mysqli_fetch_assoc($Resultado1)) {
