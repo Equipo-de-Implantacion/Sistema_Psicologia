@@ -136,11 +136,24 @@
                                 <tr>
                                     <?php
                                     require '../Configuracion/ModificarFechas.php';
+                                    $mapaDias = [
+                                        'Monday' => 'Lunes',
+                                        'Tuesday' => 'Martes',
+                                        'Wednesday' => 'Miércoles',
+                                        'Thursday' => 'Jueves',
+                                        'Friday' => 'Viernes',
+                                        'Saturday' => 'Sábado',
+                                        'Sunday' => 'Domingo'
+                                    ];
+
                                     if (mysqli_num_rows($ResultadoDia) > 0) {
                                         while ($Fila = mysqli_fetch_assoc($ResultadoDia)) {
+                                            // Traduce el nombre del día en inglés a español
+                                            $nombreDiaEnEspanol = isset($mapaDias[$Fila["DiaSemana"]]) ? $mapaDias[$Fila["DiaSemana"]] : $Fila["DiaSemana"];
+
                                             echo "<tr>";
-                                            echo "<td>" . $Fila["DiaSemana"] . "</td>";
-                                            echo "<td>" . $Fila["Dia"] . "</td>";
+                                            echo "<td>" . $nombreDiaEnEspanol . "</td>"; // Muestra el día en español
+                                            echo "<td>" . $Fila["Dia"] . "</td>"; // Mantiene el día en inglés para el checkbox
                                             echo "<td><input type='checkbox' name='diaSeleccionado[]' value='" . $Fila["Dia"] . "' /> </td>";
                                             echo "</tr>";
                                         }
