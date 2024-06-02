@@ -1,5 +1,5 @@
 function printPage() {
-var elementsToPrint = document.querySelectorAll('.btn_Imprimir,.btn_Guardar, .Menu_Lateral, .Nombre_Usuario');
+var elementsToPrint = document.querySelectorAll('.btn_Imprimir,.btn_Guardar, .barra-lateral, .Nombre_Usuario');
 
 for(var i = 0; i < elementsToPrint.length; i++) {
     elementsToPrint[i].style.display = 'none';
@@ -14,5 +14,5 @@ setTimeout(function(){
     }
 }, 100);
 
-
 }
+
