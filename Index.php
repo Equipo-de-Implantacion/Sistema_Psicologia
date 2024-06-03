@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
   <link href="CSS/Blog.css" rel="stylesheet">
   <link href="CSS/navbar.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
@@ -272,43 +274,61 @@
     </div>
   </section>
 
-  <footer id="Footer" class="p-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex align-items-start"> <!-- Cambia align-items-center por align-items-start -->
-          <img src="Imagenes/Psychology Logo blanco.png" alt="logofooter" class="img-fluid mb-3 me-3" style="max-width: 200px;">
-
-        </div>
-
-        <div class="Precios_Cita">
-          <?php
-          include_once('Configuracion/Conexion_BD.php');
-
-          $Consulta = "SELECT Tipo_Cita, Costo FROM tipo_cita WHERE Status = 'Activo'";
-          $Resultado = $Conexion->query($Consulta);
-
-          if ($Resultado->num_rows > 0) {
-            // Itera sobre los resultados
-            while ($fila = $Resultado->fetch_assoc()) {
-              $tipoCita = $fila['Tipo_Cita'];
-              $costo = $fila['Costo'];
-
-              // Inserta los datos en el footer
-              echo '<p><strong>Tipo de Cita:</strong> ' . $tipoCita . '</p>';
-              echo '<p><strong>Costo:</strong> $' . $costo . '</p>';
-              echo '</div>';
-            }
-          }
-          ?>
-        </div>
-        <!-- Aquí puedes agregar las otras dos columnas -->
-      </div>
+  <footer id="Footer" class="p-4 text-center">
+    <div class="containerf">
+            <img src="Imagenes/LOGO FULL BLANCO2.png" alt="logofooter" class="" style="max-width: 200px;">
+                <div class="text-content">
+                    <p>
+                    “Construyendo puentes hacia la salud mental”
+                    </p>
+                </div>
     </div>
+</footer>
+
+
+
+
+
+    
   </footer>
+  
+  <div class="carrusel">
+    <div class="carrusel-slide">
+      <?php
+      include_once('Configuracion/Conexion_BD.php');
+
+      $Consulta = "SELECT Tipo_Cita, Costo FROM tipo_cita WHERE Status = 'Activo'";
+      $Resultado = $Conexion->query($Consulta);
+
+      if ($Resultado->num_rows > 0) {
+        while ($fila = $Resultado->fetch_assoc()) {
+          $tipoCita = $fila['Tipo_Cita'];
+          $costo = $fila['Costo'];
+          
+          echo '<div class="carrusel-item">';
+          echo '<p><strong>Tipo de cita:</strong> ' . $tipoCita . ' - <strong>Costo:</strong> $ '  . $costo .  '  - <strong>Teléfonos:</strong> 0251-2528541 – 0242-5223612  -   <strong>Correo:</strong> mariadanie1090@gmail.com
+
+          </p>';
+          echo '</div>';
+        }
+      }
+      ?>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var carruselSlide = document.querySelector(".carrusel-slide");
+      carruselSlide.innerHTML += carruselSlide.innerHTML; // Duplicar el contenido para el efecto infinito
+    });
+
+  </script>
   <script src="JS/Cookies.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="JS/navbar.js"></script>
   <script src="JS/scroll.js"></script>
   
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 </html>
