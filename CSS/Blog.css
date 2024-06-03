@@ -1,15 +1,33 @@
-#seccion2 { background-color: #EBE3D5; }
-#seccion3 { background-color: #F3EEEA; }
-#seccion4 { background-color: #EBE3D5; }
-#seccion5 { background-color: #F3EEEA; }
-#Footer { background-color: #333533; }
+#seccion2 {
+    background-color: #EBE3D5;
+}
+
+#seccion3 {
+    background-color: #F3EEEA;
+}
+
+#seccion4 {
+    background-color: #EBE3D5;
+}
+
+#seccion5 {
+    background-color: #F3EEEA;
+}
+
+#Footer {
+    background-color: #333533;
+}
 
 
-.seccion-pequena { background-color: #FFFFFF; }
+.seccion-pequena {
+    background-color: #FFFFFF;
+}
 
- html, body {
+html,
+body {
     box-sizing: border-box;
-    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    overflow-x: hidden;
+    /* Evita el desplazamiento horizontal */
 }
 
 
@@ -54,27 +72,30 @@
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     #seccion2 div {
-        flex: 1 0 100%; 
+        flex: 1 0 100%;
     }
 
     #seccion2 .text-container {
-        max-width: 100%; 
+        max-width: 100%;
     }
 }
 
 /* Nuevos ajustes para centrar título y botón en pantallas pequeñas */
 @media (max-width: 576px) {
     #seccion2 .text-container {
-        text-align: center; /* Centra todo el texto dentro del contenedor */
+        text-align: center;
+        /* Centra todo el texto dentro del contenedor */
     }
 
     #seccion2 .text-container h1 {
-        text-align: center; /* Centra el título */
+        text-align: center;
+        /* Centra el título */
     }
 
     #seccion2 .text-container .btn {
         display: block;
-        margin: 10px auto; /* Centra el botón */
+        margin: 10px auto;
+        /* Centra el botón */
     }
 }
 
@@ -94,25 +115,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 #seccion4 .content-container h1 {
-    margin-top: 2rem; /* Añade un margen inferior al título para separarlo del contenido siguiente */
+    margin-top: 2rem;
+    /* Añade un margen inferior al título para separarlo del contenido siguiente */
 }
 
 #seccion4 .content-container .container {
-    flex-grow: 1; /* Permite que el contenedor del contenido crezca para ocupar el espacio disponible */
+    flex-grow: 1;
+    /* Permite que el contenedor del contenido crezca para ocupar el espacio disponible */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 }
 
 
 
-  #seccion5 {
-    min-height: 100vh; 
-    max-height: fit-content; 
+#seccion5 {
+    min-height: 100vh;
+    max-height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,13 +143,16 @@
 }
 
 #Footer {
-    color: white; /* Cambia el color del texto a blanco */
-    text-align: center; /* Centra el texto */
-    background-color: #000; /* Añade un color de fondo si es necesario */
+    color: white;
+    /* Cambia el color del texto a blanco */
+    text-align: center;
+    /* Centra el texto */
+    background-color: #000;
+    /* Añade un color de fondo si es necesario */
 }
 
-@media (max-width: 1130px){
-    .containerf{
+@media (max-width: 1130px) {
+    .containerf {
         margin-right: 10px;
     }
 }
@@ -137,65 +163,66 @@
 /* Ajustes adicionales para pantallas pequeñas */
 @media (max-width: 576px) {
     #seccion5 .container {
-        max-width: 100%; 
-        flex: 1 0 100%; 
+        max-width: 100%;
+        flex: 1 0 100%;
     }
 }
 
 
 .seccion-pequena {
     background-color: #FFFFFF;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; 
-    text-align: center; 
-    padding: 20px; 
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
 .seccion-pequena p {
     font-size: 1rem;
     margin: 0 auto;
-    max-width: 80%; 
+    max-width: 80%;
 }
 
 /*Otros*/
 .contenedor-principal {
-    min-height: 90vh; 
-    
+    min-height: 90vh;
+
 }
 
 .contenedor-imagen {
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .imagen-responsiva {
- max-width: 100%; 
- height: auto; 
- margin-bottom: 20px; 
- background-color: transparent; 
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: transparent;
 }
 
 .contenedor-titulo {
- position: relative;
+    position: relative;
 
 }
 
-.text-container, .image-container {
-    margin: 0 auto; 
-    max-width: 80%; 
-    
+.text-container,
+.image-container {
+    margin: 0 auto;
+    max-width: 80%;
+
 }
 
 /* Asegura que el icono se coloque debajo de la imagen en resoluciones más bajas */
 @media (max-width: 768px) {
     .icono-encima-titulo {
         position: static;
-        margin-top: 20px; 
-        align-items: center; 
+        margin-top: 20px;
+        align-items: center;
         transform: translateX(50%);
 
     }
@@ -214,11 +241,12 @@
 }
 
 body .btn {
-    background-color: #3A3F35; 
+    background-color: #3A3F35;
     border: none;
-    color: #FFFFFF; 
+    color: #FFFFFF;
     font-size: 0.75rem;
-    letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+    letter-spacing: 0.05rem;
+    /* Añade espacio entre las letras */
 }
 
 body .btn:hover {
@@ -227,27 +255,34 @@ body .btn:hover {
 }
 
 /* Mantiene el color de fondo cuando se hace clic */
-#seccion1 .btn:active, .btn:focus {
-    background-color: #3A3F35 ;
-    box-shadow: none; 
-    
-}
-#seccion2 .btn:active, .btn:focus {
-    background-color: #3A3F35 ;
+#seccion1 .btn:active,
+.btn:focus {
+    background-color: #3A3F35;
     box-shadow: none;
-    
+
 }
-#seccion3 .btn:active, .btn:focus {
+
+#seccion2 .btn:active,
+.btn:focus {
+    background-color: #3A3F35;
+    box-shadow: none;
+
+}
+
+#seccion3 .btn:active,
+.btn:focus {
     color: white;
     background-color: #3A3F35;
     box-shadow: none;
 }
 
-#seccion5 .btn:active, .btn:focus {
-    background-color: #3A3F35 ;
-    box-shadow: none; 
-    
+#seccion5 .btn:active,
+.btn:focus {
+    background-color: #3A3F35;
+    box-shadow: none;
+
 }
+
 /* Mantiene el color de fondo cuando se hace clic */
 
 
@@ -255,16 +290,18 @@ body .btn:hover {
     background-color: #3A3F35;
     border: none;
 }
+
 .mi-boton:active {
     background-color: #3A3F35 !important;
     color: rgb(255, 255, 255) !important;
-  }
-
-.d-item{
- height: 600px;
- 
 }
-.d-img{
+
+.d-item {
+    height: 600px;
+
+}
+
+.d-img {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.6);
@@ -273,37 +310,44 @@ body .btn:hover {
 
 /* Asegura que el icono se coloque correctamente encima del título */
 .logo-modalidad {
-    max-width: 100px; /* Ajusta el tamaño según sea necesario */
+    max-width: 100px;
+    /* Ajusta el tamaño según sea necesario */
     height: auto;
     display: block;
     margin-left: 10px;
     margin-right: auto;
-    
+
 }
 
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
     .contenedor-titulo {
-        text-align: center; /* Centra el contenido del contenedor del título */
+        text-align: center;
+        /* Centra el contenido del contenedor del título */
     }
 
     .logo-modalidad {
-        margin-bottom: 10px; /* Espacio adicional debajo del logo */
-        float: none; /* Quita el alineamiento flotante */
-        margin: 0 auto 10px auto; /* Centra el logo horizontalmente y añade espacio debajo */
-        display: block; 
+        margin-bottom: 10px;
+        /* Espacio adicional debajo del logo */
+        float: none;
+        /* Quita el alineamiento flotante */
+        margin: 0 auto 10px auto;
+        /* Centra el logo horizontalmente y añade espacio debajo */
+        display: block;
     }
 }
 
 .carousel-caption {
     position: absolute;
-    top: 10%; /* Ajusta este valor para mover el texto hacia arriba o hacia abajo */
+    top: 10%;
+    /* Ajusta este valor para mover el texto hacia arriba o hacia abajo */
     transform: translate(0%, 20%);
     text-align: center;
 }
 
-.problema{
-    width: 20vh;  /* Ajusta el ancho de la imagen */
+.problema {
+    width: 20vh;
+    /* Ajusta el ancho de la imagen */
 }
 
 
@@ -323,6 +367,7 @@ body {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-50%);
     }
@@ -330,8 +375,10 @@ body {
 
 .carrusel {
     overflow: hidden;
-    padding: 10px 0; /* Ajusta la altura del carrusel */
-    background: black; /* Cambia el fondo a negro */
+    padding: 10px 0;
+    /* Ajusta la altura del carrusel */
+    background: black;
+    /* Cambia el fondo a negro */
     white-space: nowrap;
     position: relative;
 }
@@ -348,12 +395,14 @@ body {
 
 .carrusel:before {
     left: 0;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0), black); /* Ajusta el gradiente para el nuevo fondo */
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), black);
+    /* Ajusta el gradiente para el nuevo fondo */
 }
 
 .carrusel:after {
     right: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), black); /* Ajusta el gradiente para el nuevo fondo */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), black);
+    /* Ajusta el gradiente para el nuevo fondo */
 }
 
 .carrusel-slide {
@@ -366,7 +415,8 @@ body {
     padding: 0 20px;
     text-align: center;
     white-space: nowrap;
-    color: white; /* Cambia el color del texto a blanco */
+    color: white;
+    /* Cambia el color del texto a blanco */
 }
 
 .carrusel-item p {

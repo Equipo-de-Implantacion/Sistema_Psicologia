@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 
 body {
-  background-image: url('../Imagenes/FONDOAGENDARCITA.jpg'); /* Reemplaza 'ruta/de/la/imagen.jpg' con la ruta real de tu imagen */
-  background-size: cover; /* Ajusta la imagen para que cubra toda el área del body */
-  background-position: center; /* Centra la imagen */
+  background-image: url('../Imagenes/FONDOAGENDARCITA.jpg');
+  /* Reemplaza 'ruta/de/la/imagen.jpg' con la ruta real de tu imagen */
+  background-size: cover;
+  /* Ajusta la imagen para que cubra toda el área del body */
+  background-position: center;
+  /* Centra la imagen */
   font-family: 'Poppins', sans-serif;
 }
 
-.Nombre_Usuario{
+.Nombre_Usuario {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -122,15 +125,20 @@ label {
 }
 
 
-#btn_Confirmar, button.btn-primary[onclick="AnteriorPaso()"], #btn_Siguiente {
+#btn_Confirmar,
+button.btn-primary[onclick="AnteriorPaso()"],
+#btn_Siguiente {
   background-color: #D0D0BD;
   border: none;
   color: #000000;
 }
 
-#btn_Confirmar:hover, button.btn-primary[onclick="AnteriorPaso()"]:hover, #btn_Siguiente:hover {
+#btn_Confirmar:hover,
+button.btn-primary[onclick="AnteriorPaso()"]:hover,
+#btn_Siguiente:hover {
   background-color: #999986;
 }
+
 /* Estilos para el botón de cancelar */
 #cancelarBtn {
   background-color: #D0D0BD;
@@ -143,29 +151,34 @@ label {
   background-color: #999986;
 }
 
-.btn{
+.btn {
   margin-top: 0px;
   margin-bottom: 20px;
   height: 35px;
   width: 110px;
   margin-left: 15px;
   font-size: 0.75rem;
-  font-weight: 500; /* Establece la fuente en negrita */
-  letter-spacing: 0.05rem; /* Añade espacio entre las letras */
+  font-weight: 500;
+  /* Establece la fuente en negrita */
+  letter-spacing: 0.05rem;
+  /* Añade espacio entre las letras */
 }
 
 
 .card {
   max-height: 93vh;
-  max-width: 90%; /* Cambia el valor según tus necesidades */
+  max-width: 90%;
+  /* Cambia el valor según tus necesidades */
   color: white;
   overflow-y: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: 0.3s;
   border-radius: 12px;
-  background-color: rgba(65, 68, 64, 0.7); /* Color de fondo translúcido */
-  margin: auto; /* Centra horizontalmente */
- 
+  background-color: rgba(65, 68, 64, 0.7);
+  /* Color de fondo translúcido */
+  margin: auto;
+  /* Centra horizontalmente */
+
 }
 
 
@@ -177,34 +190,38 @@ label {
 /* Padding alrededor de la carta */
 .container {
   padding: 12px 26px;
-  
-  min-height: 80vh; /* Asegura que el contenedor siempre tenga al menos la altura de la pantalla */
- 
+
+  min-height: 80vh;
+  /* Asegura que el contenedor siempre tenga al menos la altura de la pantalla */
+
 }
-#Tipo_Cita{
+
+#Tipo_Cita {
   text-align: center;
   margin-bottom: 18px;
 }
 
-#Fecha_Hora{
+#Fecha_Hora {
   text-align: center;
   margin-bottom: 18px;
 }
-#Datos_Paciente{
+
+#Datos_Paciente {
   text-align: center;
   margin-bottom: 18px;
 }
-#Confirmar_Cita{
+
+#Confirmar_Cita {
   text-align: center;
   margin-bottom: 18px;
 }
 
 /* CODIGO PARA FORMULARIO */
 
-.duraciontext{
+.duraciontext {
   font-family: 'Poppins', sans-serif;
 
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 50px;
 }
 
@@ -217,89 +234,105 @@ label {
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 
 .Selector {
-    background: transparent;
-    border-radius: 15px;
-    padding: 8px;
-    min-width: 180px;
-    color: white;
-    border-color: white;
-    font-size: 0.8rem; /* Ajusta el tamaño de la fuente según tus necesidades */
-    border: solid 1px;
+  background: transparent;
+  border-radius: 15px;
+  padding: 8px;
+  min-width: 180px;
+  color: white;
+  border-color: white;
+  font-size: 0.8rem;
+  /* Ajusta el tamaño de la fuente según tus necesidades */
+  border: solid 1px;
 }
 
 .Selector:focus {
-    outline: none; /* Elimina el borde predeterminado del enfoque */
-    border-color: white; /* Mantiene el borde blanco en el enfoque */
+  outline: none;
+  /* Elimina el borde predeterminado del enfoque */
+  border-color: white;
+  /* Mantiene el borde blanco en el enfoque */
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
+  position: relative;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    font-size: 0.8rem;
-    left: 50%; /* Posición relativa al contenedor padre */
-    transform: translateX(-50%); /* Centra el contenido horizontalmente */
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 0.8rem;
+  left: 50%;
+  /* Posición relativa al contenedor padre */
+  transform: translateX(-50%);
+  /* Centra el contenido horizontalmente */
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left; /* Alinea el texto a la izquierda */
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  /* Alinea el texto a la izquierda */
 }
 
 .dropdown-content a:hover {
-    background-color: #3A3F35;
-    color: white;
+  background-color: #3A3F35;
+  color: white;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
+
 /* CODIGO PARA SELECTOR DE SERVICIOS */
 
 
 /* CODIGOS PARA OTROS ELEMENTOS */
 
-#Fecha{
+#Fecha {
   width: 219px;
   height: 40px;
-  border-radius: 8px;;
+  border-radius: 8px;
+  ;
   border: solid 3px;
   padding: 5px;
   border-color: #ffffff;
 
 }
-#Hora{
+
+#Hora {
   margin-left: 3px;
   width: 175px;
   height: 40px;
-  border-radius: 8px;;
+  border-radius: 8px;
+  ;
   border: solid 3px;
   padding: 5px;
   border-color: #ffffff;
 
 }
+
 /* Asegura que los bordes permanezcan del mismo color en estados focus y active */
-#Fecha:focus, #Fecha:active,
-#Hora:focus, #Hora:active {
+#Fecha:focus,
+#Fecha:active,
+#Hora:focus,
+#Hora:active {
   border-color: #3A3F35;
-  outline: none; /* Opcional: quita el outline azul de algunos navegadores */
+  outline: none;
+  /* Opcional: quita el outline azul de algunos navegadores */
 }
-.horas{
+
+.horas {
   margin-top: -15px;
 }
-.fechas{
+
+.fechas {
   margin-top: -15px;
 }
 
@@ -310,8 +343,16 @@ label {
   border-color: #ffffff;
 
 }
-.contenedorconfirmar{
+
+.contenedorconfirmar {
   margin-top: 50px;
-  
+
 }
+
+.parrafos {
+
+  font-size: 13px;
+
+}
+
 /* CODIGOS PARA OTROS ELEMENTOS */

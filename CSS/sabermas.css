@@ -1,5 +1,5 @@
 body {
-    background-image: url('../Imagenes/sabermasfondo.jpg');
+    background-image: url('../Imagenes/foto.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -13,9 +13,9 @@ body {
 /* Estilos para pantallas grandes (PC) */
 .contenedor-principal {
     display: grid;
-    place-items: center; 
-    width: 80%; 
-    margin: auto; 
+    place-items: center;
+    width: 80%;
+    margin: auto;
 }
 
 /* Justificar el texto dentro de las cards */
@@ -25,37 +25,48 @@ body {
 
 /* Modificar el tamaño de la fuente, color de fondo y color de las letras de las cards */
 .card-body {
-    font-size: 13px; /* Ajusta el tamaño de la fuente según sea necesario */
+    font-size: 13px;
+    /* Ajusta el tamaño de la fuente según sea necesario */
     padding: 20px;
     border-radius: 15px;
 }
 
 /* Ajustar las imágenes de las cards */
 .card-img-top {
-    height: 100px; /* Ajusta la altura según sea necesario */
-    object-fit: cover; /* Asegura que la imagen se ajuste dentro del contenedor */
+    height: 100px;
+    /* Ajusta la altura según sea necesario */
+    object-fit: cover;
+    /* Asegura que la imagen se ajuste dentro del contenedor */
 }
 
 .card {
     margin-top: 80px;
-    background-color: rgba(255, 255, 255, 0.722); 
-    color: #000000; /* Color del texto de las cards */
+    background-color: rgba(255, 255, 255, 0.722);
+    color: #000000;
+    /* Color del texto de las cards */
     border-radius: 25px;
-    overflow: hidden; /* Asegura que las imágenes se mantengan dentro de las cards */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Agregar sombra a las cards */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones para el efecto de hover */
+    overflow: hidden;
+    /* Asegura que las imágenes se mantengan dentro de las cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Agregar sombra a las cards */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Transiciones para el efecto de hover */
 }
 
 /* Efecto de movimiento al pasar el mouse por encima de las cards */
 .card:hover {
-    transform: translateY(-10px); /* Mover la card hacia arriba */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumentar la sombra */
+    transform: translateY(-10px);
+    /* Mover la card hacia arriba */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Aumentar la sombra */
 }
+
 /* Media query para pantallas con un ancho máximo de 1130px */
 @media (max-width: 1130px) {
     .card {
-        margin-top: 140px; /* Aumentar el margen superior de las cards */
+        margin-top: 140px;
+        /* Aumentar el margen superior de las cards */
     }
 
-   
+
 }
