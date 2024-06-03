@@ -15,7 +15,7 @@
 
 #seccion1 {
     background-color: #F3EEEA;
-    background-image: url('../Imagenes/fondo\ blog\ 1.jpg');
+    background-image: url('../Imagenes/fondoblog.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -118,6 +118,21 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+#Footer {
+    color: white; /* Cambia el color del texto a blanco */
+    text-align: center; /* Centra el texto */
+    background-color: #000; /* Añade un color de fondo si es necesario */
+}
+
+@media (max-width: 1130px){
+    .containerf{
+        margin-right: 10px;
+    }
+}
+
+
+
 
 /* Ajustes adicionales para pantallas pequeñas */
 @media (max-width: 576px) {
@@ -240,6 +255,10 @@ body .btn:hover {
     background-color: #3A3F35;
     border: none;
 }
+.mi-boton:active {
+    background-color: #3A3F35 !important;
+    color: rgb(255, 255, 255) !important;
+  }
 
 .d-item{
  height: 600px;
@@ -285,4 +304,71 @@ body .btn:hover {
 
 .problema{
     width: 20vh;  /* Ajusta el ancho de la imagen */
+}
+
+
+/*CARRUSEL INFINITO*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.carrusel {
+    overflow: hidden;
+    padding: 10px 0; /* Ajusta la altura del carrusel */
+    background: black; /* Cambia el fondo a negro */
+    white-space: nowrap;
+    position: relative;
+}
+
+.carrusel:before,
+.carrusel:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.carrusel:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), black); /* Ajusta el gradiente para el nuevo fondo */
+}
+
+.carrusel:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), black); /* Ajusta el gradiente para el nuevo fondo */
+}
+
+.carrusel-slide {
+    display: flex;
+    animation: 10s slide linear infinite;
+}
+
+.carrusel-item {
+    flex: 0 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    white-space: nowrap;
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+.carrusel-item p {
+    margin: 5px 0;
 }
