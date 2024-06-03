@@ -1,26 +1,52 @@
 function establecerCookie(nombre, valor, dias) {
     var expira = "";
-
-    // Para comprobar si se pasaron días para establecer la fecha de expiración
     if (dias) {
-        // Objeto Date para obtener la fecha y hora actuales
         var fecha = new Date();
-        // Para sumar los días multiplicados por milisegundos en un día para obtener la nueva fecha de expiración
         fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
         expira = "; expires=" + fecha.toUTCString();
     }
-    // Para establecer la cookie con el nombre, valor y fecha de expiración 
     document.cookie = nombre + "=" + (valor || "") + expira + "; path=/";
+}
+
+function confirmarConToastr(mensaje, callbackSi, callbackNo) {
+    toastr.info(mensaje + "<br /><br /><button type='button' id='siBtn' class='btn btn-primary'>Sí</button> <button type='button' id='noBtn' class='btn btn-secondary'>No</button>", "Confirmación", {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-center",
+        onclick: null,
+        timeOut: "0",
+        extendedTimeOut: "0",
+        allowHtml: true,
+        onShown: function (toast) {
+            $("#siBtn").click(function(){
+                callbackSi();
+                toastr.clear(toast);
+            });
+            $("#noBtn").click(function(){
+                callbackNo();
+                toastr.clear(toast);
+            });
+        }
+    });
 }
 
 function verificarConsentimientoCookie() {
     if (!document.cookie.split('; ').some(s => s.startsWith('consentimientoCookie='))) {
-        alert("Este sitio web utiliza cookies para mejorar tu experiencia. Haz clic en 'Aceptar' para dar tu consentimiento.");
-        if (confirm("¿Estás de acuerdo?")) {
-            establecerCookie('consentimientoCookie', 'true', 365);
-        } else {
-            // El mensaje se mostrará nuevamente cuando se recargue la página
-        }
+        toastr.info("Este sitio web utiliza cookies para mejorar tu experiencia. <br /><br /><button type='button' id='aceptarCookies' class='btn btn-primary mi-boton'>Aceptar</button>", "Aviso de Cookies", {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-bottom-right",
+            onclick: null,
+            timeOut: "0",
+            extendedTimeOut: "0",
+            allowHtml: true,
+            onShown: function (toast) {
+                $("#aceptarCookies").click(function(){
+                    establecerCookie('consentimientoCookie', 'true', 365);
+                    toastr.clear(toast);
+                });
+            }
+        });
     }
 }
 
