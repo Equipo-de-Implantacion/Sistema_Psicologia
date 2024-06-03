@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2024 a las 00:37:01
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 03-06-2024 a las 20:41:26
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -616,6 +616,13 @@ CREATE TABLE `datos_usuario` (
   `Fecha_Registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `datos_usuario`
+--
+
+INSERT INTO `datos_usuario` (`Id_Datos`, `Id_Usuario`, `Tipo_Documento`, `Documento_Id`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Telefono`, `Correo`, `Sexo`, `Pregunta1`, `Respuesta1`, `Pregunta2`, `Respuesta2`, `Fecha_Registro`) VALUES
+(1, 1, 'V-', '20920563', 'Maria', 'Daniela', 'Mogollon', 'Alvarez', '1990-10-10', '0242-5223612', 'mariadanie1090@gmail.com', 'Femenino', 'Color', 'Azul', 'Ciudad', 'Barquisimeto', '2024-06-03 20:02:38');
+
 -- --------------------------------------------------------
 
 --
@@ -792,7 +799,7 @@ INSERT INTO `diassemana` (`Id_Dia`, `Dia`, `Status`) VALUES
 (157, '2024-06-05', 1),
 (158, '2024-06-06', 1),
 (159, '2024-06-07', 1),
-(160, '2024-06-08', 1),
+(160, '2024-06-08', 0),
 (161, '2024-06-09', 1),
 (162, '2024-06-10', 1),
 (163, '2024-06-11', 1),
@@ -1011,8 +1018,15 @@ CREATE TABLE `direccion` (
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
   `id_ciudad` int(11) NOT NULL,
-  `Direccion_Vivienda` varchar(50) NOT NULL
+  `Direccion_Vivienda` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`Id_Direccion`, `id_estado`, `id_municipio`, `id_parroquia`, `id_ciudad`, `Direccion_Vivienda`) VALUES
+(1, 12, 146, 462, 212, 'Urb. del Este, Carrera 5 con Av, Concordia Residencia los Andes.');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1036,7 @@ CREATE TABLE `direccion` (
 --
 CREATE TABLE `direccionpaciente` (
 `Id_Direccion` int(11)
-,`Direccion_Vivienda` varchar(50)
+,`Direccion_Vivienda` varchar(100)
 ,`id_estado` int(11)
 ,`estado` varchar(250)
 ,`id_municipio` int(11)
@@ -1058,6 +1072,13 @@ CREATE TABLE `empleado` (
   `Fecha_Registro` datetime NOT NULL,
   `Status_Empleado` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`Id_Empleado`, `Id_Usuario`, `Tipo_Documento`, `Documento_Id`, `Primer_Nombre`, `Segundo_Nombre`, `Primer_Apellido`, `Segundo_Apellido`, `Fecha_Nacimiento`, `Telefono`, `Correo`, `Sexo`, `Id_Direccion`, `Profesion`, `Especialidad`, `Fecha_Registro`, `Status_Empleado`) VALUES
+(1, 1, 'V-', '20920563', 'Maria', 'Daniela', 'Mogollon', 'Alvarez', '1990-10-10', '0242-5223612', 'mariadanie1090@gmail.com', 'Femenino', 1, 'Psicologa', 'Salud Mental', '2024-06-03 20:05:51', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -2953,10 +2974,10 @@ CREATE TABLE `tipo_cita` (
 --
 
 INSERT INTO `tipo_cita` (`Id_TipoCita`, `Tipo_Cita`, `Costo`, `Status`, `Fecha_Registro`) VALUES
-(1, 'Individual', 0, 'Activo', '2024-04-15 21:49:40'),
+(1, 'Individual', 730.8, 'Activo', '2024-04-15 21:49:40'),
 (2, 'Pareja', 0, 'Inactivo', '2024-04-15 21:49:40'),
-(3, 'Infante', 1000, 'Activo', '2024-04-15 21:50:13'),
-(4, 'Adolescente', 0, 'Activo', '2024-04-15 21:50:13');
+(3, 'Infante', 548.1, 'Activo', '2024-04-15 21:50:13'),
+(4, 'Adolescente', 657.72, 'Activo', '2024-04-15 21:50:13');
 
 -- --------------------------------------------------------
 
@@ -2991,6 +3012,13 @@ CREATE TABLE `usuario` (
   `Status_Usuario` enum('Activo','Inactivo') NOT NULL,
   `Fecha_Registro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`Id_Usuario`, `Id_TipoUsuario`, `Usuario`, `Contrasena`, `Status_Usuario`, `Fecha_Registro`) VALUES
+(1, 2, 'DanielaM', 'da0e6761eccfb2ac520d18b3d87e8991', 'Activo', '2024-06-03 14:02:11');
 
 -- --------------------------------------------------------
 
@@ -3252,13 +3280,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `calendario`
 --
 ALTER TABLE `calendario`
-  MODIFY `Id_Calendario` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id_Calendario` int(1) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ciudades`
@@ -3270,13 +3298,13 @@ ALTER TABLE `ciudades`
 -- AUTO_INCREMENT de la tabla `datos_identificacion`
 --
 ALTER TABLE `datos_identificacion`
-  MODIFY `Id_DatosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Id_DatosId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_usuario`
 --
 ALTER TABLE `datos_usuario`
-  MODIFY `Id_Datos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Id_Datos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `diassemana`
@@ -3288,13 +3316,13 @@ ALTER TABLE `diassemana`
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `Id_Direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `Id_Direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `Id_Empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -3306,49 +3334,49 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `experiencia_traumatica`
 --
 ALTER TABLE `experiencia_traumatica`
-  MODIFY `Id_Trauma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `Id_Trauma` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factores_consulta`
 --
 ALTER TABLE `factores_consulta`
-  MODIFY `Id_Factoresmc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `Id_Factoresmc` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factores_familiares`
 --
 ALTER TABLE `factores_familiares`
-  MODIFY `Id_FactorFm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `Id_FactorFm` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factores_fisicos`
 --
 ALTER TABLE `factores_fisicos`
-  MODIFY `Id_FactorF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `Id_FactorF` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `factores_hereditarios`
 --
 ALTER TABLE `factores_hereditarios`
-  MODIFY `Id_FactoresHr` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `Id_FactoresHr` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `habitos_e_intereses`
 --
 ALTER TABLE `habitos_e_intereses`
-  MODIFY `Id_Habito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `Id_Habito` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
-  MODIFY `Id_Historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Historial` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `impresion_psicologica`
 --
 ALTER TABLE `impresion_psicologica`
-  MODIFY `Id_Impresion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id_Impresion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `municipios`
@@ -3360,13 +3388,13 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente_menoredad`
 --
 ALTER TABLE `paciente_menoredad`
-  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Paciente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `parroquias`
@@ -3378,19 +3406,19 @@ ALTER TABLE `parroquias`
 -- AUTO_INCREMENT de la tabla `plan_psicoterapeutico`
 --
 ALTER TABLE `plan_psicoterapeutico`
-  MODIFY `Id_Plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id_Plan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rasgos_caracter`
 --
 ALTER TABLE `rasgos_caracter`
-  MODIFY `Id_Rc` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id_Rc` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `recomendaciones`
 --
 ALTER TABLE `recomendaciones`
-  MODIFY `Id_Recomendaciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id_Recomendaciones` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_cita`
@@ -3408,7 +3436,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -3510,18 +3538,18 @@ ALTER TABLE `habitos_e_intereses`
 --
 ALTER TABLE `historial_clinico`
   ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`Id_Paciente`) REFERENCES `paciente` (`Id_Paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `historial_clinico_ibfk_10` FOREIGN KEY (`Id_Habito`) REFERENCES `habitos_e_intereses` (`id_habito`),
+  ADD CONSTRAINT `historial_clinico_ibfk_10` FOREIGN KEY (`Id_Habito`) REFERENCES `habitos_e_intereses` (`Id_Habito`),
   ADD CONSTRAINT `historial_clinico_ibfk_11` FOREIGN KEY (`Id_Rc`) REFERENCES `rasgos_caracter` (`Id_Rc`),
   ADD CONSTRAINT `historial_clinico_ibfk_12` FOREIGN KEY (`Id_FactoresHr`) REFERENCES `factores_hereditarios` (`Id_FactoresHr`),
   ADD CONSTRAINT `historial_clinico_ibfk_13` FOREIGN KEY (`Id_Impresion`) REFERENCES `impresion_psicologica` (`Id_Impresion`),
-  ADD CONSTRAINT `historial_clinico_ibfk_14` FOREIGN KEY (`Id_Recomendaciones`) REFERENCES `recomendaciones` (`id_recomendaciones`),
-  ADD CONSTRAINT `historial_clinico_ibfk_15` FOREIGN KEY (`Id_Plan`) REFERENCES `plan_psicoterapeutico` (`id_plan`),
+  ADD CONSTRAINT `historial_clinico_ibfk_14` FOREIGN KEY (`Id_Recomendaciones`) REFERENCES `recomendaciones` (`Id_Recomendaciones`),
+  ADD CONSTRAINT `historial_clinico_ibfk_15` FOREIGN KEY (`Id_Plan`) REFERENCES `plan_psicoterapeutico` (`Id_Plan`),
   ADD CONSTRAINT `historial_clinico_ibfk_16` FOREIGN KEY (`Id_Pacientemenor`) REFERENCES `paciente_menoredad` (`Id_Paciente`),
   ADD CONSTRAINT `historial_clinico_ibfk_2` FOREIGN KEY (`Id_Empleado`) REFERENCES `usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `historial_clinico_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `cita` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `historial_clinico_ibfk_4` FOREIGN KEY (`Id_Calendario`) REFERENCES `calendario` (`Id_Calendario`),
   ADD CONSTRAINT `historial_clinico_ibfk_5` FOREIGN KEY (`Id_Datos`) REFERENCES `datos_identificacion` (`Id_DatosId`),
-  ADD CONSTRAINT `historial_clinico_ibfk_6` FOREIGN KEY (`Id_Factoresmc`) REFERENCES `factores_consulta` (`id_factoresmc`),
+  ADD CONSTRAINT `historial_clinico_ibfk_6` FOREIGN KEY (`Id_Factoresmc`) REFERENCES `factores_consulta` (`Id_Factoresmc`),
   ADD CONSTRAINT `historial_clinico_ibfk_7` FOREIGN KEY (`Id_FactorF`) REFERENCES `factores_fisicos` (`Id_FactorF`),
   ADD CONSTRAINT `historial_clinico_ibfk_8` FOREIGN KEY (`Id_FactorFm`) REFERENCES `factores_familiares` (`Id_FactorFm`),
   ADD CONSTRAINT `historial_clinico_ibfk_9` FOREIGN KEY (`Id_Trauma`) REFERENCES `experiencia_traumatica` (`Id_Trauma`);
