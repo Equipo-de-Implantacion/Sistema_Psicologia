@@ -306,7 +306,7 @@
           $costo = $fila['Costo'];
           
           echo '<div class="carrusel-item">';
-          echo '<p><strong>Tipo de cita:</strong> ' . $tipoCita . ' - <strong>Costo:</strong> $ '  . $costo .  '  - <strong>Teléfonos:</strong> 0251-2528541 – 0242-5223612  -   <strong>Correo:</strong> mariadanie1090@gmail.com
+          echo '<p><strong>Tipo de cita:</strong> ' . $tipoCita . ' - <strong>Costo:</strong> BsD. '  . $costo .  '  - <strong>Teléfonos:</strong> 0251-2528541 – 0242-5223612  -   <strong>Correo:</strong> mariadanie1090@gmail.com
 
           </p>';
           echo '</div>';
