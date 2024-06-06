@@ -244,6 +244,8 @@ if (isset($_GET['idPaciente']) && isset($_GET['idCita']) && isset($_GET['idCalen
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/menulateral.css">
     <link rel="stylesheet" href="../CSS/visualizarcita.css">
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+
 
 
 
