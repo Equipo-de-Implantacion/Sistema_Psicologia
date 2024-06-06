@@ -295,7 +295,7 @@ if ($Fila['Id_TipoUsuario'] == 1) {
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="text" name="Parentezco" id="Parentezco" class="form-control" placeholder="Parentezco" oninput="soloLetras(this)">
+                                        <input type="text" name="Parentezco" id="Parentezco" class="form-control" placeholder="Parentesco" oninput="soloLetras(this)">
                                     </div>
                                 </div>
 
