@@ -72,7 +72,7 @@
 
 
     <h1 class="display-4 fw-bold lh-1">PSICOLOGÍA</h1>
-    <p>Obtén la ayuda profesional que necesitas en psicología <br> de forma virtualí</p>
+    <p>Obtén la ayuda profesional que necesitas en psicología <br> de forma virtual</p>
 
     <button class="btn btn-primary" onclick="window.location.href='PHP/Iniciar_Sesion.php'">AGENDA TU CITA</button>
 
