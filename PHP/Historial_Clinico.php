@@ -123,7 +123,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
                             <form id="BusquedaPaciente" action="../Configuracion/BusquedaPaciente.php" method="POST">
                                 <button id="btn_Identificacion" class="btn btn-primary mi-boton" name="btn_Identificacion">BUSCAR PACIENTE</button>
 
-                                <input type="text" class="form-control" id="Identificacion" name="Identificacion"  placeholder= "Ingrese la cédula del paciente">
+                                <input type="text" class="form-control" id="Identificacion" name="Identificacion">
 
                             </form>
 

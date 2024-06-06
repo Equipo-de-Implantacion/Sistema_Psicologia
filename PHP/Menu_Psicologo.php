@@ -300,9 +300,6 @@ if (!isset($_SESSION['Id_Usuario'])) {
                 case 'Cita_Cancelada':
                     message = 'La cita ha sido cancelada exitosamente.';
                     break;
-                    case 'Cita_Aceptada':
-                    message = 'La cita ha sido aceptada exitosamente. Le llegará un correo electrónico';
-                    break;
             }
             if (message) {
                 toastr.success(message, 'Éxito', {

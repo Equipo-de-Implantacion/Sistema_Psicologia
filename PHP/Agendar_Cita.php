@@ -217,10 +217,6 @@ if ($Fila['Id_TipoUsuario'] == 1) {
                         <h2 class="fw-bold duraciontext">
                             CADA SERVICIO TIENE UNA DUREACIÓN DE 45 MINUTOS.
                         </h2>
-                        <br>
-                        <p class= "parrafos">Psicoterapia Individual: Se enfoca en el tratamiento un solo individuo, generalmente mayor de 18 años.</p>
-                        <p class= "parrafos">Psicoterapia Infantil: Especialmente diseñada para niños, generalmente entre la edad de 3 años a 12 años.</p>
-                        <p class= "parrafos">Psicoterapia Adolescente: Diseñada para jovenes en la etapa de la adolescente, entre 12 y 18 años.</p>
                     </section>
 
 
@@ -295,7 +291,7 @@ if ($Fila['Id_TipoUsuario'] == 1) {
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="text" name="Parentezco" id="Parentezco" class="form-control" placeholder="Parentesco" oninput="soloLetras(this)">
+                                        <input type="text" name="Parentezco" id="Parentezco" class="form-control" placeholder="Parentezco" oninput="soloLetras(this)">
                                     </div>
                                 </div>
 

@@ -115,6 +115,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
                 <input type="password" id="RContrasena" name="RContrasena" class="form-control" placeholder="Repetir Contraseña" required>
 
                 <button type="submit"id="btn_registrar" class="btn btn-primary mi-boton">REGISTRAR USUARIO</button>
+            </form>
         </div>
 
         <div class="titulos">
@@ -183,8 +184,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
             </div>
         </div>
     </div>
-     </form>
-</div>
+    </div>
 
 </main>
 
