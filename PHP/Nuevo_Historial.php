@@ -140,6 +140,7 @@ if (isset($_GET['Id_Paciente'])) {
     <link href="../CSS/PDF.css" rel="stylesheet">
     <link href="../CSS/nuevohistorial.css" rel="stylesheet">
 
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
 
 
 

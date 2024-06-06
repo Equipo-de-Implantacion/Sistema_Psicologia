@@ -17,6 +17,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
     <title>Emoción Vital</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/menulateral.css">
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
 
     <link href="../CSS/Obtener_Historial.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -123,7 +124,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
                             <form id="BusquedaPaciente" action="../Configuracion/BusquedaPaciente.php" method="POST">
                                 <button id="btn_Identificacion" class="btn btn-primary mi-boton" name="btn_Identificacion">BUSCAR PACIENTE</button>
 
-                                <input type="text" class="form-control" id="Identificacion" name="Identificacion">
+                                <input type="text" class="form-control" id="Identificacion" name="Identificacion"  placeholder= "Ingrese la cédula del paciente">
 
                             </form>
 

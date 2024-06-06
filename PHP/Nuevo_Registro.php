@@ -18,6 +18,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/menulateral.css">
     <link rel="stylesheet" href="../CSS/nuevoregistro.css">
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
 
 
 
@@ -115,7 +116,6 @@ if (!isset($_SESSION['Id_Usuario'])) {
                 <input type="password" id="RContrasena" name="RContrasena" class="form-control" placeholder="Repetir Contraseña" required>
 
                 <button type="submit"id="btn_registrar" class="btn btn-primary mi-boton">REGISTRAR USUARIO</button>
-            </form>
         </div>
 
         <div class="titulos">
@@ -184,7 +184,8 @@ if (!isset($_SESSION['Id_Usuario'])) {
             </div>
         </div>
     </div>
-    </div>
+     </form>
+</div>
 
 </main>
 

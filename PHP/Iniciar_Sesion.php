@@ -12,6 +12,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <link href="../CSS/Iniciar_Sesion.css" rel="stylesheet">
+  <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -24,7 +25,7 @@
    <!--==================== HEADER ====================-->
    <header class="header" id="header">
     <nav class="nav container">
-      <a href="" class="nav__logo">
+      <a href="../Index.php" class="nav__logo">
         <img class="logo" src="../Imagenes/LOGOFULLNEGRO.png" alt="Descripción del logo">
 
       </a>

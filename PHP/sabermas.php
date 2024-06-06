@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
@@ -20,8 +23,8 @@
  <!--==================== HEADER ====================-->
  <header class="header" id="header">
     <nav class="nav container">
-      <a href="" class="nav__logo">
-        <img class="logo" src="../Imagenes/LOGO FULL BLANCO2.png" alt="Descripción del logo">
+      <a href="../Index.php" class="nav__logo">
+      <img  class="logo" src="../Imagenes/LOGO FULL BLANCO2.png" alt="Descripción del logo">
 
       </a>
 
@@ -103,7 +106,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                <img src="../imagenes/unefa.png" class="card-img-top" alt="...">
+                <img src="../imagenes/unefa.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">EXPERIENCIA LABORAL</h5>
                     <p class="card-text">Universidad Nacional Experimental Politécnica 

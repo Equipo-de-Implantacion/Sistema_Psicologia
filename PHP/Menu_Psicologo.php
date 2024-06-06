@@ -15,6 +15,10 @@ if (!isset($_SESSION['Id_Usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emoción Vital</title>
+
+
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../CSS/Calendario.css" rel="stylesheet">
@@ -299,6 +303,9 @@ if (!isset($_SESSION['Id_Usuario'])) {
                     break;
                 case 'Cita_Cancelada':
                     message = 'La cita ha sido cancelada exitosamente.';
+                    break;
+                    case 'Cita_Aceptada':
+                    message = 'La cita ha sido aceptada exitosamente. Le llegará un correo electrónico';
                     break;
             }
             if (message) {

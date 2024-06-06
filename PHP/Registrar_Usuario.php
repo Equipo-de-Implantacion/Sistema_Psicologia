@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Usuario</title>
 
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
 
     <!-- Bootstrap CSS -->
@@ -22,7 +25,7 @@
   <!--==================== HEADER ====================-->
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="" class="nav__logo">
+      <a href="../Index.php" class="nav__logo">
         <img class="logo" src="../Imagenes/LOGOFULLNEGRO.png" alt="Descripción del logo">
 
       </a>
