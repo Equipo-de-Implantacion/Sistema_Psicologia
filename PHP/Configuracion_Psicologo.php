@@ -101,7 +101,7 @@
                                 <h4 class="display-6 fw-bold lh-1 fs-6">CONFIGURACIÓN GENERAL</h4>
                                 <input type="text" id="Usuario" name="Usuario" class="form-control" placeholder="Nombre del usuario">
                                 <input type="password" id="Contrasena_Actual" name="Contrasena_Actual" class="form-control" placeholder="Contraseña actual">
-                                <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva" class="form-control" placeholder="Contraseña nueva">
+                                <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva" class="form-control" placeholder="Contraseña nueva" onblur="validarContrasena(this)">
                                 <input type="password" id="Repite_Contrasena" name="Repite_Contrasena" class="form-control" placeholder="Repite la contraseña">
                                 <button type="submit" class="btn_Guardar btn btn-primary mi-boton" id="btn_Guardar">GUARDAR</button>
                             </div>
@@ -187,10 +187,10 @@
                         message = 'El nombre de usuario ya está en uso.';
                         break;
                     case 'Contraseña_incorrecta':
-                        message = 'No se realizo ningun cambio';
+                        message = 'La contraseña actual es incorrecta.';
                         break;
                     case 'Contraseñas_no_coinciden':
-                        message = 'Las contraseñas nuevas no coinciden.';
+                        message = 'Las contraseñas no coinciden.';
                         break;
                     case 'Error_Actualizar_Dia_No_Laborable':
                         message = 'Error al actualizar el día no laborable.';
@@ -249,6 +249,7 @@
 
     <script src="../JS/menulateral.js"></script>
     <script src="../JS/ConfiguracionPsicologo.js"></script>
+    <script src="../JS/ValidarContrasena.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

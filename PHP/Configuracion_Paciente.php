@@ -112,7 +112,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
 
             <input type="password" id="Contrasena_Actual" name="Contrasena_Actual" class="form-control" placeholder="Contraseña actual">
 
-            <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva"class="form-control"placeholder="Contraseña nueva">
+            <input type="password" id="Contrasena_Nueva" name="Contrasena_Nueva"class="form-control"placeholder="Contraseña nueva" onblur="validarContrasena(this)">
 
             <input type="password" id="Repite_Contrasena" name="Repite_Contrasena"class="form-control" placeholder="Repetir contraseña">
 
@@ -137,7 +137,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
                     break;
                 
                 case 'Nombre_usuario_existente':
-                    message = 'El nombre de usuario ya existe.';
+                    message = 'El nombre de usuario ya está en uso.';
                     break;
                 case 'Contraseñas_no_coinciden':
                     message = 'Las contraseñas no coinciden.';
@@ -190,6 +190,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="../JS/menulateral.js"></script>
+    <script src="../JS/ValidarContrasena.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
