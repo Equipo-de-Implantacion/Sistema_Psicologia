@@ -63,16 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Verificar si la contraseña actual coincide con la almacenada en la base de datos
-    if (!empty($ContrasenaActual) && md5($ContrasenaActual, $Usuario['Contrasena'])) {
-
+    if (!empty($ContrasenaActual) && md5($ContrasenaActual) === $Usuario['Contrasena']) {
         if (!empty($ContrasenaNueva) && $ContrasenaNueva == $RepiteContrasena) {
-
-            $Cambiar_Contrasena  = md5($ContrasenaNueva);
-            $ActualizarContrasena = "UPDATE usuario SET Contrasena = ? WHERE Id_Usuario = ?";
+            $Cambiar_Contrasena = md5($ContrasenaNueva);
+            $ActualizarContrasena = "UPDATE usuario SET Contrasena =? WHERE Id_Usuario =?";
             $sentenciaActualizar = $Conexion->prepare($ActualizarContrasena);
             $sentenciaActualizar->bind_param("si", $Cambiar_Contrasena, $Id_Usuario);
             $sentenciaActualizar->execute();
-
             header("Location: ../PHP/Configuracion_Paciente.php?success=Contraseña_actualizada");
             exit();
         } else {

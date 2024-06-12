@@ -109,7 +109,10 @@ if (isset($_POST['accion_aceptar'])) {
         foreach ($_POST['seleccionar'] as $Fila) {
             $datos = explode("|", $Fila);
             if (count($datos) == 4) {
+                $idPaciente = $datos[0];
                 $idCita = $datos[1];
+                $idCalendario = $datos[2];
+                $tipoCita = $datos[3];
 
                 // Consulta para actualizar el estado de la cita
                 $ConsultaActualizarCita = "UPDATE cita SET Status_Cita = 'Agendada', Status = 'Aprobado' WHERE Id_Cita =?";
@@ -118,7 +121,7 @@ if (isset($_POST['accion_aceptar'])) {
                 $DeclaracionActualizarCita->execute();
 
                 header("Location:../Correo/EnviarCorreo.php?idPaciente=$idPaciente&idCita=$idCita&idCalendario=$idCalendario&tipoCita=$tipoCita");
-                header("Location:../PHP/Menu_Psicologo.php?success=Cita_Aceptada");
+                
                 
                 exit();
             }

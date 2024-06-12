@@ -59,7 +59,7 @@ if (isset($_POST['Estado'], $_POST['Municipio'], $_POST['Parroquia'], $_POST['Ci
         // Procesamiento de la dirección
         if ($idEstado && $idMunicipio && $idParroquia && $idCiudad && $Direccion_Vivienda) {
             $ConsultaDir = $Conexion->prepare("INSERT INTO direccion (id_estado, id_municipio, id_parroquia, id_ciudad, Direccion_Vivienda) VALUES (?, ?, ?, ?, ?)");
-            $ConsultaDir->bind_param("iiisi", $idEstado, $idMunicipio, $idParroquia, $idCiudad, $Direccion_Vivienda);
+            $ConsultaDir->bind_param("iiiis", $idEstado, $idMunicipio, $idParroquia, $idCiudad, $Direccion_Vivienda);
             $ConsultaDir->execute();
             $idDireccion = $ConsultaDir->insert_id;
         }

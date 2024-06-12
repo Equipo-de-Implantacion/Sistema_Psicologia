@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $ActualizarUsuario->bind_param("si", $UsuarioActual, $Id_Usuario);
             $ActualizarUsuario->execute();
 
-            header("Location: ../PHP/Configuracion_Psicologo.php?sucess=Nombre_usuario_actualizado");
+            header("Location: ../PHP/Configuracion_Psicologo.php?success=Nombre_usuario_actualizado");
             exit();
         } else {
             header("Location: ../PHP/Configuracion_Psicologo.php?error=Nombre_usuario_existente");
@@ -48,17 +48,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    if (!empty($ContrasenaActual) && md5($ContrasenaActual, $Usuario['Contrasena'])) {
-
+    if (!empty($ContrasenaActual) && md5($ContrasenaActual) === $Usuario['Contrasena']) {
         if (!empty($ContrasenaNueva) && $ContrasenaNueva == $RepiteContrasena) {
-
-            $Cambiar_Contrasena = md5($ContrasenaNueva, PASSWORD_DEFAULT);
-            $ActualizarContrasena = "UPDATE usuario SET Contrasena = ? WHERE Id_Usuario = ?";
+            $Cambiar_Contrasena = md5($ContrasenaNueva);
+            $ActualizarContrasena = "UPDATE usuario SET Contrasena =? WHERE Id_Usuario =?";
             $sentenciaActualizar = $Conexion->prepare($ActualizarContrasena);
             $sentenciaActualizar->bind_param("si", $Cambiar_Contrasena, $Id_Usuario);
             $sentenciaActualizar->execute();
 
-            header("Location: ../PHP/Configuracion_Psicologo.php?error=Contraseña_actualizada");
+            header("Location: ../PHP/Configuracion_Psicologo.php?success=Contraseña_actualizada");
             exit();
         } else {
             header("Location: ../PHP/Configuracion_Psicologo.php?error=Contraseñas_no_coinciden");
