@@ -189,7 +189,7 @@ document.getElementById('Fecha_Nacimiento').addEventListener('blur', function ()
         edad--;
     }
 
-    if (edad > 3 && edad < 90) {
+    if (edad > 2 && edad < 90) {
         //alert("Edad adecuada");
     } else {
         toastr.error('El paciente debe tener entre 3 y 90 años de edad.');
