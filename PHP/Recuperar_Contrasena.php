@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../CSS/Olvidocontraseña.css">
 
 
-    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+    <link rel="icon" href="../imagenes/favicon-16x16.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
 
