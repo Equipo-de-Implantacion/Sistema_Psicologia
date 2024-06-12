@@ -11,8 +11,8 @@
   <link href="CSS/navbar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
   <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
 
 </head>
 
@@ -96,7 +96,7 @@
           de cada cliente. Al elegirme como su terapeuta, se beneficiará de un enfoque compasivo y
           basado en la evidencia, diseñado para promover el crecimiento personal y el bienestar emocional
         </p>
-        <button class="btn btn-primary">SABER MÁS</button>
+        <button class="btn btn-primary mi-boton" onclick="window.location.href='./PHP/sabermas.php'">SABER MÁS</button>
 
       </div>
       <img src="Imagenes/Psicologareal.jpeg" alt="Imagen" class="image-container p-2">
@@ -262,7 +262,7 @@
             previo y que, a pesar de la distancia, desean continuar con el
             tratamiento clínico.
             <br>
-            Debe tener en cuenta que, el apoyo por vídeo llamada se realiza por medio de Google Met.
+            Debe tener en cuenta que, el apoyo por vídeo llamada se realiza por medio de Google Meet.
             Asegúrate de tener cámara web, micrófono y audífonos.
             Realiza una prueba de funcionamiento previamente.
             Escoge un lugar tranquilo y cómodo para ti, en donde no tengas interrupciones.
