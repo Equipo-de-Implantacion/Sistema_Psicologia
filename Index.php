@@ -11,6 +11,7 @@
   <link href="CSS/navbar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
   <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
