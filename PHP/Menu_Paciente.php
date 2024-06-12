@@ -21,7 +21,7 @@ if (!isset($_SESSION['Id_Usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
 
-    <link rel="icon" href="imagenes/favicon-16x16.png" type="image/x-icon">
+    <link rel="icon" href="../imagenes/favicon-16x16.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/menucontenido.css">
