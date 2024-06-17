@@ -132,16 +132,16 @@ try {
     //Server settings
     $mail->SMTPDebug = 0;
     $mail->isSMTP();
-    $mail->Host       = 'SMTP.gmail.com';
+    $mail->Host       = ' '; //SMTP del tipo de correo
 
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'psicologia.emocionvital@gmail.com';
-    $mail->Password   = 'rxifqkbismjpnzmp';
+    $mail->Username   = ' '; //Tu correo
+    $mail->Password   = ' '; //Tu contraseña
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
     //Recipients
-    $mail->setFrom('psicologia.emocionvital@gmail.com', 'EMOCION VITAL');
+    $mail->setFrom(' ', 'EMOCION VITAL'); //Tu correo Nombre de remitente
     $mail->addAddress($correoPaciente);
     $mail->addAddress('psicologia.emocionvital@gmail.com');
 
